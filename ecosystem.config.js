@@ -8,12 +8,12 @@ module.exports = {
       max_memory_restart: '10G', // 緩存了多少記憶體重新整理
       env_prod: {
         name: 'server_prod',
-        PORT: 3001, //指定伺服器上的 port
+        PORT: 3005, //指定伺服器上的 port
         NODE_ENV: 'prod',
       },
       env_sit: {
         name: 'server_sit',
-        PORT: 3001, //指定伺服器上的 port
+        PORT: 3005, //指定伺服器上的 port
         NODE_ENV: 'sit',
       },
     },

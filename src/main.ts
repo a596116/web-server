@@ -35,7 +35,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document)
 
 
-  await app.listen(3001, () => {
+  await app.listen(3005, () => {
     console.log(`http://localhost:3001/api`)
     // logger.log(`${config.get<string>('BASE_URL')}/api`)
   })
