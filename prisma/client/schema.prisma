@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// 用户
+model User {
+  id         Int        @id @default(autoincrement()) @db.UnsignedInt()
+  name       String
+  phone      String     @unique @db.Char(20)
+  password   String
+  avatar     String
+  status     Boolean
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  UserRole   UserRole[]
+}
+
+// 用户角色
+model Role {
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  creator        String
+  remark         String?
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+  RolePermission RolePermission[]
+  UserRole       UserRole[]
+}
+
+// 角色權限
+model Permission {
+  id         Int              @id @default(autoincrement())
+  name       String           @unique
+  creator    String
+  remark     String?
+  created_at DateTime         @default(now())
+  updated_at DateTime         @updatedAt
+  Role       RolePermission[]
+}
+
+// 用户角色關聯表
+model UserRole {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  roleId     Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+// 角色權限關聯表
+model RolePermission {
+  id           Int        @id @default(autoincrement())
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  roleId       Int
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  permissionId Int
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+}
