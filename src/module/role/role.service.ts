@@ -17,8 +17,8 @@ export class RoleService {
       sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
     }
     const data = await this.prisma.role.findMany({
-      skip: query.take * (query.page - 1),
-      take: +query.take,
+      // skip: query.take * (query.page - 1),
+      // take: +query.take,
       orderBy: sort,
       where: {
         name: {
