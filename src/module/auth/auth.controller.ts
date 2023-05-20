@@ -26,7 +26,6 @@ export class AuthController {
   @Post('register')
   @ApiOperation({ summary: '創建用戶', description: '創建用戶' })
   register(@Body() RegisterAuthDto: RegisterAuthDto) {
-    console.log(123)
     return this.authService.register(RegisterAuthDto)
   }
 
@@ -36,12 +35,11 @@ export class AuthController {
     return this.authService.findAll(query)
   }
 
-  @Get('/:id')
+  @Get(':id')
   @ApiOperation({ summary: '查詢用戶id', description: '使用id查詢用戶' })
   @Auth()
   // @UseGuards(AuthGuard('jwt'))
   findOne(@Param('id') id: number) {
-    console.log(id)
     return this.authService.findOne(+id)
   }
 
