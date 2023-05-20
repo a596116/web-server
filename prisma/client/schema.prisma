@@ -26,7 +26,7 @@ model User {
 
 // 用户角色
 model Role {
-  id             Int              @id @default(autoincrement())
+  id             Int              @id @default(autoincrement()) @db.UnsignedInt()
   name           String           @unique
   creator        String
   remark         String?
@@ -38,7 +38,7 @@ model Role {
 
 // 角色權限
 model Permission {
-  id         Int              @id @default(autoincrement())
+  id         Int              @id @default(autoincrement()) @db.UnsignedInt()
   name       String           @unique
   creator    String
   remark     String?
@@ -49,22 +49,21 @@ model Permission {
 
 // 用户角色關聯表
 model UserRole {
-  id         Int      @id @default(autoincrement())
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt()
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId     Int
+  userId     Int      @db.UnsignedInt()
   role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
-  roleId     Int
+  roleId     Int      @db.UnsignedInt()
   created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
 }
 
 // 角色權限關聯表
 model RolePermission {
-  id           Int        @id @default(autoincrement())
+  id           Int        @id @default(autoincrement()) @db.UnsignedInt()
   role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
-  roleId       Int
+  roleId       Int        @db.UnsignedInt()
   permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
-  permissionId Int
+  permissionId Int        @db.UnsignedInt()
   created_at   DateTime   @default(now())
   updated_at   DateTime   @updatedAt
 }

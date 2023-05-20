@@ -11,6 +11,8 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidatePipe({ whitelist: true, transform: true }))
 
+
+  app.setGlobalPrefix('api')
   /**
    * 跨域
   */
@@ -34,7 +36,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options)
   SwaggerModule.setup('api', app, document)
 
-  app.setGlobalPrefix('api')
+
   await app.listen(3005, () => {
     console.log(`http://localhost:3005`)
     // logger.log(`${config.get<string>('BASE_URL')}/api`)

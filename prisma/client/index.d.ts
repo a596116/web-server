@@ -62,7 +62,6 @@ export type UserRole = {
   userId: number
   roleId: number
   created_at: Date
-  updated_at: Date
 }
 
 /**
@@ -288,7 +287,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 4.13.0
-   * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+   * Query Engine version: d9a4c5988f480fa576d43970d5a23641aa77bc9c
    */
   export type PrismaVersion = {
     client: string
@@ -4080,7 +4079,6 @@ export namespace Prisma {
     userId: number | null
     roleId: number | null
     created_at: Date | null
-    updated_at: Date | null
   }
 
   export type UserRoleMaxAggregateOutputType = {
@@ -4088,7 +4086,6 @@ export namespace Prisma {
     userId: number | null
     roleId: number | null
     created_at: Date | null
-    updated_at: Date | null
   }
 
   export type UserRoleCountAggregateOutputType = {
@@ -4096,7 +4093,6 @@ export namespace Prisma {
     userId: number
     roleId: number
     created_at: number
-    updated_at: number
     _all: number
   }
 
@@ -4118,7 +4114,6 @@ export namespace Prisma {
     userId?: true
     roleId?: true
     created_at?: true
-    updated_at?: true
   }
 
   export type UserRoleMaxAggregateInputType = {
@@ -4126,7 +4121,6 @@ export namespace Prisma {
     userId?: true
     roleId?: true
     created_at?: true
-    updated_at?: true
   }
 
   export type UserRoleCountAggregateInputType = {
@@ -4134,7 +4128,6 @@ export namespace Prisma {
     userId?: true
     roleId?: true
     created_at?: true
-    updated_at?: true
     _all?: true
   }
 
@@ -4230,7 +4223,6 @@ export namespace Prisma {
     userId: number
     roleId: number
     created_at: Date
-    updated_at: Date
     _count: UserRoleCountAggregateOutputType | null
     _avg: UserRoleAvgAggregateOutputType | null
     _sum: UserRoleSumAggregateOutputType | null
@@ -4257,7 +4249,6 @@ export namespace Prisma {
     userId?: boolean
     roleId?: boolean
     created_at?: boolean
-    updated_at?: boolean
     user?: boolean | UserArgs
     role?: boolean | RoleArgs
   }
@@ -6072,8 +6063,7 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     roleId: 'roleId',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
+    created_at: 'created_at'
   };
 
   export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
@@ -6278,7 +6268,6 @@ export namespace Prisma {
     userId?: IntFilter | number
     roleId?: IntFilter | number
     created_at?: DateTimeFilter | Date | string
-    updated_at?: DateTimeFilter | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     role?: XOR<RoleRelationFilter, RoleWhereInput>
   }
@@ -6288,7 +6277,6 @@ export namespace Prisma {
     userId?: SortOrder
     roleId?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
     user?: UserOrderByWithRelationInput
     role?: RoleOrderByWithRelationInput
   }
@@ -6302,7 +6290,6 @@ export namespace Prisma {
     userId?: SortOrder
     roleId?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
     _count?: UserRoleCountOrderByAggregateInput
     _avg?: UserRoleAvgOrderByAggregateInput
     _max?: UserRoleMaxOrderByAggregateInput
@@ -6318,7 +6305,6 @@ export namespace Prisma {
     userId?: IntWithAggregatesFilter | number
     roleId?: IntWithAggregatesFilter | number
     created_at?: DateTimeWithAggregatesFilter | Date | string
-    updated_at?: DateTimeWithAggregatesFilter | Date | string
   }
 
   export type RolePermissionWhereInput = {
@@ -6584,7 +6570,6 @@ export namespace Prisma {
 
   export type UserRoleCreateInput = {
     created_at?: Date | string
-    updated_at?: Date | string
     user: UserCreateNestedOneWithoutUserRoleInput
     role: RoleCreateNestedOneWithoutUserRoleInput
   }
@@ -6594,12 +6579,10 @@ export namespace Prisma {
     userId: number
     roleId: number
     created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type UserRoleUpdateInput = {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUserRoleNestedInput
     role?: RoleUpdateOneRequiredWithoutUserRoleNestedInput
   }
@@ -6609,7 +6592,6 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserRoleCreateManyInput = {
@@ -6617,12 +6599,10 @@ export namespace Prisma {
     userId: number
     roleId: number
     created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type UserRoleUpdateManyMutationInput = {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserRoleUncheckedUpdateManyInput = {
@@ -6630,7 +6610,6 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RolePermissionCreateInput = {
@@ -6686,8 +6665,8 @@ export namespace Prisma {
 
   export type IntFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
     lt?: number
     lte?: number
     gt?: number
@@ -6697,8 +6676,8 @@ export namespace Prisma {
 
   export type StringFilter = {
     equals?: string
-    in?: Enumerable<string>
-    notIn?: Enumerable<string>
+    in?: Enumerable<string> | string
+    notIn?: Enumerable<string> | string
     lt?: string
     lte?: string
     gt?: string
@@ -6716,8 +6695,8 @@ export namespace Prisma {
 
   export type DateTimeFilter = {
     equals?: Date | string
-    in?: Enumerable<Date> | Enumerable<string>
-    notIn?: Enumerable<Date> | Enumerable<string>
+    in?: Enumerable<Date> | Enumerable<string> | Date | string
+    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -6778,8 +6757,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
     lt?: number
     lte?: number
     gt?: number
@@ -6794,8 +6773,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter = {
     equals?: string
-    in?: Enumerable<string>
-    notIn?: Enumerable<string>
+    in?: Enumerable<string> | string
+    notIn?: Enumerable<string> | string
     lt?: string
     lte?: string
     gt?: string
@@ -6819,8 +6798,8 @@ export namespace Prisma {
 
   export type DateTimeWithAggregatesFilter = {
     equals?: Date | string
-    in?: Enumerable<Date> | Enumerable<string>
-    notIn?: Enumerable<Date> | Enumerable<string>
+    in?: Enumerable<Date> | Enumerable<string> | Date | string
+    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -6833,8 +6812,8 @@ export namespace Prisma {
 
   export type StringNullableFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
     lt?: string
     lte?: string
     gt?: string
@@ -6892,8 +6871,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
     lt?: string
     lte?: string
     gt?: string
@@ -6957,7 +6936,6 @@ export namespace Prisma {
     userId?: SortOrder
     roleId?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
   }
 
   export type UserRoleAvgOrderByAggregateInput = {
@@ -6971,7 +6949,6 @@ export namespace Prisma {
     userId?: SortOrder
     roleId?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
   }
 
   export type UserRoleMinOrderByAggregateInput = {
@@ -6979,7 +6956,6 @@ export namespace Prisma {
     userId?: SortOrder
     roleId?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
   }
 
   export type UserRoleSumOrderByAggregateInput = {
@@ -7279,8 +7255,8 @@ export namespace Prisma {
 
   export type NestedIntFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
     lt?: number
     lte?: number
     gt?: number
@@ -7290,8 +7266,8 @@ export namespace Prisma {
 
   export type NestedStringFilter = {
     equals?: string
-    in?: Enumerable<string>
-    notIn?: Enumerable<string>
+    in?: Enumerable<string> | string
+    notIn?: Enumerable<string> | string
     lt?: string
     lte?: string
     gt?: string
@@ -7309,8 +7285,8 @@ export namespace Prisma {
 
   export type NestedDateTimeFilter = {
     equals?: Date | string
-    in?: Enumerable<Date> | Enumerable<string>
-    notIn?: Enumerable<Date> | Enumerable<string>
+    in?: Enumerable<Date> | Enumerable<string> | Date | string
+    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -7320,8 +7296,8 @@ export namespace Prisma {
 
   export type NestedIntWithAggregatesFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
     lt?: number
     lte?: number
     gt?: number
@@ -7336,8 +7312,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter = {
     equals?: number
-    in?: Enumerable<number>
-    notIn?: Enumerable<number>
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
     lt?: number
     lte?: number
     gt?: number
@@ -7347,8 +7323,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter = {
     equals?: string
-    in?: Enumerable<string>
-    notIn?: Enumerable<string>
+    in?: Enumerable<string> | string
+    notIn?: Enumerable<string> | string
     lt?: string
     lte?: string
     gt?: string
@@ -7372,8 +7348,8 @@ export namespace Prisma {
 
   export type NestedDateTimeWithAggregatesFilter = {
     equals?: Date | string
-    in?: Enumerable<Date> | Enumerable<string>
-    notIn?: Enumerable<Date> | Enumerable<string>
+    in?: Enumerable<Date> | Enumerable<string> | Date | string
+    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
     lt?: Date | string
     lte?: Date | string
     gt?: Date | string
@@ -7386,8 +7362,8 @@ export namespace Prisma {
 
   export type NestedStringNullableFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
     lt?: string
     lte?: string
     gt?: string
@@ -7400,8 +7376,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter = {
     equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
     lt?: string
     lte?: string
     gt?: string
@@ -7417,8 +7393,8 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter = {
     equals?: number | null
-    in?: Enumerable<number> | null
-    notIn?: Enumerable<number> | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
     lt?: number
     lte?: number
     gt?: number
@@ -7428,7 +7404,6 @@ export namespace Prisma {
 
   export type UserRoleCreateWithoutUserInput = {
     created_at?: Date | string
-    updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserRoleInput
   }
 
@@ -7436,7 +7411,6 @@ export namespace Prisma {
     id?: number
     roleId: number
     created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type UserRoleCreateOrConnectWithoutUserInput = {
@@ -7473,7 +7447,6 @@ export namespace Prisma {
     userId?: IntFilter | number
     roleId?: IntFilter | number
     created_at?: DateTimeFilter | Date | string
-    updated_at?: DateTimeFilter | Date | string
   }
 
   export type RolePermissionCreateWithoutRoleInput = {
@@ -7501,7 +7474,6 @@ export namespace Prisma {
 
   export type UserRoleCreateWithoutRoleInput = {
     created_at?: Date | string
-    updated_at?: Date | string
     user: UserCreateNestedOneWithoutUserRoleInput
   }
 
@@ -7509,7 +7481,6 @@ export namespace Prisma {
     id?: number
     userId: number
     created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type UserRoleCreateOrConnectWithoutRoleInput = {
@@ -7800,12 +7771,10 @@ export namespace Prisma {
     id?: number
     roleId: number
     created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type UserRoleUpdateWithoutUserInput = {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserRoleNestedInput
   }
 
@@ -7813,14 +7782,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserRoleUncheckedUpdateManyWithoutUserRoleInput = {
     id?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RolePermissionCreateManyRoleInput = {
@@ -7834,7 +7801,6 @@ export namespace Prisma {
     id?: number
     userId: number
     created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type RolePermissionUpdateWithoutRoleInput = {
@@ -7859,7 +7825,6 @@ export namespace Prisma {
 
   export type UserRoleUpdateWithoutRoleInput = {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUserRoleNestedInput
   }
 
@@ -7867,7 +7832,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RolePermissionCreateManyPermissionInput = {
