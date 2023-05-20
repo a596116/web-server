@@ -13,14 +13,14 @@ async function bootstrap() {
 
   /**
    * 跨域
-   */
+  */
   app.enableCors({
     origin: '*',
   })
 
   /**
    * @description: Swagger
-   */
+  */
   const options = new DocumentBuilder()
     .setTitle('浩呆後端')
     .setDescription('浩呆後端API文件')
@@ -35,8 +35,9 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document)
 
 
+  app.setGlobalPrefix('api')
   await app.listen(3005, () => {
-    console.log(`http://localhost:3001/api`)
+    console.log(`http://localhost:3005`)
     // logger.log(`${config.get<string>('BASE_URL')}/api`)
   })
 }
