@@ -45,7 +45,7 @@ export class RoleController {
    * @description: 刪除角色
    */
   @Delete('role/:id')
-  remove(@Param('id') id: string) {
+  removeUserRole(@Param('id') id: string) {
     return this.roleService.deleteRole(+id)
   }
 
@@ -78,8 +78,22 @@ export class RoleController {
     return this.roleService.createPermissions(role)
   }
 
+  /**
+   * @description: 更新權限
+   */
+  @Put('permission/:id')
+  @ApiOperation({ summary: '編輯權限', description: '編輯權限' })
+  editPermissions(@Body() permissions: any, @Param('id') id: number) {
+    return this.roleService.editPermissions(id, permissions)
+  }
 
-
+  /**
+   * @description: 刪除權限
+   */
+  @Delete('permission/:id')
+  removePermissions(@Param('id') id: string) {
+    return this.roleService.deletePermissions(+id)
+  }
 
 
 

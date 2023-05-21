@@ -86,6 +86,32 @@ Prisma.NullTypes = {
  * Enums
  */
 
+exports.Prisma.LineUserArticleScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  authorId: 'authorId'
+};
+
+exports.Prisma.LineUserCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  authorId: 'authorId'
+};
+
+exports.Prisma.LineUserScalarFieldEnum = {
+  id: 'id',
+  callback: 'callback',
+  url: 'url',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.PermissionScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -148,7 +174,10 @@ exports.Prisma.ModelName = {
   Role: 'Role',
   Permission: 'Permission',
   UserRole: 'UserRole',
-  RolePermission: 'RolePermission'
+  RolePermission: 'RolePermission',
+  LineUser: 'LineUser',
+  LineUserArticle: 'LineUserArticle',
+  LineUserCategory: 'LineUserCategory'
 };
 
 /**

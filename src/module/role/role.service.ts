@@ -17,16 +17,29 @@ export class RoleService {
       sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
     }
     const data = await this.prisma.role.findMany({
-      // skip: query.take * (query.page - 1),
-      // take: +query.take,
+      skip: query.take * (query.page - 1),
+      take: +query.take,
       orderBy: sort,
       where: {
         name: {
           contains: query.q
         },
       },
+      include: {
+        RolePermission: {
+          include: {
+            permission: true
+          }
+        }
+      }
     },
     )
+    data.forEach((item: any) => {
+      item.permissions = item.RolePermission.map(item => {
+        return item.permission.name
+      })
+    })
+
     const total = await this.prisma.role.count()
     return successPaginate({ ...query, total, data })
   }
@@ -79,7 +92,7 @@ export class RoleService {
         where: { id },
         data: {
           RolePermission: {
-            deleteMany: { roleId: role.id },
+            deleteMany: { roleId: id },
             createMany: {
               data: role.role.map((item) => ({ permissionId: item }))
             },
@@ -159,20 +172,40 @@ export class RoleService {
     }
   }
 
+  /**
+     * @description: 編輯權限
+     */
+  async editPermissions(id: number, role: any) {
+    try {
+      await this.prisma.permission.update({
+        where: { id },
+        data: {
+          remark: role.remark || null,
+        },
+      })
+      return success({ message: "編輯權限成功" })
+    } catch (error) {
+      console.log(error)
+      return error('編輯權限失敗，錯誤詳情：' + error)
+    }
+  }
+
+  /**
+   * @description: 刪除權限
+   */
+  async deletePermissions(id: number) {
+    try {
+      await this.prisma.permission.delete({
+        where: { id },
+        include: { Role: true }
+      })
+      return success({ message: "刪除權限成功" })
+    } catch (error) {
+      console.log(error)
+      return error('刪除權限失敗，錯誤詳情：' + error)
+    }
+  }
 
 
-  // async editRole(role: roleAuthDto) {
-  //   try {
-  //     await this.prisma.userRole.update({
-  //       where: { id: role.authId },
-  //       data: {
-  //         role: { connect: { id: role.roleId } },
-  //       },
-  //     })
-  //     return success({ message: "編輯權限成功" })
-  //   } catch (error) {
-  //     console.log(error)
-  //     return error('編輯權限失敗，錯誤詳情：' + error)
-  //   }
-  // }
 }
+

@@ -67,3 +67,37 @@ model RolePermission {
   created_at   DateTime   @default(now())
   updated_at   DateTime   @updatedAt
 }
+
+// ----------------------------------------------------------
+// -------------------------LineBot--------------------------
+// ----------------------------------------------------------
+
+model LineUser {
+  id        String             @id
+  callback  String
+  url       String
+  type      String
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  category  LineUserCategory[]
+  Article   LineUserArticle[]
+}
+
+model LineUserArticle {
+  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
+  url       String
+  type      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    LineUser @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  authorId  String
+}
+
+model LineUserCategory {
+  id        String   @id
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    LineUser @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  authorId  String
+}
