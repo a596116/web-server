@@ -25,8 +25,30 @@ export const githubTemplate: FlexMessage = {
                     "type": "button",
                     "action": {
                         "type": "uri",
-                        "label": "前端網頁和後台管理系統 ➣",
-                        "uri": "https://github.com/a596116/web"
+                        "label": "前端網頁 ➣",
+                        "uri": "https://github.com/a596116/nuxt3-web"
+                    },
+                    "style": "link",
+                    "height": "sm",
+                    "color": "#c7ecee"
+                },
+                {
+                    "type": "button",
+                    "action": {
+                        "type": "uri",
+                        "label": "後台管理系統 ➣",
+                        "uri": "https://github.com/a596116/Admin"
+                    },
+                    "style": "link",
+                    "height": "sm",
+                    "color": "#c7ecee"
+                },
+                {
+                    "type": "button",
+                    "action": {
+                        "type": "uri",
+                        "label": "Node.js搭配nestjs開發後端 ➣",
+                        "uri": "https://github.com/a596116/web-server"
                     },
                     "style": "link",
                     "height": "sm",
@@ -38,17 +60,6 @@ export const githubTemplate: FlexMessage = {
                         "type": "uri",
                         "label": "Node.js搭配eggjs開發後端 ➣",
                         "uri": "https://github.com/a596116/server"
-                    },
-                    "style": "link",
-                    "height": "sm",
-                    "color": "#c7ecee"
-                },
-                {
-                    "type": "button",
-                    "action": {
-                        "type": "uri",
-                        "label": "Node.js搭配nestjs開發後端 ➣",
-                        "uri": "https://github.com/a596116/nestjs"
                     },
                     "style": "link",
                     "height": "sm",
