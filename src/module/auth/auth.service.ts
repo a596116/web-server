@@ -22,6 +22,9 @@ export class AuthService {
     private jwt: JwtService,
   ) { }
 
+  /**
+   * @description: 用戶登入
+   */
   async login(user: LoginAuthDto) {
     return await this.validateUser(user)
       .then(async (res: IResponse) => {
@@ -58,6 +61,9 @@ export class AuthService {
     return success({ message: "註冊成功" })
   }
 
+  /**
+   * @description: 獲取所有用戶
+   */
   async findAll(query: IQuery) {
     const sort = {}
     sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
@@ -113,8 +119,29 @@ export class AuthService {
     return success({ data: user })
   }
 
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`
+
+  /**
+   * @description: 更新用戶資料
+   */
+  async update(id: number, updateAuthDto: UpdateAuthDto) {
+    try {
+      await this.prisma.user.update({
+        where: { id },
+        data: {
+          status: updateAuthDto.status,
+          UserRole: {
+            deleteMany: { userId: id },
+            create: {
+              roleId: updateAuthDto.roleId,
+            },
+          },
+        },
+      })
+      return success({ message: "編輯用戶成功" })
+    } catch (error) {
+      console.log(error)
+      return error('編輯用戶失敗，錯誤詳情：' + error)
+    }
   }
 
   remove(id: number) {

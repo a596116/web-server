@@ -38,7 +38,7 @@ async function bootstrap() {
 
 
   await app.listen(3005, () => {
-    console.log(`http://localhost:3005`)
+    console.log(`http://localhost:3005/api`)
     // logger.log(`${config.get<string>('BASE_URL')}/api`)
   })
 }

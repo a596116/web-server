@@ -26,10 +26,4 @@ export class RegisterAuthDto {
     @IsBoolean({ message: '用戶狀態必須為true or false' })
     @ApiProperty({ required: true, description: 'status', default: true })
     public status: boolean
-
-    // @IsArray({ message: '用戶權限必須為陣列' })
-    // @IsNotEmpty({ message: '用戶權限不能為空' })
-    // @ApiProperty({ required: true, description: 'permissions', default: ['user', 'admin'] })
-    // public permissions: string[]
-
 }
