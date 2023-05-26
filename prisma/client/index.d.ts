@@ -23,6 +23,8 @@ export type User = {
   password: string
   avatar: string
   status: boolean
+  gender: string
+  birthday: string
   created_at: Date
   updated_at: Date
 }
@@ -1156,6 +1158,8 @@ export namespace Prisma {
     password: string | null
     avatar: string | null
     status: boolean | null
+    gender: string | null
+    birthday: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -1167,6 +1171,8 @@ export namespace Prisma {
     password: string | null
     avatar: string | null
     status: boolean | null
+    gender: string | null
+    birthday: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -1178,6 +1184,8 @@ export namespace Prisma {
     password: number
     avatar: number
     status: number
+    gender: number
+    birthday: number
     created_at: number
     updated_at: number
     _all: number
@@ -1199,6 +1207,8 @@ export namespace Prisma {
     password?: true
     avatar?: true
     status?: true
+    gender?: true
+    birthday?: true
     created_at?: true
     updated_at?: true
   }
@@ -1210,6 +1220,8 @@ export namespace Prisma {
     password?: true
     avatar?: true
     status?: true
+    gender?: true
+    birthday?: true
     created_at?: true
     updated_at?: true
   }
@@ -1221,6 +1233,8 @@ export namespace Prisma {
     password?: true
     avatar?: true
     status?: true
+    gender?: true
+    birthday?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -1320,6 +1334,8 @@ export namespace Prisma {
     password: string
     avatar: string
     status: boolean
+    gender: string
+    birthday: string
     created_at: Date
     updated_at: Date
     _count: UserCountAggregateOutputType | null
@@ -1350,6 +1366,8 @@ export namespace Prisma {
     password?: boolean
     avatar?: boolean
     status?: boolean
+    gender?: boolean
+    birthday?: boolean
     created_at?: boolean
     updated_at?: boolean
     UserRole?: boolean | User$UserRoleArgs
@@ -9122,6 +9140,8 @@ export namespace Prisma {
     password: 'password',
     avatar: 'avatar',
     status: 'status',
+    gender: 'gender',
+    birthday: 'birthday',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -9144,6 +9164,8 @@ export namespace Prisma {
     password?: StringFilter | string
     avatar?: StringFilter | string
     status?: BoolFilter | boolean
+    gender?: StringFilter | string
+    birthday?: StringFilter | string
     created_at?: DateTimeFilter | Date | string
     updated_at?: DateTimeFilter | Date | string
     UserRole?: UserRoleListRelationFilter
@@ -9156,6 +9178,8 @@ export namespace Prisma {
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
+    gender?: SortOrder
+    birthday?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     UserRole?: UserRoleOrderByRelationAggregateInput
@@ -9173,6 +9197,8 @@ export namespace Prisma {
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
+    gender?: SortOrder
+    birthday?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -9192,6 +9218,8 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter | string
     avatar?: StringWithAggregatesFilter | string
     status?: BoolWithAggregatesFilter | boolean
+    gender?: StringWithAggregatesFilter | string
+    birthday?: StringWithAggregatesFilter | string
     created_at?: DateTimeWithAggregatesFilter | Date | string
     updated_at?: DateTimeWithAggregatesFilter | Date | string
   }
@@ -9563,6 +9591,8 @@ export namespace Prisma {
     password: string
     avatar: string
     status: boolean
+    gender: string
+    birthday: string
     created_at?: Date | string
     updated_at?: Date | string
     UserRole?: UserRoleCreateNestedManyWithoutUserInput
@@ -9575,6 +9605,8 @@ export namespace Prisma {
     password: string
     avatar: string
     status: boolean
+    gender: string
+    birthday: string
     created_at?: Date | string
     updated_at?: Date | string
     UserRole?: UserRoleUncheckedCreateNestedManyWithoutUserInput
@@ -9586,6 +9618,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    gender?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     UserRole?: UserRoleUpdateManyWithoutUserNestedInput
@@ -9598,6 +9632,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    gender?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     UserRole?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
@@ -9610,6 +9646,8 @@ export namespace Prisma {
     password: string
     avatar: string
     status: boolean
+    gender: string
+    birthday: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -9620,6 +9658,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    gender?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9631,6 +9671,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    gender?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10105,6 +10147,8 @@ export namespace Prisma {
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
+    gender?: SortOrder
+    birthday?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -10120,6 +10164,8 @@ export namespace Prisma {
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
+    gender?: SortOrder
+    birthday?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -10131,6 +10177,8 @@ export namespace Prisma {
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
+    gender?: SortOrder
+    birthday?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -11188,6 +11236,8 @@ export namespace Prisma {
     password: string
     avatar: string
     status: boolean
+    gender: string
+    birthday: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -11199,6 +11249,8 @@ export namespace Prisma {
     password: string
     avatar: string
     status: boolean
+    gender: string
+    birthday: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -11243,6 +11295,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    gender?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11254,6 +11308,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    gender?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }

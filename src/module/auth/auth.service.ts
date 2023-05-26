@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { RegisterAuthDto } from './dto/registerAuth.dto'
-import { UpdateAuthDto } from './dto/update-auth.dto'
-import { hash, verify } from 'argon2'
+import { UpdateAuthDto, UpdateInfoDto } from './dto/update-auth.dto'
+
 import { PrismaService } from '../prisma/prisma.service'
 import { JwtService } from '@nestjs/jwt'
 import { LoginAuthDto } from './dto/loginAuth.dto'
@@ -11,8 +11,11 @@ import { IResponse } from 'src/common/interface/response.interface'
 import { IQuery } from 'src/common/interface/query.interface'
 import { successPaginate } from 'src/common/helper/response.helper'
 import { formatEndDate, formatStartDate } from 'src/common/helper/formatDate.helper'
+import { ConfigService } from '@nestjs/config'
+import { base64Save } from 'src/utils/base64Save'
 
 const svgCaptcha = require('svg-captcha')
+
 @Injectable()
 export class AuthService {
   private pointer: number = 0
@@ -20,6 +23,7 @@ export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwt: JwtService,
+    private readonly config: ConfigService,
   ) { }
 
   /**
@@ -121,7 +125,31 @@ export class AuthService {
 
 
   /**
-   * @description: 更新用戶資料
+   * @description: 更新用戶Info
+   */
+  async updateInfo(id: number, UpdateInfoDto: UpdateInfoDto) {
+    if (UpdateInfoDto.avatar) {
+      base64Save(UpdateInfoDto.avatar, UpdateInfoDto.name, 'avatar')
+    }
+    try {
+      await this.prisma.user.update({
+        where: { id },
+        data: {
+          name: UpdateInfoDto.name,
+          birthday: UpdateInfoDto.birthday,
+          gender: UpdateInfoDto.gender,
+          avatar: UpdateInfoDto.avatar ? `${this.config.get<string>('BASE_URL')}/upload/avatar/${UpdateInfoDto.name}.png` : '0'
+        },
+      })
+      return success({ message: "更新資料成功" })
+    } catch (error) {
+      console.log(error)
+      return error('更新資料失敗，錯誤詳情：' + error)
+    }
+  }
+
+  /**
+   * @description: 更新用戶表資料
    */
   async update(id: number, updateAuthDto: UpdateAuthDto) {
     try {

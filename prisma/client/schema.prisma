@@ -19,6 +19,8 @@ model User {
   password   String
   avatar     String
   status     Boolean
+  gender     String
+  birthday   String
   created_at DateTime   @default(now())
   updated_at DateTime   @updatedAt
   UserRole   UserRole[]

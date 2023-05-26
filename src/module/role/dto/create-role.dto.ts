@@ -19,7 +19,7 @@ export class createRoleDto {
 
     @IsArray({ message: '角色權限ID必須為數組' })
     @IsNotEmpty({ message: '角色權限ID不能為空' })
-    @ApiProperty({ required: true, description: '角色權限ID', default: [1, 2, 3] })
+    @ApiProperty({ required: true, description: '角色權限ID', default: [1, 2, 3, 4, 5] })
     public role: number[]
 }
 export class editRoleDto {
@@ -54,6 +54,14 @@ export class editRoleDto {
 export class createPermissionDto {
     @IsArray({ message: '權限必須為數組' })
     @IsNotEmpty({ message: '權限不能為空' })
-    @ApiProperty({ required: true, description: '權限', default: [{ name: 'create', creator: 'haodai', remark: null }, { name: 'edit', creator: 'haodai', remark: null }, { name: 'delete', creator: 'haodai', remark: null }] })
+    @ApiProperty({
+        required: true, description: '權限', default: [
+            { name: 'root', creator: 'haodai', remark: null },
+            { name: 'create', creator: 'haodai', remark: null },
+            { name: 'edit', creator: 'haodai', remark: null },
+            { name: 'delete', creator: 'haodai', remark: null },
+            { name: 'view', creator: 'haodai', remark: null },
+        ]
+    })
     public permissions: { name: string, creator: string, remark: string }[]
 }

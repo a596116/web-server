@@ -6,6 +6,8 @@ CREATE TABLE `User` (
     `password` VARCHAR(191) NOT NULL,
     `avatar` VARCHAR(191) NOT NULL,
     `status` BOOLEAN NOT NULL,
+    `gender` VARCHAR(191) NOT NULL,
+    `birthdat` VARCHAR(191) NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 

@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query, Put } from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { RegisterAuthDto } from './dto/registerAuth.dto'
-import { UpdateAuthDto } from './dto/update-auth.dto'
+import { UpdateAuthDto, UpdateInfoDto } from './dto/update-auth.dto'
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger'
 import { LoginAuthDto } from './dto/loginAuth.dto'
 import { AuthGuard } from '@nestjs/passport'
@@ -43,6 +43,19 @@ export class AuthController {
     return this.authService.findOne(+id)
   }
 
+  /**
+   * @description: 用戶Info更新
+   */
+  @Put('info/:id')
+  @Auth()
+  updateInfo(@Param('id') id: string, @Body() UpdateInfoDto: UpdateInfoDto) {
+    return this.authService.updateInfo(+id, UpdateInfoDto)
+  }
+
+
+  /**
+   * @description: 用戶列表更新
+   */
   @Put(':id')
   @Auth()
   update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {

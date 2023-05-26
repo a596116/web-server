@@ -4,6 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express'
 import { join } from 'path'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import ValidatePipe from './common/validate/validate.pipe'
+import { json, urlencoded } from 'body-parser'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
@@ -11,6 +12,9 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidatePipe({ whitelist: true, transform: true }))
 
+
+  app.use(json({ limit: '500mb' }))
+  app.use(urlencoded({ limit: '500mb', extended: true }))
 
   app.setGlobalPrefix('api')
   /**

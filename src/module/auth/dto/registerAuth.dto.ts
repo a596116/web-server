@@ -26,4 +26,14 @@ export class RegisterAuthDto {
     @IsBoolean({ message: '用戶狀態必須為true or false' })
     @ApiProperty({ required: true, description: 'status', default: true })
     public status: boolean
+
+    @IsString({ message: '性別必須填寫' })
+    @ApiProperty({ required: true, description: 'gender', default: 'M' })
+    public gender: string
+
+    @IsString({ message: '生日必須填寫' })
+    @ApiProperty({ required: true, description: 'birthday', default: '2000-01-01' })
+    public birthday: string
+
+
 }
