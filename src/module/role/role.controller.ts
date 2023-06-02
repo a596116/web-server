@@ -8,6 +8,10 @@ import { IQuery } from 'src/common/interface/query.interface'
 @ApiTags('權限')
 export class RoleController {
   constructor(private readonly roleService: RoleService) { }
+  @Get('test')
+  async test() {
+    return { a: 1 }
+  }
 
   /**
    * @description: 獲取角色

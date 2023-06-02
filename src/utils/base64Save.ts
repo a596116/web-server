@@ -7,6 +7,6 @@ export const base64Save = (base64: string, name: string, path: string) => {
     const buffer = Buffer.from(base64Data, 'base64')
     Jimp.read(buffer, (err: any, res) => {
         if (err) throw new Error(err)
-        res.quality(5).write(`${join(__dirname, `../../upload/${path}`)}/${name}.png`)
+        res.quality(5).write(`${join(__dirname, `../upload/${path}`)}/${name}.png`)
     })
 }

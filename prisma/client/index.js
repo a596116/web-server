@@ -29,11 +29,11 @@ exports.Prisma = Prisma
 
 /**
  * Prisma Client JS version: 4.13.0
- * Query Engine version: d9a4c5988f480fa576d43970d5a23641aa77bc9c
+ * Query Engine version: 8fbc245156db7124f997f4cecdd8d1219e360944
  */
 Prisma.prismaVersion = {
   client: "4.13.0",
-  engine: "d9a4c5988f480fa576d43970d5a23641aa77bc9c"
+  engine: "8fbc245156db7124f997f4cecdd8d1219e360944"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -207,7 +207,13 @@ const config = {
     "config": {
       "engineType": "library"
     },
-    "binaryTargets": [],
+    "binaryTargets": [
+      {
+        "fromEnvVar": null,
+        "value": "darwin-arm64",
+        "native": true
+      }
+    ],
     "previewFeatures": [],
     "isCustomOutput": true
   },
@@ -217,7 +223,7 @@ const config = {
   },
   "relativePath": "..",
   "clientVersion": "4.13.0",
-  "engineVersion": "d9a4c5988f480fa576d43970d5a23641aa77bc9c",
+  "engineVersion": "8fbc245156db7124f997f4cecdd8d1219e360944",
   "datasourceNames": [
     "db"
   ],

@@ -82,4 +82,5 @@ export class AuthController {
   async verify(@Body() captcha: { captcha: string, id: string }) {
     return await this.authService.verification(captcha.captcha, captcha.id)
   }
+
 }
