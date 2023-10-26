@@ -111,7 +111,7 @@ export class ScheduleService {
               descs,
               link,
               img,
-              time,
+              time: String(time),
             },
           })
         }
