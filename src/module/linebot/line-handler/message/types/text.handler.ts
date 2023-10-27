@@ -60,7 +60,6 @@ export class TextHandler {
         case 'ithome': {
           return await this.configService.createLinebotClient().replyMessage(replyToken, await findIthome(userId))
         }
-
         case '?':
         case decodeURI('%EF%BC%9F'):
           return this.configService.createLinebotClient().replyMessage(replyToken, otherTemplate)
@@ -69,22 +68,22 @@ export class TextHandler {
           return await this.configService.createLinebotClient().replyMessage(replyToken, await articleTemplate(userId, text))
         }
         default: {
-          const user = await this.prisma.lineUser.findFirst({ where: { id: userId } })
-          if (user.callback && user.callback.match(/^(setting)/ig)[0] === 'setting') {
-            switch (user.callback) {
-              case 'setting新增': {
-                // return await this.configService.createLinebotClient().replyMessage(replyToken, await settingAdd(userId, text))
-              }
-              case 'setting刪除': {
-                // return await this.configService.createLinebotClient().replyMessage(replyToken, await settingDel(userId, text))
-              }
-            }
-          } else {
-            return await this.configService.createLinebotClient().replyMessage(replyToken, {
-              type: 'text',
-              text: '請嘗試其他功能！'
-            })
-          }
+          // const user = await this.prisma.lineUser.findFirst({ where: { id: userId } })
+          // if (user.callback && user.callback.match(/^(setting)/ig)[0] === 'setting') {
+          //   switch (user.callback) {
+          //     case 'setting新增': {
+          //       // return await this.configService.createLinebotClient().replyMessage(replyToken, await settingAdd(userId, text))
+          //     }
+          //     case 'setting刪除': {
+          //       // return await this.configService.createLinebotClient().replyMessage(replyToken, await settingDel(userId, text))
+          //     }
+          //   }
+          // } else {
+          //   return await this.configService.createLinebotClient().replyMessage(replyToken, {
+          //     type: 'text',
+          //     text: '請嘗試其他功能！'
+          //   })
+          // }
         }
       }
     }
