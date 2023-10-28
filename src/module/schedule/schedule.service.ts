@@ -1,0 +1,154 @@
+import { Injectable } from '@nestjs/common'
+import { Cron } from '@nestjs/schedule'
+import { PrismaService } from '../prisma/prisma.service'
+import { Builder, Browser, By, until } from 'selenium-webdriver'
+import { Logger } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import axios from 'axios'
+import * as cheerio from 'cheerio'
+
+@Injectable()
+export class ScheduleService {
+  private readonly logger: Logger = new Logger('LineBot')
+  constructor(private prisma: PrismaService, private readonly config: ConfigService) {}
+
+  @Cron('0 * * * *')
+  async handleFetchNike() {
+    let driver = await new Builder()
+      .forBrowser(Browser.CHROME)
+      .usingServer(this.config.get('GOOGLE_DRIVER'))
+      .build()
+    const url = 'https://www.nike.com/tw'
+    try {
+      await driver.get(`${url}/launch?s=upcoming`)
+      await driver.wait(until.titleIs('即將發售的產品。Nike SNKRS TW'), 1000)
+      await driver.executeScript(
+        'window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })',
+      )
+      await driver.sleep(1000)
+      const posts = await driver.findElements(By.css('.upcoming-section .product-card'))
+      await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
+      let i = 0
+      for (const post of posts) {
+        if (i > 10) break
+        const link = await post.findElement(By.css('a')).getAttribute('href')
+        const img = await post
+          .findElement(By.css('.card-link .image-component'))
+          .getAttribute('src')
+        const title = await post.findElement(By.css('.figcaption-content h2')).getText()
+        const time =
+          (await post.findElement(By.css('.launch-caption p:nth-child(1)')).getText()) +
+          '/' +
+          (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText())
+        i++
+        const isExist = await this.prisma.nikeList.findFirst({
+          where: { title },
+        })
+        if (!isExist) {
+          await this.prisma.nikeList.create({
+            data: {
+              title,
+              link,
+              img,
+              time,
+            },
+          })
+        }
+      }
+      this.logger.log(`爬取 Nike 發售預告 成功`)
+    } catch (e) {
+      this.logger.error(`爬取 Nike 發售預告 失敗`)
+      this.logger.error(e)
+      await driver.quit()
+    } finally {
+      await driver.quit()
+    }
+  }
+
+  @Cron('0 * * * *')
+  async handleFetchHypebeast() {
+    let driver = await new Builder()
+      .forBrowser(Browser.CHROME)
+      .usingServer(this.config.get('GOOGLE_DRIVER'))
+      .build()
+    try {
+      await driver.get('https://hypebeast.com/tw/footwear')
+      await driver.wait(until.titleIs('Footwear 球鞋 | Hypebeast'), 1000)
+      await driver.executeScript('window.scrollTo(0, document.body.scrollHeight)')
+      const posts = await driver.findElements(By.css('.post-box'))
+      let i = 0
+      for (const post of posts) {
+        if (i > 10) break
+        const link = await post.getAttribute('data-permalink')
+        const img = await post.findElement(By.css('img')).getAttribute('src')
+        const title = await post
+          .findElement(By.css('.post-box-content-container .post-box-content-title h2 span'))
+          .getText()
+        const descs = await post.findElement(By.css('.post-box-content-excerpt')).getText()
+        const time = await post
+          .findElement(By.css('.post-box-content-meta .post-box-meta-author-time .time time'))
+          .getText()
+        i++
+        const isExist = await this.prisma.hypeBeastList.findFirst({
+          where: { title },
+        })
+        if (!isExist) {
+          await this.prisma.hypeBeastList.create({
+            data: {
+              title,
+              descs,
+              link,
+              img,
+              time,
+            },
+          })
+        }
+      }
+      this.logger.log(`爬取 HypeBeast 成功`)
+    } catch (e) {
+      this.logger.error(`爬取 HypeBeast 失敗`)
+      this.logger.error(e)
+      await driver.quit()
+    } finally {
+      await driver.quit()
+    }
+  }
+
+  @Cron('0 * * * *')
+  async handleFetchIthome() {
+    try {
+      const url = 'https://www.ithome.com.tw'
+      const body = await axios.get(`${url}/latest/feed/hitepo6y3vif.jsp`)
+      const $ = cheerio.load(body.data, { xmlMode: true })
+      const item = $('.channel-item .field-content')
+      let i = 0
+      for (const el of item) {
+        if (i > 10) break
+        const link = url + $(el).find('.title a').attr('href')
+        const img = $(el).find('.photo img').attr('src')
+        const title = $(el).find('.title a').text()
+        const descs = $(el).find('.summary').text()
+        const time = $(el).find('.post-at').text()
+        i++
+        const isExist = await this.prisma.ithomeList.findFirst({
+          where: { title },
+        })
+        if (!isExist) {
+          await this.prisma.ithomeList.create({
+            data: {
+              title,
+              descs,
+              link,
+              img,
+              time,
+            },
+          })
+        }
+      }
+      this.logger.log(`爬取 Ithome 成功`)
+    } catch (e) {
+      this.logger.error(`爬取 Ithome 失敗`)
+      this.logger.error(e)
+    }
+  }
+}

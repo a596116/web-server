@@ -116,6 +116,51 @@ export type LineUserCategory = {
   authorId: string
 }
 
+/**
+ * Model NikeList
+ * 
+ */
+export type NikeList = {
+  id: number
+  title: string
+  descs: string | null
+  img: string
+  link: string
+  time: string
+  createdAt: Date
+  updatedAt: Date
+}
+
+/**
+ * Model HypeBeastList
+ * 
+ */
+export type HypeBeastList = {
+  id: number
+  title: string
+  descs: string | null
+  img: string
+  link: string
+  time: string
+  createdAt: Date
+  updatedAt: Date
+}
+
+/**
+ * Model IthomeList
+ * 
+ */
+export type IthomeList = {
+  id: number
+  title: string
+  descs: string | null
+  img: string
+  link: string
+  time: string
+  createdAt: Date
+  updatedAt: Date
+}
+
 
 /**
  * ##  Prisma Client ʲˢ
@@ -313,6 +358,36 @@ export class PrismaClient<
     * ```
     */
   get lineUserCategory(): Prisma.LineUserCategoryDelegate<GlobalReject>;
+
+  /**
+   * `prisma.nikeList`: Exposes CRUD operations for the **NikeList** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NikeLists
+    * const nikeLists = await prisma.nikeList.findMany()
+    * ```
+    */
+  get nikeList(): Prisma.NikeListDelegate<GlobalReject>;
+
+  /**
+   * `prisma.hypeBeastList`: Exposes CRUD operations for the **HypeBeastList** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HypeBeastLists
+    * const hypeBeastLists = await prisma.hypeBeastList.findMany()
+    * ```
+    */
+  get hypeBeastList(): Prisma.HypeBeastListDelegate<GlobalReject>;
+
+  /**
+   * `prisma.ithomeList`: Exposes CRUD operations for the **IthomeList** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more IthomeLists
+    * const ithomeLists = await prisma.ithomeList.findMany()
+    * ```
+    */
+  get ithomeList(): Prisma.IthomeListDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -357,7 +432,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 4.13.0
-   * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+   * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
    */
   export type PrismaVersion = {
     client: string
@@ -789,7 +864,10 @@ export namespace Prisma {
     RolePermission: 'RolePermission',
     LineUser: 'LineUser',
     LineUserArticle: 'LineUserArticle',
-    LineUserCategory: 'LineUserCategory'
+    LineUserCategory: 'LineUserCategory',
+    NikeList: 'NikeList',
+    HypeBeastList: 'HypeBeastList',
+    IthomeList: 'IthomeList'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -960,7 +1038,7 @@ export namespace Prisma {
   }
 
   export type UserCountOutputTypeSelect = {
-    UserRole?: boolean
+    UserRole?: boolean | UserCountOutputTypeCountUserRoleArgs
   }
 
   export type UserCountOutputTypeGetPayload<S extends boolean | null | undefined | UserCountOutputTypeArgs> =
@@ -992,6 +1070,14 @@ export namespace Prisma {
   }
 
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUserRoleArgs = {
+    where?: UserRoleWhereInput
+  }
+
+
 
   /**
    * Count Type RoleCountOutputType
@@ -1004,8 +1090,8 @@ export namespace Prisma {
   }
 
   export type RoleCountOutputTypeSelect = {
-    RolePermission?: boolean
-    UserRole?: boolean
+    RolePermission?: boolean | RoleCountOutputTypeCountRolePermissionArgs
+    UserRole?: boolean | RoleCountOutputTypeCountUserRoleArgs
   }
 
   export type RoleCountOutputTypeGetPayload<S extends boolean | null | undefined | RoleCountOutputTypeArgs> =
@@ -1037,6 +1123,22 @@ export namespace Prisma {
   }
 
 
+  /**
+   * RoleCountOutputType without action
+   */
+  export type RoleCountOutputTypeCountRolePermissionArgs = {
+    where?: RolePermissionWhereInput
+  }
+
+
+  /**
+   * RoleCountOutputType without action
+   */
+  export type RoleCountOutputTypeCountUserRoleArgs = {
+    where?: UserRoleWhereInput
+  }
+
+
 
   /**
    * Count Type PermissionCountOutputType
@@ -1048,7 +1150,7 @@ export namespace Prisma {
   }
 
   export type PermissionCountOutputTypeSelect = {
-    Role?: boolean
+    Role?: boolean | PermissionCountOutputTypeCountRoleArgs
   }
 
   export type PermissionCountOutputTypeGetPayload<S extends boolean | null | undefined | PermissionCountOutputTypeArgs> =
@@ -1080,6 +1182,14 @@ export namespace Prisma {
   }
 
 
+  /**
+   * PermissionCountOutputType without action
+   */
+  export type PermissionCountOutputTypeCountRoleArgs = {
+    where?: RolePermissionWhereInput
+  }
+
+
 
   /**
    * Count Type LineUserCountOutputType
@@ -1092,8 +1202,8 @@ export namespace Prisma {
   }
 
   export type LineUserCountOutputTypeSelect = {
-    category?: boolean
-    Article?: boolean
+    category?: boolean | LineUserCountOutputTypeCountCategoryArgs
+    Article?: boolean | LineUserCountOutputTypeCountArticleArgs
   }
 
   export type LineUserCountOutputTypeGetPayload<S extends boolean | null | undefined | LineUserCountOutputTypeArgs> =
@@ -1122,6 +1232,22 @@ export namespace Prisma {
      * Select specific fields to fetch from the LineUserCountOutputType
      */
     select?: LineUserCountOutputTypeSelect | null
+  }
+
+
+  /**
+   * LineUserCountOutputType without action
+   */
+  export type LineUserCountOutputTypeCountCategoryArgs = {
+    where?: LineUserCategoryWhereInput
+  }
+
+
+  /**
+   * LineUserCountOutputType without action
+   */
+  export type LineUserCountOutputTypeCountArticleArgs = {
+    where?: LineUserArticleWhereInput
   }
 
 
@@ -9029,11 +9155,2914 @@ export namespace Prisma {
 
 
   /**
+   * Model NikeList
+   */
+
+
+  export type AggregateNikeList = {
+    _count: NikeListCountAggregateOutputType | null
+    _avg: NikeListAvgAggregateOutputType | null
+    _sum: NikeListSumAggregateOutputType | null
+    _min: NikeListMinAggregateOutputType | null
+    _max: NikeListMaxAggregateOutputType | null
+  }
+
+  export type NikeListAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NikeListSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NikeListMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    descs: string | null
+    img: string | null
+    link: string | null
+    time: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NikeListMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    descs: string | null
+    img: string | null
+    link: string | null
+    time: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NikeListCountAggregateOutputType = {
+    id: number
+    title: number
+    descs: number
+    img: number
+    link: number
+    time: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NikeListAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type NikeListSumAggregateInputType = {
+    id?: true
+  }
+
+  export type NikeListMinAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NikeListMaxAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NikeListCountAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NikeListAggregateArgs = {
+    /**
+     * Filter which NikeList to aggregate.
+     */
+    where?: NikeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NikeLists to fetch.
+     */
+    orderBy?: Enumerable<NikeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NikeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NikeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NikeLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NikeLists
+    **/
+    _count?: true | NikeListCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NikeListAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NikeListSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NikeListMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NikeListMaxAggregateInputType
+  }
+
+  export type GetNikeListAggregateType<T extends NikeListAggregateArgs> = {
+        [P in keyof T & keyof AggregateNikeList]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNikeList[P]>
+      : GetScalarType<T[P], AggregateNikeList[P]>
+  }
+
+
+
+
+  export type NikeListGroupByArgs = {
+    where?: NikeListWhereInput
+    orderBy?: Enumerable<NikeListOrderByWithAggregationInput>
+    by: NikeListScalarFieldEnum[]
+    having?: NikeListScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NikeListCountAggregateInputType | true
+    _avg?: NikeListAvgAggregateInputType
+    _sum?: NikeListSumAggregateInputType
+    _min?: NikeListMinAggregateInputType
+    _max?: NikeListMaxAggregateInputType
+  }
+
+
+  export type NikeListGroupByOutputType = {
+    id: number
+    title: string
+    descs: string | null
+    img: string
+    link: string
+    time: string
+    createdAt: Date
+    updatedAt: Date
+    _count: NikeListCountAggregateOutputType | null
+    _avg: NikeListAvgAggregateOutputType | null
+    _sum: NikeListSumAggregateOutputType | null
+    _min: NikeListMinAggregateOutputType | null
+    _max: NikeListMaxAggregateOutputType | null
+  }
+
+  type GetNikeListGroupByPayload<T extends NikeListGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<NikeListGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NikeListGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NikeListGroupByOutputType[P]>
+            : GetScalarType<T[P], NikeListGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NikeListSelect = {
+    id?: boolean
+    title?: boolean
+    descs?: boolean
+    img?: boolean
+    link?: boolean
+    time?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type NikeListGetPayload<S extends boolean | null | undefined | NikeListArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? NikeList :
+    S extends undefined ? never :
+    S extends { include: any } & (NikeListArgs | NikeListFindManyArgs)
+    ? NikeList 
+    : S extends { select: any } & (NikeListArgs | NikeListFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof NikeList ? NikeList[P] : never
+  } 
+      : NikeList
+
+
+  type NikeListCountArgs = 
+    Omit<NikeListFindManyArgs, 'select' | 'include'> & {
+      select?: NikeListCountAggregateInputType | true
+    }
+
+  export interface NikeListDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one NikeList that matches the filter.
+     * @param {NikeListFindUniqueArgs} args - Arguments to find a NikeList
+     * @example
+     * // Get one NikeList
+     * const nikeList = await prisma.nikeList.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends NikeListFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, NikeListFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'NikeList'> extends True ? Prisma__NikeListClient<NikeListGetPayload<T>> : Prisma__NikeListClient<NikeListGetPayload<T> | null, null>
+
+    /**
+     * Find one NikeList that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {NikeListFindUniqueOrThrowArgs} args - Arguments to find a NikeList
+     * @example
+     * // Get one NikeList
+     * const nikeList = await prisma.nikeList.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends NikeListFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, NikeListFindUniqueOrThrowArgs>
+    ): Prisma__NikeListClient<NikeListGetPayload<T>>
+
+    /**
+     * Find the first NikeList that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NikeListFindFirstArgs} args - Arguments to find a NikeList
+     * @example
+     * // Get one NikeList
+     * const nikeList = await prisma.nikeList.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends NikeListFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, NikeListFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'NikeList'> extends True ? Prisma__NikeListClient<NikeListGetPayload<T>> : Prisma__NikeListClient<NikeListGetPayload<T> | null, null>
+
+    /**
+     * Find the first NikeList that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NikeListFindFirstOrThrowArgs} args - Arguments to find a NikeList
+     * @example
+     * // Get one NikeList
+     * const nikeList = await prisma.nikeList.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends NikeListFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, NikeListFindFirstOrThrowArgs>
+    ): Prisma__NikeListClient<NikeListGetPayload<T>>
+
+    /**
+     * Find zero or more NikeLists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NikeListFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NikeLists
+     * const nikeLists = await prisma.nikeList.findMany()
+     * 
+     * // Get first 10 NikeLists
+     * const nikeLists = await prisma.nikeList.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const nikeListWithIdOnly = await prisma.nikeList.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends NikeListFindManyArgs>(
+      args?: SelectSubset<T, NikeListFindManyArgs>
+    ): Prisma.PrismaPromise<Array<NikeListGetPayload<T>>>
+
+    /**
+     * Create a NikeList.
+     * @param {NikeListCreateArgs} args - Arguments to create a NikeList.
+     * @example
+     * // Create one NikeList
+     * const NikeList = await prisma.nikeList.create({
+     *   data: {
+     *     // ... data to create a NikeList
+     *   }
+     * })
+     * 
+    **/
+    create<T extends NikeListCreateArgs>(
+      args: SelectSubset<T, NikeListCreateArgs>
+    ): Prisma__NikeListClient<NikeListGetPayload<T>>
+
+    /**
+     * Create many NikeLists.
+     *     @param {NikeListCreateManyArgs} args - Arguments to create many NikeLists.
+     *     @example
+     *     // Create many NikeLists
+     *     const nikeList = await prisma.nikeList.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends NikeListCreateManyArgs>(
+      args?: SelectSubset<T, NikeListCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a NikeList.
+     * @param {NikeListDeleteArgs} args - Arguments to delete one NikeList.
+     * @example
+     * // Delete one NikeList
+     * const NikeList = await prisma.nikeList.delete({
+     *   where: {
+     *     // ... filter to delete one NikeList
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends NikeListDeleteArgs>(
+      args: SelectSubset<T, NikeListDeleteArgs>
+    ): Prisma__NikeListClient<NikeListGetPayload<T>>
+
+    /**
+     * Update one NikeList.
+     * @param {NikeListUpdateArgs} args - Arguments to update one NikeList.
+     * @example
+     * // Update one NikeList
+     * const nikeList = await prisma.nikeList.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends NikeListUpdateArgs>(
+      args: SelectSubset<T, NikeListUpdateArgs>
+    ): Prisma__NikeListClient<NikeListGetPayload<T>>
+
+    /**
+     * Delete zero or more NikeLists.
+     * @param {NikeListDeleteManyArgs} args - Arguments to filter NikeLists to delete.
+     * @example
+     * // Delete a few NikeLists
+     * const { count } = await prisma.nikeList.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends NikeListDeleteManyArgs>(
+      args?: SelectSubset<T, NikeListDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NikeLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NikeListUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NikeLists
+     * const nikeList = await prisma.nikeList.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends NikeListUpdateManyArgs>(
+      args: SelectSubset<T, NikeListUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one NikeList.
+     * @param {NikeListUpsertArgs} args - Arguments to update or create a NikeList.
+     * @example
+     * // Update or create a NikeList
+     * const nikeList = await prisma.nikeList.upsert({
+     *   create: {
+     *     // ... data to create a NikeList
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NikeList we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends NikeListUpsertArgs>(
+      args: SelectSubset<T, NikeListUpsertArgs>
+    ): Prisma__NikeListClient<NikeListGetPayload<T>>
+
+    /**
+     * Count the number of NikeLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NikeListCountArgs} args - Arguments to filter NikeLists to count.
+     * @example
+     * // Count the number of NikeLists
+     * const count = await prisma.nikeList.count({
+     *   where: {
+     *     // ... the filter for the NikeLists we want to count
+     *   }
+     * })
+    **/
+    count<T extends NikeListCountArgs>(
+      args?: Subset<T, NikeListCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NikeListCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NikeList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NikeListAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NikeListAggregateArgs>(args: Subset<T, NikeListAggregateArgs>): Prisma.PrismaPromise<GetNikeListAggregateType<T>>
+
+    /**
+     * Group by NikeList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NikeListGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NikeListGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NikeListGroupByArgs['orderBy'] }
+        : { orderBy?: NikeListGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NikeListGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNikeListGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NikeList.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__NikeListClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * NikeList base type for findUnique actions
+   */
+  export type NikeListFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * Filter, which NikeList to fetch.
+     */
+    where: NikeListWhereUniqueInput
+  }
+
+  /**
+   * NikeList findUnique
+   */
+  export interface NikeListFindUniqueArgs extends NikeListFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * NikeList findUniqueOrThrow
+   */
+  export type NikeListFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * Filter, which NikeList to fetch.
+     */
+    where: NikeListWhereUniqueInput
+  }
+
+
+  /**
+   * NikeList base type for findFirst actions
+   */
+  export type NikeListFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * Filter, which NikeList to fetch.
+     */
+    where?: NikeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NikeLists to fetch.
+     */
+    orderBy?: Enumerable<NikeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NikeLists.
+     */
+    cursor?: NikeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NikeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NikeLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NikeLists.
+     */
+    distinct?: Enumerable<NikeListScalarFieldEnum>
+  }
+
+  /**
+   * NikeList findFirst
+   */
+  export interface NikeListFindFirstArgs extends NikeListFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * NikeList findFirstOrThrow
+   */
+  export type NikeListFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * Filter, which NikeList to fetch.
+     */
+    where?: NikeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NikeLists to fetch.
+     */
+    orderBy?: Enumerable<NikeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NikeLists.
+     */
+    cursor?: NikeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NikeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NikeLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NikeLists.
+     */
+    distinct?: Enumerable<NikeListScalarFieldEnum>
+  }
+
+
+  /**
+   * NikeList findMany
+   */
+  export type NikeListFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * Filter, which NikeLists to fetch.
+     */
+    where?: NikeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NikeLists to fetch.
+     */
+    orderBy?: Enumerable<NikeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NikeLists.
+     */
+    cursor?: NikeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NikeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NikeLists.
+     */
+    skip?: number
+    distinct?: Enumerable<NikeListScalarFieldEnum>
+  }
+
+
+  /**
+   * NikeList create
+   */
+  export type NikeListCreateArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * The data needed to create a NikeList.
+     */
+    data: XOR<NikeListCreateInput, NikeListUncheckedCreateInput>
+  }
+
+
+  /**
+   * NikeList createMany
+   */
+  export type NikeListCreateManyArgs = {
+    /**
+     * The data used to create many NikeLists.
+     */
+    data: Enumerable<NikeListCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * NikeList update
+   */
+  export type NikeListUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * The data needed to update a NikeList.
+     */
+    data: XOR<NikeListUpdateInput, NikeListUncheckedUpdateInput>
+    /**
+     * Choose, which NikeList to update.
+     */
+    where: NikeListWhereUniqueInput
+  }
+
+
+  /**
+   * NikeList updateMany
+   */
+  export type NikeListUpdateManyArgs = {
+    /**
+     * The data used to update NikeLists.
+     */
+    data: XOR<NikeListUpdateManyMutationInput, NikeListUncheckedUpdateManyInput>
+    /**
+     * Filter which NikeLists to update
+     */
+    where?: NikeListWhereInput
+  }
+
+
+  /**
+   * NikeList upsert
+   */
+  export type NikeListUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * The filter to search for the NikeList to update in case it exists.
+     */
+    where: NikeListWhereUniqueInput
+    /**
+     * In case the NikeList found by the `where` argument doesn't exist, create a new NikeList with this data.
+     */
+    create: XOR<NikeListCreateInput, NikeListUncheckedCreateInput>
+    /**
+     * In case the NikeList was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NikeListUpdateInput, NikeListUncheckedUpdateInput>
+  }
+
+
+  /**
+   * NikeList delete
+   */
+  export type NikeListDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+    /**
+     * Filter which NikeList to delete.
+     */
+    where: NikeListWhereUniqueInput
+  }
+
+
+  /**
+   * NikeList deleteMany
+   */
+  export type NikeListDeleteManyArgs = {
+    /**
+     * Filter which NikeLists to delete
+     */
+    where?: NikeListWhereInput
+  }
+
+
+  /**
+   * NikeList without action
+   */
+  export type NikeListArgs = {
+    /**
+     * Select specific fields to fetch from the NikeList
+     */
+    select?: NikeListSelect | null
+  }
+
+
+
+  /**
+   * Model HypeBeastList
+   */
+
+
+  export type AggregateHypeBeastList = {
+    _count: HypeBeastListCountAggregateOutputType | null
+    _avg: HypeBeastListAvgAggregateOutputType | null
+    _sum: HypeBeastListSumAggregateOutputType | null
+    _min: HypeBeastListMinAggregateOutputType | null
+    _max: HypeBeastListMaxAggregateOutputType | null
+  }
+
+  export type HypeBeastListAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type HypeBeastListSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type HypeBeastListMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    descs: string | null
+    img: string | null
+    link: string | null
+    time: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HypeBeastListMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    descs: string | null
+    img: string | null
+    link: string | null
+    time: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HypeBeastListCountAggregateOutputType = {
+    id: number
+    title: number
+    descs: number
+    img: number
+    link: number
+    time: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HypeBeastListAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type HypeBeastListSumAggregateInputType = {
+    id?: true
+  }
+
+  export type HypeBeastListMinAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HypeBeastListMaxAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HypeBeastListCountAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HypeBeastListAggregateArgs = {
+    /**
+     * Filter which HypeBeastList to aggregate.
+     */
+    where?: HypeBeastListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HypeBeastLists to fetch.
+     */
+    orderBy?: Enumerable<HypeBeastListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HypeBeastListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HypeBeastLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HypeBeastLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HypeBeastLists
+    **/
+    _count?: true | HypeBeastListCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HypeBeastListAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HypeBeastListSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HypeBeastListMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HypeBeastListMaxAggregateInputType
+  }
+
+  export type GetHypeBeastListAggregateType<T extends HypeBeastListAggregateArgs> = {
+        [P in keyof T & keyof AggregateHypeBeastList]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHypeBeastList[P]>
+      : GetScalarType<T[P], AggregateHypeBeastList[P]>
+  }
+
+
+
+
+  export type HypeBeastListGroupByArgs = {
+    where?: HypeBeastListWhereInput
+    orderBy?: Enumerable<HypeBeastListOrderByWithAggregationInput>
+    by: HypeBeastListScalarFieldEnum[]
+    having?: HypeBeastListScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HypeBeastListCountAggregateInputType | true
+    _avg?: HypeBeastListAvgAggregateInputType
+    _sum?: HypeBeastListSumAggregateInputType
+    _min?: HypeBeastListMinAggregateInputType
+    _max?: HypeBeastListMaxAggregateInputType
+  }
+
+
+  export type HypeBeastListGroupByOutputType = {
+    id: number
+    title: string
+    descs: string | null
+    img: string
+    link: string
+    time: string
+    createdAt: Date
+    updatedAt: Date
+    _count: HypeBeastListCountAggregateOutputType | null
+    _avg: HypeBeastListAvgAggregateOutputType | null
+    _sum: HypeBeastListSumAggregateOutputType | null
+    _min: HypeBeastListMinAggregateOutputType | null
+    _max: HypeBeastListMaxAggregateOutputType | null
+  }
+
+  type GetHypeBeastListGroupByPayload<T extends HypeBeastListGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<HypeBeastListGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HypeBeastListGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HypeBeastListGroupByOutputType[P]>
+            : GetScalarType<T[P], HypeBeastListGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HypeBeastListSelect = {
+    id?: boolean
+    title?: boolean
+    descs?: boolean
+    img?: boolean
+    link?: boolean
+    time?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type HypeBeastListGetPayload<S extends boolean | null | undefined | HypeBeastListArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? HypeBeastList :
+    S extends undefined ? never :
+    S extends { include: any } & (HypeBeastListArgs | HypeBeastListFindManyArgs)
+    ? HypeBeastList 
+    : S extends { select: any } & (HypeBeastListArgs | HypeBeastListFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof HypeBeastList ? HypeBeastList[P] : never
+  } 
+      : HypeBeastList
+
+
+  type HypeBeastListCountArgs = 
+    Omit<HypeBeastListFindManyArgs, 'select' | 'include'> & {
+      select?: HypeBeastListCountAggregateInputType | true
+    }
+
+  export interface HypeBeastListDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one HypeBeastList that matches the filter.
+     * @param {HypeBeastListFindUniqueArgs} args - Arguments to find a HypeBeastList
+     * @example
+     * // Get one HypeBeastList
+     * const hypeBeastList = await prisma.hypeBeastList.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends HypeBeastListFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, HypeBeastListFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'HypeBeastList'> extends True ? Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>> : Prisma__HypeBeastListClient<HypeBeastListGetPayload<T> | null, null>
+
+    /**
+     * Find one HypeBeastList that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {HypeBeastListFindUniqueOrThrowArgs} args - Arguments to find a HypeBeastList
+     * @example
+     * // Get one HypeBeastList
+     * const hypeBeastList = await prisma.hypeBeastList.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends HypeBeastListFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, HypeBeastListFindUniqueOrThrowArgs>
+    ): Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>>
+
+    /**
+     * Find the first HypeBeastList that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HypeBeastListFindFirstArgs} args - Arguments to find a HypeBeastList
+     * @example
+     * // Get one HypeBeastList
+     * const hypeBeastList = await prisma.hypeBeastList.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends HypeBeastListFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, HypeBeastListFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'HypeBeastList'> extends True ? Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>> : Prisma__HypeBeastListClient<HypeBeastListGetPayload<T> | null, null>
+
+    /**
+     * Find the first HypeBeastList that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HypeBeastListFindFirstOrThrowArgs} args - Arguments to find a HypeBeastList
+     * @example
+     * // Get one HypeBeastList
+     * const hypeBeastList = await prisma.hypeBeastList.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends HypeBeastListFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, HypeBeastListFindFirstOrThrowArgs>
+    ): Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>>
+
+    /**
+     * Find zero or more HypeBeastLists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HypeBeastListFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HypeBeastLists
+     * const hypeBeastLists = await prisma.hypeBeastList.findMany()
+     * 
+     * // Get first 10 HypeBeastLists
+     * const hypeBeastLists = await prisma.hypeBeastList.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const hypeBeastListWithIdOnly = await prisma.hypeBeastList.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends HypeBeastListFindManyArgs>(
+      args?: SelectSubset<T, HypeBeastListFindManyArgs>
+    ): Prisma.PrismaPromise<Array<HypeBeastListGetPayload<T>>>
+
+    /**
+     * Create a HypeBeastList.
+     * @param {HypeBeastListCreateArgs} args - Arguments to create a HypeBeastList.
+     * @example
+     * // Create one HypeBeastList
+     * const HypeBeastList = await prisma.hypeBeastList.create({
+     *   data: {
+     *     // ... data to create a HypeBeastList
+     *   }
+     * })
+     * 
+    **/
+    create<T extends HypeBeastListCreateArgs>(
+      args: SelectSubset<T, HypeBeastListCreateArgs>
+    ): Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>>
+
+    /**
+     * Create many HypeBeastLists.
+     *     @param {HypeBeastListCreateManyArgs} args - Arguments to create many HypeBeastLists.
+     *     @example
+     *     // Create many HypeBeastLists
+     *     const hypeBeastList = await prisma.hypeBeastList.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends HypeBeastListCreateManyArgs>(
+      args?: SelectSubset<T, HypeBeastListCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a HypeBeastList.
+     * @param {HypeBeastListDeleteArgs} args - Arguments to delete one HypeBeastList.
+     * @example
+     * // Delete one HypeBeastList
+     * const HypeBeastList = await prisma.hypeBeastList.delete({
+     *   where: {
+     *     // ... filter to delete one HypeBeastList
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends HypeBeastListDeleteArgs>(
+      args: SelectSubset<T, HypeBeastListDeleteArgs>
+    ): Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>>
+
+    /**
+     * Update one HypeBeastList.
+     * @param {HypeBeastListUpdateArgs} args - Arguments to update one HypeBeastList.
+     * @example
+     * // Update one HypeBeastList
+     * const hypeBeastList = await prisma.hypeBeastList.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends HypeBeastListUpdateArgs>(
+      args: SelectSubset<T, HypeBeastListUpdateArgs>
+    ): Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>>
+
+    /**
+     * Delete zero or more HypeBeastLists.
+     * @param {HypeBeastListDeleteManyArgs} args - Arguments to filter HypeBeastLists to delete.
+     * @example
+     * // Delete a few HypeBeastLists
+     * const { count } = await prisma.hypeBeastList.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends HypeBeastListDeleteManyArgs>(
+      args?: SelectSubset<T, HypeBeastListDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HypeBeastLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HypeBeastListUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HypeBeastLists
+     * const hypeBeastList = await prisma.hypeBeastList.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends HypeBeastListUpdateManyArgs>(
+      args: SelectSubset<T, HypeBeastListUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one HypeBeastList.
+     * @param {HypeBeastListUpsertArgs} args - Arguments to update or create a HypeBeastList.
+     * @example
+     * // Update or create a HypeBeastList
+     * const hypeBeastList = await prisma.hypeBeastList.upsert({
+     *   create: {
+     *     // ... data to create a HypeBeastList
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HypeBeastList we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends HypeBeastListUpsertArgs>(
+      args: SelectSubset<T, HypeBeastListUpsertArgs>
+    ): Prisma__HypeBeastListClient<HypeBeastListGetPayload<T>>
+
+    /**
+     * Count the number of HypeBeastLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HypeBeastListCountArgs} args - Arguments to filter HypeBeastLists to count.
+     * @example
+     * // Count the number of HypeBeastLists
+     * const count = await prisma.hypeBeastList.count({
+     *   where: {
+     *     // ... the filter for the HypeBeastLists we want to count
+     *   }
+     * })
+    **/
+    count<T extends HypeBeastListCountArgs>(
+      args?: Subset<T, HypeBeastListCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HypeBeastListCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HypeBeastList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HypeBeastListAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HypeBeastListAggregateArgs>(args: Subset<T, HypeBeastListAggregateArgs>): Prisma.PrismaPromise<GetHypeBeastListAggregateType<T>>
+
+    /**
+     * Group by HypeBeastList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HypeBeastListGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HypeBeastListGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HypeBeastListGroupByArgs['orderBy'] }
+        : { orderBy?: HypeBeastListGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HypeBeastListGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHypeBeastListGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HypeBeastList.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__HypeBeastListClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * HypeBeastList base type for findUnique actions
+   */
+  export type HypeBeastListFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * Filter, which HypeBeastList to fetch.
+     */
+    where: HypeBeastListWhereUniqueInput
+  }
+
+  /**
+   * HypeBeastList findUnique
+   */
+  export interface HypeBeastListFindUniqueArgs extends HypeBeastListFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * HypeBeastList findUniqueOrThrow
+   */
+  export type HypeBeastListFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * Filter, which HypeBeastList to fetch.
+     */
+    where: HypeBeastListWhereUniqueInput
+  }
+
+
+  /**
+   * HypeBeastList base type for findFirst actions
+   */
+  export type HypeBeastListFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * Filter, which HypeBeastList to fetch.
+     */
+    where?: HypeBeastListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HypeBeastLists to fetch.
+     */
+    orderBy?: Enumerable<HypeBeastListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HypeBeastLists.
+     */
+    cursor?: HypeBeastListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HypeBeastLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HypeBeastLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HypeBeastLists.
+     */
+    distinct?: Enumerable<HypeBeastListScalarFieldEnum>
+  }
+
+  /**
+   * HypeBeastList findFirst
+   */
+  export interface HypeBeastListFindFirstArgs extends HypeBeastListFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * HypeBeastList findFirstOrThrow
+   */
+  export type HypeBeastListFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * Filter, which HypeBeastList to fetch.
+     */
+    where?: HypeBeastListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HypeBeastLists to fetch.
+     */
+    orderBy?: Enumerable<HypeBeastListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HypeBeastLists.
+     */
+    cursor?: HypeBeastListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HypeBeastLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HypeBeastLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HypeBeastLists.
+     */
+    distinct?: Enumerable<HypeBeastListScalarFieldEnum>
+  }
+
+
+  /**
+   * HypeBeastList findMany
+   */
+  export type HypeBeastListFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * Filter, which HypeBeastLists to fetch.
+     */
+    where?: HypeBeastListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HypeBeastLists to fetch.
+     */
+    orderBy?: Enumerable<HypeBeastListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HypeBeastLists.
+     */
+    cursor?: HypeBeastListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HypeBeastLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HypeBeastLists.
+     */
+    skip?: number
+    distinct?: Enumerable<HypeBeastListScalarFieldEnum>
+  }
+
+
+  /**
+   * HypeBeastList create
+   */
+  export type HypeBeastListCreateArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * The data needed to create a HypeBeastList.
+     */
+    data: XOR<HypeBeastListCreateInput, HypeBeastListUncheckedCreateInput>
+  }
+
+
+  /**
+   * HypeBeastList createMany
+   */
+  export type HypeBeastListCreateManyArgs = {
+    /**
+     * The data used to create many HypeBeastLists.
+     */
+    data: Enumerable<HypeBeastListCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * HypeBeastList update
+   */
+  export type HypeBeastListUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * The data needed to update a HypeBeastList.
+     */
+    data: XOR<HypeBeastListUpdateInput, HypeBeastListUncheckedUpdateInput>
+    /**
+     * Choose, which HypeBeastList to update.
+     */
+    where: HypeBeastListWhereUniqueInput
+  }
+
+
+  /**
+   * HypeBeastList updateMany
+   */
+  export type HypeBeastListUpdateManyArgs = {
+    /**
+     * The data used to update HypeBeastLists.
+     */
+    data: XOR<HypeBeastListUpdateManyMutationInput, HypeBeastListUncheckedUpdateManyInput>
+    /**
+     * Filter which HypeBeastLists to update
+     */
+    where?: HypeBeastListWhereInput
+  }
+
+
+  /**
+   * HypeBeastList upsert
+   */
+  export type HypeBeastListUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * The filter to search for the HypeBeastList to update in case it exists.
+     */
+    where: HypeBeastListWhereUniqueInput
+    /**
+     * In case the HypeBeastList found by the `where` argument doesn't exist, create a new HypeBeastList with this data.
+     */
+    create: XOR<HypeBeastListCreateInput, HypeBeastListUncheckedCreateInput>
+    /**
+     * In case the HypeBeastList was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HypeBeastListUpdateInput, HypeBeastListUncheckedUpdateInput>
+  }
+
+
+  /**
+   * HypeBeastList delete
+   */
+  export type HypeBeastListDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+    /**
+     * Filter which HypeBeastList to delete.
+     */
+    where: HypeBeastListWhereUniqueInput
+  }
+
+
+  /**
+   * HypeBeastList deleteMany
+   */
+  export type HypeBeastListDeleteManyArgs = {
+    /**
+     * Filter which HypeBeastLists to delete
+     */
+    where?: HypeBeastListWhereInput
+  }
+
+
+  /**
+   * HypeBeastList without action
+   */
+  export type HypeBeastListArgs = {
+    /**
+     * Select specific fields to fetch from the HypeBeastList
+     */
+    select?: HypeBeastListSelect | null
+  }
+
+
+
+  /**
+   * Model IthomeList
+   */
+
+
+  export type AggregateIthomeList = {
+    _count: IthomeListCountAggregateOutputType | null
+    _avg: IthomeListAvgAggregateOutputType | null
+    _sum: IthomeListSumAggregateOutputType | null
+    _min: IthomeListMinAggregateOutputType | null
+    _max: IthomeListMaxAggregateOutputType | null
+  }
+
+  export type IthomeListAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type IthomeListSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type IthomeListMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    descs: string | null
+    img: string | null
+    link: string | null
+    time: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IthomeListMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    descs: string | null
+    img: string | null
+    link: string | null
+    time: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type IthomeListCountAggregateOutputType = {
+    id: number
+    title: number
+    descs: number
+    img: number
+    link: number
+    time: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type IthomeListAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type IthomeListSumAggregateInputType = {
+    id?: true
+  }
+
+  export type IthomeListMinAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IthomeListMaxAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type IthomeListCountAggregateInputType = {
+    id?: true
+    title?: true
+    descs?: true
+    img?: true
+    link?: true
+    time?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type IthomeListAggregateArgs = {
+    /**
+     * Filter which IthomeList to aggregate.
+     */
+    where?: IthomeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IthomeLists to fetch.
+     */
+    orderBy?: Enumerable<IthomeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: IthomeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IthomeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IthomeLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned IthomeLists
+    **/
+    _count?: true | IthomeListCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: IthomeListAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: IthomeListSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: IthomeListMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: IthomeListMaxAggregateInputType
+  }
+
+  export type GetIthomeListAggregateType<T extends IthomeListAggregateArgs> = {
+        [P in keyof T & keyof AggregateIthomeList]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIthomeList[P]>
+      : GetScalarType<T[P], AggregateIthomeList[P]>
+  }
+
+
+
+
+  export type IthomeListGroupByArgs = {
+    where?: IthomeListWhereInput
+    orderBy?: Enumerable<IthomeListOrderByWithAggregationInput>
+    by: IthomeListScalarFieldEnum[]
+    having?: IthomeListScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: IthomeListCountAggregateInputType | true
+    _avg?: IthomeListAvgAggregateInputType
+    _sum?: IthomeListSumAggregateInputType
+    _min?: IthomeListMinAggregateInputType
+    _max?: IthomeListMaxAggregateInputType
+  }
+
+
+  export type IthomeListGroupByOutputType = {
+    id: number
+    title: string
+    descs: string | null
+    img: string
+    link: string
+    time: string
+    createdAt: Date
+    updatedAt: Date
+    _count: IthomeListCountAggregateOutputType | null
+    _avg: IthomeListAvgAggregateOutputType | null
+    _sum: IthomeListSumAggregateOutputType | null
+    _min: IthomeListMinAggregateOutputType | null
+    _max: IthomeListMaxAggregateOutputType | null
+  }
+
+  type GetIthomeListGroupByPayload<T extends IthomeListGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<IthomeListGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof IthomeListGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], IthomeListGroupByOutputType[P]>
+            : GetScalarType<T[P], IthomeListGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type IthomeListSelect = {
+    id?: boolean
+    title?: boolean
+    descs?: boolean
+    img?: boolean
+    link?: boolean
+    time?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type IthomeListGetPayload<S extends boolean | null | undefined | IthomeListArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? IthomeList :
+    S extends undefined ? never :
+    S extends { include: any } & (IthomeListArgs | IthomeListFindManyArgs)
+    ? IthomeList 
+    : S extends { select: any } & (IthomeListArgs | IthomeListFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof IthomeList ? IthomeList[P] : never
+  } 
+      : IthomeList
+
+
+  type IthomeListCountArgs = 
+    Omit<IthomeListFindManyArgs, 'select' | 'include'> & {
+      select?: IthomeListCountAggregateInputType | true
+    }
+
+  export interface IthomeListDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one IthomeList that matches the filter.
+     * @param {IthomeListFindUniqueArgs} args - Arguments to find a IthomeList
+     * @example
+     * // Get one IthomeList
+     * const ithomeList = await prisma.ithomeList.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends IthomeListFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, IthomeListFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'IthomeList'> extends True ? Prisma__IthomeListClient<IthomeListGetPayload<T>> : Prisma__IthomeListClient<IthomeListGetPayload<T> | null, null>
+
+    /**
+     * Find one IthomeList that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {IthomeListFindUniqueOrThrowArgs} args - Arguments to find a IthomeList
+     * @example
+     * // Get one IthomeList
+     * const ithomeList = await prisma.ithomeList.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends IthomeListFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, IthomeListFindUniqueOrThrowArgs>
+    ): Prisma__IthomeListClient<IthomeListGetPayload<T>>
+
+    /**
+     * Find the first IthomeList that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IthomeListFindFirstArgs} args - Arguments to find a IthomeList
+     * @example
+     * // Get one IthomeList
+     * const ithomeList = await prisma.ithomeList.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends IthomeListFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, IthomeListFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'IthomeList'> extends True ? Prisma__IthomeListClient<IthomeListGetPayload<T>> : Prisma__IthomeListClient<IthomeListGetPayload<T> | null, null>
+
+    /**
+     * Find the first IthomeList that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IthomeListFindFirstOrThrowArgs} args - Arguments to find a IthomeList
+     * @example
+     * // Get one IthomeList
+     * const ithomeList = await prisma.ithomeList.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends IthomeListFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, IthomeListFindFirstOrThrowArgs>
+    ): Prisma__IthomeListClient<IthomeListGetPayload<T>>
+
+    /**
+     * Find zero or more IthomeLists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IthomeListFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all IthomeLists
+     * const ithomeLists = await prisma.ithomeList.findMany()
+     * 
+     * // Get first 10 IthomeLists
+     * const ithomeLists = await prisma.ithomeList.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const ithomeListWithIdOnly = await prisma.ithomeList.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends IthomeListFindManyArgs>(
+      args?: SelectSubset<T, IthomeListFindManyArgs>
+    ): Prisma.PrismaPromise<Array<IthomeListGetPayload<T>>>
+
+    /**
+     * Create a IthomeList.
+     * @param {IthomeListCreateArgs} args - Arguments to create a IthomeList.
+     * @example
+     * // Create one IthomeList
+     * const IthomeList = await prisma.ithomeList.create({
+     *   data: {
+     *     // ... data to create a IthomeList
+     *   }
+     * })
+     * 
+    **/
+    create<T extends IthomeListCreateArgs>(
+      args: SelectSubset<T, IthomeListCreateArgs>
+    ): Prisma__IthomeListClient<IthomeListGetPayload<T>>
+
+    /**
+     * Create many IthomeLists.
+     *     @param {IthomeListCreateManyArgs} args - Arguments to create many IthomeLists.
+     *     @example
+     *     // Create many IthomeLists
+     *     const ithomeList = await prisma.ithomeList.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends IthomeListCreateManyArgs>(
+      args?: SelectSubset<T, IthomeListCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a IthomeList.
+     * @param {IthomeListDeleteArgs} args - Arguments to delete one IthomeList.
+     * @example
+     * // Delete one IthomeList
+     * const IthomeList = await prisma.ithomeList.delete({
+     *   where: {
+     *     // ... filter to delete one IthomeList
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends IthomeListDeleteArgs>(
+      args: SelectSubset<T, IthomeListDeleteArgs>
+    ): Prisma__IthomeListClient<IthomeListGetPayload<T>>
+
+    /**
+     * Update one IthomeList.
+     * @param {IthomeListUpdateArgs} args - Arguments to update one IthomeList.
+     * @example
+     * // Update one IthomeList
+     * const ithomeList = await prisma.ithomeList.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends IthomeListUpdateArgs>(
+      args: SelectSubset<T, IthomeListUpdateArgs>
+    ): Prisma__IthomeListClient<IthomeListGetPayload<T>>
+
+    /**
+     * Delete zero or more IthomeLists.
+     * @param {IthomeListDeleteManyArgs} args - Arguments to filter IthomeLists to delete.
+     * @example
+     * // Delete a few IthomeLists
+     * const { count } = await prisma.ithomeList.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends IthomeListDeleteManyArgs>(
+      args?: SelectSubset<T, IthomeListDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IthomeLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IthomeListUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many IthomeLists
+     * const ithomeList = await prisma.ithomeList.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends IthomeListUpdateManyArgs>(
+      args: SelectSubset<T, IthomeListUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one IthomeList.
+     * @param {IthomeListUpsertArgs} args - Arguments to update or create a IthomeList.
+     * @example
+     * // Update or create a IthomeList
+     * const ithomeList = await prisma.ithomeList.upsert({
+     *   create: {
+     *     // ... data to create a IthomeList
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the IthomeList we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends IthomeListUpsertArgs>(
+      args: SelectSubset<T, IthomeListUpsertArgs>
+    ): Prisma__IthomeListClient<IthomeListGetPayload<T>>
+
+    /**
+     * Count the number of IthomeLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IthomeListCountArgs} args - Arguments to filter IthomeLists to count.
+     * @example
+     * // Count the number of IthomeLists
+     * const count = await prisma.ithomeList.count({
+     *   where: {
+     *     // ... the filter for the IthomeLists we want to count
+     *   }
+     * })
+    **/
+    count<T extends IthomeListCountArgs>(
+      args?: Subset<T, IthomeListCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], IthomeListCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a IthomeList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IthomeListAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends IthomeListAggregateArgs>(args: Subset<T, IthomeListAggregateArgs>): Prisma.PrismaPromise<GetIthomeListAggregateType<T>>
+
+    /**
+     * Group by IthomeList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IthomeListGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends IthomeListGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: IthomeListGroupByArgs['orderBy'] }
+        : { orderBy?: IthomeListGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, IthomeListGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIthomeListGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for IthomeList.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__IthomeListClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * IthomeList base type for findUnique actions
+   */
+  export type IthomeListFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * Filter, which IthomeList to fetch.
+     */
+    where: IthomeListWhereUniqueInput
+  }
+
+  /**
+   * IthomeList findUnique
+   */
+  export interface IthomeListFindUniqueArgs extends IthomeListFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * IthomeList findUniqueOrThrow
+   */
+  export type IthomeListFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * Filter, which IthomeList to fetch.
+     */
+    where: IthomeListWhereUniqueInput
+  }
+
+
+  /**
+   * IthomeList base type for findFirst actions
+   */
+  export type IthomeListFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * Filter, which IthomeList to fetch.
+     */
+    where?: IthomeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IthomeLists to fetch.
+     */
+    orderBy?: Enumerable<IthomeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IthomeLists.
+     */
+    cursor?: IthomeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IthomeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IthomeLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IthomeLists.
+     */
+    distinct?: Enumerable<IthomeListScalarFieldEnum>
+  }
+
+  /**
+   * IthomeList findFirst
+   */
+  export interface IthomeListFindFirstArgs extends IthomeListFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * IthomeList findFirstOrThrow
+   */
+  export type IthomeListFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * Filter, which IthomeList to fetch.
+     */
+    where?: IthomeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IthomeLists to fetch.
+     */
+    orderBy?: Enumerable<IthomeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IthomeLists.
+     */
+    cursor?: IthomeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IthomeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IthomeLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IthomeLists.
+     */
+    distinct?: Enumerable<IthomeListScalarFieldEnum>
+  }
+
+
+  /**
+   * IthomeList findMany
+   */
+  export type IthomeListFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * Filter, which IthomeLists to fetch.
+     */
+    where?: IthomeListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IthomeLists to fetch.
+     */
+    orderBy?: Enumerable<IthomeListOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing IthomeLists.
+     */
+    cursor?: IthomeListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IthomeLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IthomeLists.
+     */
+    skip?: number
+    distinct?: Enumerable<IthomeListScalarFieldEnum>
+  }
+
+
+  /**
+   * IthomeList create
+   */
+  export type IthomeListCreateArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * The data needed to create a IthomeList.
+     */
+    data: XOR<IthomeListCreateInput, IthomeListUncheckedCreateInput>
+  }
+
+
+  /**
+   * IthomeList createMany
+   */
+  export type IthomeListCreateManyArgs = {
+    /**
+     * The data used to create many IthomeLists.
+     */
+    data: Enumerable<IthomeListCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * IthomeList update
+   */
+  export type IthomeListUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * The data needed to update a IthomeList.
+     */
+    data: XOR<IthomeListUpdateInput, IthomeListUncheckedUpdateInput>
+    /**
+     * Choose, which IthomeList to update.
+     */
+    where: IthomeListWhereUniqueInput
+  }
+
+
+  /**
+   * IthomeList updateMany
+   */
+  export type IthomeListUpdateManyArgs = {
+    /**
+     * The data used to update IthomeLists.
+     */
+    data: XOR<IthomeListUpdateManyMutationInput, IthomeListUncheckedUpdateManyInput>
+    /**
+     * Filter which IthomeLists to update
+     */
+    where?: IthomeListWhereInput
+  }
+
+
+  /**
+   * IthomeList upsert
+   */
+  export type IthomeListUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * The filter to search for the IthomeList to update in case it exists.
+     */
+    where: IthomeListWhereUniqueInput
+    /**
+     * In case the IthomeList found by the `where` argument doesn't exist, create a new IthomeList with this data.
+     */
+    create: XOR<IthomeListCreateInput, IthomeListUncheckedCreateInput>
+    /**
+     * In case the IthomeList was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<IthomeListUpdateInput, IthomeListUncheckedUpdateInput>
+  }
+
+
+  /**
+   * IthomeList delete
+   */
+  export type IthomeListDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+    /**
+     * Filter which IthomeList to delete.
+     */
+    where: IthomeListWhereUniqueInput
+  }
+
+
+  /**
+   * IthomeList deleteMany
+   */
+  export type IthomeListDeleteManyArgs = {
+    /**
+     * Filter which IthomeLists to delete
+     */
+    where?: IthomeListWhereInput
+  }
+
+
+  /**
+   * IthomeList without action
+   */
+  export type IthomeListArgs = {
+    /**
+     * Select specific fields to fetch from the IthomeList
+     */
+    select?: IthomeListSelect | null
+  }
+
+
+
+  /**
    * Enums
    */
 
   // Based on
   // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
+
+  export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
+    Serializable: 'Serializable'
+  };
+
+  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+  export const UserScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    phone: 'phone',
+    password: 'password',
+    avatar: 'avatar',
+    status: 'status',
+    gender: 'gender',
+    birthday: 'birthday',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const RoleScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    creator: 'creator',
+    remark: 'remark',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+
+
+  export const PermissionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    creator: 'creator',
+    remark: 'remark',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type PermissionScalarFieldEnum = (typeof PermissionScalarFieldEnum)[keyof typeof PermissionScalarFieldEnum]
+
+
+  export const UserRoleScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    roleId: 'roleId',
+    created_at: 'created_at'
+  };
+
+  export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
+
+
+  export const RolePermissionScalarFieldEnum: {
+    id: 'id',
+    roleId: 'roleId',
+    permissionId: 'permissionId',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type RolePermissionScalarFieldEnum = (typeof RolePermissionScalarFieldEnum)[keyof typeof RolePermissionScalarFieldEnum]
+
+
+  export const LineUserScalarFieldEnum: {
+    id: 'id',
+    callback: 'callback',
+    url: 'url',
+    type: 'type',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LineUserScalarFieldEnum = (typeof LineUserScalarFieldEnum)[keyof typeof LineUserScalarFieldEnum]
+
 
   export const LineUserArticleScalarFieldEnum: {
     id: 'id',
@@ -9058,51 +12087,46 @@ export namespace Prisma {
   export type LineUserCategoryScalarFieldEnum = (typeof LineUserCategoryScalarFieldEnum)[keyof typeof LineUserCategoryScalarFieldEnum]
 
 
-  export const LineUserScalarFieldEnum: {
+  export const NikeListScalarFieldEnum: {
     id: 'id',
-    callback: 'callback',
-    url: 'url',
-    type: 'type',
+    title: 'title',
+    descs: 'descs',
+    img: 'img',
+    link: 'link',
+    time: 'time',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type LineUserScalarFieldEnum = (typeof LineUserScalarFieldEnum)[keyof typeof LineUserScalarFieldEnum]
+  export type NikeListScalarFieldEnum = (typeof NikeListScalarFieldEnum)[keyof typeof NikeListScalarFieldEnum]
 
 
-  export const PermissionScalarFieldEnum: {
+  export const HypeBeastListScalarFieldEnum: {
     id: 'id',
-    name: 'name',
-    creator: 'creator',
-    remark: 'remark',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
+    title: 'title',
+    descs: 'descs',
+    img: 'img',
+    link: 'link',
+    time: 'time',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
-  export type PermissionScalarFieldEnum = (typeof PermissionScalarFieldEnum)[keyof typeof PermissionScalarFieldEnum]
+  export type HypeBeastListScalarFieldEnum = (typeof HypeBeastListScalarFieldEnum)[keyof typeof HypeBeastListScalarFieldEnum]
 
 
-  export const RolePermissionScalarFieldEnum: {
+  export const IthomeListScalarFieldEnum: {
     id: 'id',
-    roleId: 'roleId',
-    permissionId: 'permissionId',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
+    title: 'title',
+    descs: 'descs',
+    img: 'img',
+    link: 'link',
+    time: 'time',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
-  export type RolePermissionScalarFieldEnum = (typeof RolePermissionScalarFieldEnum)[keyof typeof RolePermissionScalarFieldEnum]
-
-
-  export const RoleScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    creator: 'creator',
-    remark: 'remark',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
-  };
-
-  export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+  export type IthomeListScalarFieldEnum = (typeof IthomeListScalarFieldEnum)[keyof typeof IthomeListScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9113,42 +12137,52 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
-    Serializable: 'Serializable'
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
   };
 
-  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
-  export const UserRoleScalarFieldEnum: {
-    id: 'id',
-    userId: 'userId',
-    roleId: 'roleId',
-    created_at: 'created_at'
-  };
-
-  export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
+  /**
+   * Field references 
+   */
 
 
-  export const UserScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    phone: 'phone',
-    password: 'password',
-    avatar: 'avatar',
-    status: 'status',
-    gender: 'gender',
-    birthday: 'birthday',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
-  };
-
-  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
 
 
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
   /**
    * Deep Input Types
    */
@@ -9158,16 +12192,16 @@ export namespace Prisma {
     AND?: Enumerable<UserWhereInput>
     OR?: Enumerable<UserWhereInput>
     NOT?: Enumerable<UserWhereInput>
-    id?: IntFilter | number
-    name?: StringFilter | string
-    phone?: StringFilter | string
-    password?: StringFilter | string
-    avatar?: StringFilter | string
-    status?: BoolFilter | boolean
-    gender?: StringFilter | string
-    birthday?: StringFilter | string
-    created_at?: DateTimeFilter | Date | string
-    updated_at?: DateTimeFilter | Date | string
+    id?: IntFilter<"User"> | number
+    name?: StringFilter<"User"> | string
+    phone?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    avatar?: StringFilter<"User"> | string
+    status?: BoolFilter<"User"> | boolean
+    gender?: StringFilter<"User"> | string
+    birthday?: StringFilter<"User"> | string
+    created_at?: DateTimeFilter<"User"> | Date | string
+    updated_at?: DateTimeFilter<"User"> | Date | string
     UserRole?: UserRoleListRelationFilter
   }
 
@@ -9185,10 +12219,22 @@ export namespace Prisma {
     UserRole?: UserRoleOrderByRelationAggregateInput
   }
 
-  export type UserWhereUniqueInput = {
+  export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     phone?: string
-  }
+    AND?: Enumerable<UserWhereInput>
+    OR?: Enumerable<UserWhereInput>
+    NOT?: Enumerable<UserWhereInput>
+    name?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    avatar?: StringFilter<"User"> | string
+    status?: BoolFilter<"User"> | boolean
+    gender?: StringFilter<"User"> | string
+    birthday?: StringFilter<"User"> | string
+    created_at?: DateTimeFilter<"User"> | Date | string
+    updated_at?: DateTimeFilter<"User"> | Date | string
+    UserRole?: UserRoleListRelationFilter
+  }, "id" | "phone">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9212,28 +12258,28 @@ export namespace Prisma {
     AND?: Enumerable<UserScalarWhereWithAggregatesInput>
     OR?: Enumerable<UserScalarWhereWithAggregatesInput>
     NOT?: Enumerable<UserScalarWhereWithAggregatesInput>
-    id?: IntWithAggregatesFilter | number
-    name?: StringWithAggregatesFilter | string
-    phone?: StringWithAggregatesFilter | string
-    password?: StringWithAggregatesFilter | string
-    avatar?: StringWithAggregatesFilter | string
-    status?: BoolWithAggregatesFilter | boolean
-    gender?: StringWithAggregatesFilter | string
-    birthday?: StringWithAggregatesFilter | string
-    created_at?: DateTimeWithAggregatesFilter | Date | string
-    updated_at?: DateTimeWithAggregatesFilter | Date | string
+    id?: IntWithAggregatesFilter<"User"> | number
+    name?: StringWithAggregatesFilter<"User"> | string
+    phone?: StringWithAggregatesFilter<"User"> | string
+    password?: StringWithAggregatesFilter<"User"> | string
+    avatar?: StringWithAggregatesFilter<"User"> | string
+    status?: BoolWithAggregatesFilter<"User"> | boolean
+    gender?: StringWithAggregatesFilter<"User"> | string
+    birthday?: StringWithAggregatesFilter<"User"> | string
+    created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type RoleWhereInput = {
     AND?: Enumerable<RoleWhereInput>
     OR?: Enumerable<RoleWhereInput>
     NOT?: Enumerable<RoleWhereInput>
-    id?: IntFilter | number
-    name?: StringFilter | string
-    creator?: StringFilter | string
-    remark?: StringNullableFilter | string | null
-    created_at?: DateTimeFilter | Date | string
-    updated_at?: DateTimeFilter | Date | string
+    id?: IntFilter<"Role"> | number
+    name?: StringFilter<"Role"> | string
+    creator?: StringFilter<"Role"> | string
+    remark?: StringNullableFilter<"Role"> | string | null
+    created_at?: DateTimeFilter<"Role"> | Date | string
+    updated_at?: DateTimeFilter<"Role"> | Date | string
     RolePermission?: RolePermissionListRelationFilter
     UserRole?: UserRoleListRelationFilter
   }
@@ -9242,23 +12288,32 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     creator?: SortOrder
-    remark?: SortOrder
+    remark?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     RolePermission?: RolePermissionOrderByRelationAggregateInput
     UserRole?: UserRoleOrderByRelationAggregateInput
   }
 
-  export type RoleWhereUniqueInput = {
+  export type RoleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     name?: string
-  }
+    AND?: Enumerable<RoleWhereInput>
+    OR?: Enumerable<RoleWhereInput>
+    NOT?: Enumerable<RoleWhereInput>
+    creator?: StringFilter<"Role"> | string
+    remark?: StringNullableFilter<"Role"> | string | null
+    created_at?: DateTimeFilter<"Role"> | Date | string
+    updated_at?: DateTimeFilter<"Role"> | Date | string
+    RolePermission?: RolePermissionListRelationFilter
+    UserRole?: UserRoleListRelationFilter
+  }, "id" | "name">
 
   export type RoleOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     creator?: SortOrder
-    remark?: SortOrder
+    remark?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: RoleCountOrderByAggregateInput
@@ -9272,24 +12327,24 @@ export namespace Prisma {
     AND?: Enumerable<RoleScalarWhereWithAggregatesInput>
     OR?: Enumerable<RoleScalarWhereWithAggregatesInput>
     NOT?: Enumerable<RoleScalarWhereWithAggregatesInput>
-    id?: IntWithAggregatesFilter | number
-    name?: StringWithAggregatesFilter | string
-    creator?: StringWithAggregatesFilter | string
-    remark?: StringNullableWithAggregatesFilter | string | null
-    created_at?: DateTimeWithAggregatesFilter | Date | string
-    updated_at?: DateTimeWithAggregatesFilter | Date | string
+    id?: IntWithAggregatesFilter<"Role"> | number
+    name?: StringWithAggregatesFilter<"Role"> | string
+    creator?: StringWithAggregatesFilter<"Role"> | string
+    remark?: StringNullableWithAggregatesFilter<"Role"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"Role"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Role"> | Date | string
   }
 
   export type PermissionWhereInput = {
     AND?: Enumerable<PermissionWhereInput>
     OR?: Enumerable<PermissionWhereInput>
     NOT?: Enumerable<PermissionWhereInput>
-    id?: IntFilter | number
-    name?: StringFilter | string
-    creator?: StringFilter | string
-    remark?: StringNullableFilter | string | null
-    created_at?: DateTimeFilter | Date | string
-    updated_at?: DateTimeFilter | Date | string
+    id?: IntFilter<"Permission"> | number
+    name?: StringFilter<"Permission"> | string
+    creator?: StringFilter<"Permission"> | string
+    remark?: StringNullableFilter<"Permission"> | string | null
+    created_at?: DateTimeFilter<"Permission"> | Date | string
+    updated_at?: DateTimeFilter<"Permission"> | Date | string
     Role?: RolePermissionListRelationFilter
   }
 
@@ -9297,22 +12352,30 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     creator?: SortOrder
-    remark?: SortOrder
+    remark?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     Role?: RolePermissionOrderByRelationAggregateInput
   }
 
-  export type PermissionWhereUniqueInput = {
+  export type PermissionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     name?: string
-  }
+    AND?: Enumerable<PermissionWhereInput>
+    OR?: Enumerable<PermissionWhereInput>
+    NOT?: Enumerable<PermissionWhereInput>
+    creator?: StringFilter<"Permission"> | string
+    remark?: StringNullableFilter<"Permission"> | string | null
+    created_at?: DateTimeFilter<"Permission"> | Date | string
+    updated_at?: DateTimeFilter<"Permission"> | Date | string
+    Role?: RolePermissionListRelationFilter
+  }, "id" | "name">
 
   export type PermissionOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     creator?: SortOrder
-    remark?: SortOrder
+    remark?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: PermissionCountOrderByAggregateInput
@@ -9326,22 +12389,22 @@ export namespace Prisma {
     AND?: Enumerable<PermissionScalarWhereWithAggregatesInput>
     OR?: Enumerable<PermissionScalarWhereWithAggregatesInput>
     NOT?: Enumerable<PermissionScalarWhereWithAggregatesInput>
-    id?: IntWithAggregatesFilter | number
-    name?: StringWithAggregatesFilter | string
-    creator?: StringWithAggregatesFilter | string
-    remark?: StringNullableWithAggregatesFilter | string | null
-    created_at?: DateTimeWithAggregatesFilter | Date | string
-    updated_at?: DateTimeWithAggregatesFilter | Date | string
+    id?: IntWithAggregatesFilter<"Permission"> | number
+    name?: StringWithAggregatesFilter<"Permission"> | string
+    creator?: StringWithAggregatesFilter<"Permission"> | string
+    remark?: StringNullableWithAggregatesFilter<"Permission"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"Permission"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Permission"> | Date | string
   }
 
   export type UserRoleWhereInput = {
     AND?: Enumerable<UserRoleWhereInput>
     OR?: Enumerable<UserRoleWhereInput>
     NOT?: Enumerable<UserRoleWhereInput>
-    id?: IntFilter | number
-    userId?: IntFilter | number
-    roleId?: IntFilter | number
-    created_at?: DateTimeFilter | Date | string
+    id?: IntFilter<"UserRole"> | number
+    userId?: IntFilter<"UserRole"> | number
+    roleId?: IntFilter<"UserRole"> | number
+    created_at?: DateTimeFilter<"UserRole"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     role?: XOR<RoleRelationFilter, RoleWhereInput>
   }
@@ -9355,9 +12418,17 @@ export namespace Prisma {
     role?: RoleOrderByWithRelationInput
   }
 
-  export type UserRoleWhereUniqueInput = {
+  export type UserRoleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-  }
+    AND?: Enumerable<UserRoleWhereInput>
+    OR?: Enumerable<UserRoleWhereInput>
+    NOT?: Enumerable<UserRoleWhereInput>
+    userId?: IntFilter<"UserRole"> | number
+    roleId?: IntFilter<"UserRole"> | number
+    created_at?: DateTimeFilter<"UserRole"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    role?: XOR<RoleRelationFilter, RoleWhereInput>
+  }, "id">
 
   export type UserRoleOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9375,21 +12446,21 @@ export namespace Prisma {
     AND?: Enumerable<UserRoleScalarWhereWithAggregatesInput>
     OR?: Enumerable<UserRoleScalarWhereWithAggregatesInput>
     NOT?: Enumerable<UserRoleScalarWhereWithAggregatesInput>
-    id?: IntWithAggregatesFilter | number
-    userId?: IntWithAggregatesFilter | number
-    roleId?: IntWithAggregatesFilter | number
-    created_at?: DateTimeWithAggregatesFilter | Date | string
+    id?: IntWithAggregatesFilter<"UserRole"> | number
+    userId?: IntWithAggregatesFilter<"UserRole"> | number
+    roleId?: IntWithAggregatesFilter<"UserRole"> | number
+    created_at?: DateTimeWithAggregatesFilter<"UserRole"> | Date | string
   }
 
   export type RolePermissionWhereInput = {
     AND?: Enumerable<RolePermissionWhereInput>
     OR?: Enumerable<RolePermissionWhereInput>
     NOT?: Enumerable<RolePermissionWhereInput>
-    id?: IntFilter | number
-    roleId?: IntFilter | number
-    permissionId?: IntFilter | number
-    created_at?: DateTimeFilter | Date | string
-    updated_at?: DateTimeFilter | Date | string
+    id?: IntFilter<"RolePermission"> | number
+    roleId?: IntFilter<"RolePermission"> | number
+    permissionId?: IntFilter<"RolePermission"> | number
+    created_at?: DateTimeFilter<"RolePermission"> | Date | string
+    updated_at?: DateTimeFilter<"RolePermission"> | Date | string
     role?: XOR<RoleRelationFilter, RoleWhereInput>
     permission?: XOR<PermissionRelationFilter, PermissionWhereInput>
   }
@@ -9404,9 +12475,18 @@ export namespace Prisma {
     permission?: PermissionOrderByWithRelationInput
   }
 
-  export type RolePermissionWhereUniqueInput = {
+  export type RolePermissionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-  }
+    AND?: Enumerable<RolePermissionWhereInput>
+    OR?: Enumerable<RolePermissionWhereInput>
+    NOT?: Enumerable<RolePermissionWhereInput>
+    roleId?: IntFilter<"RolePermission"> | number
+    permissionId?: IntFilter<"RolePermission"> | number
+    created_at?: DateTimeFilter<"RolePermission"> | Date | string
+    updated_at?: DateTimeFilter<"RolePermission"> | Date | string
+    role?: XOR<RoleRelationFilter, RoleWhereInput>
+    permission?: XOR<PermissionRelationFilter, PermissionWhereInput>
+  }, "id">
 
   export type RolePermissionOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9425,23 +12505,23 @@ export namespace Prisma {
     AND?: Enumerable<RolePermissionScalarWhereWithAggregatesInput>
     OR?: Enumerable<RolePermissionScalarWhereWithAggregatesInput>
     NOT?: Enumerable<RolePermissionScalarWhereWithAggregatesInput>
-    id?: IntWithAggregatesFilter | number
-    roleId?: IntWithAggregatesFilter | number
-    permissionId?: IntWithAggregatesFilter | number
-    created_at?: DateTimeWithAggregatesFilter | Date | string
-    updated_at?: DateTimeWithAggregatesFilter | Date | string
+    id?: IntWithAggregatesFilter<"RolePermission"> | number
+    roleId?: IntWithAggregatesFilter<"RolePermission"> | number
+    permissionId?: IntWithAggregatesFilter<"RolePermission"> | number
+    created_at?: DateTimeWithAggregatesFilter<"RolePermission"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"RolePermission"> | Date | string
   }
 
   export type LineUserWhereInput = {
     AND?: Enumerable<LineUserWhereInput>
     OR?: Enumerable<LineUserWhereInput>
     NOT?: Enumerable<LineUserWhereInput>
-    id?: StringFilter | string
-    callback?: StringFilter | string
-    url?: StringFilter | string
-    type?: StringFilter | string
-    createdAt?: DateTimeFilter | Date | string
-    updatedAt?: DateTimeFilter | Date | string
+    id?: StringFilter<"LineUser"> | string
+    callback?: StringFilter<"LineUser"> | string
+    url?: StringFilter<"LineUser"> | string
+    type?: StringFilter<"LineUser"> | string
+    createdAt?: DateTimeFilter<"LineUser"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUser"> | Date | string
     category?: LineUserCategoryListRelationFilter
     Article?: LineUserArticleListRelationFilter
   }
@@ -9457,9 +12537,19 @@ export namespace Prisma {
     Article?: LineUserArticleOrderByRelationAggregateInput
   }
 
-  export type LineUserWhereUniqueInput = {
+  export type LineUserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-  }
+    AND?: Enumerable<LineUserWhereInput>
+    OR?: Enumerable<LineUserWhereInput>
+    NOT?: Enumerable<LineUserWhereInput>
+    callback?: StringFilter<"LineUser"> | string
+    url?: StringFilter<"LineUser"> | string
+    type?: StringFilter<"LineUser"> | string
+    createdAt?: DateTimeFilter<"LineUser"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUser"> | Date | string
+    category?: LineUserCategoryListRelationFilter
+    Article?: LineUserArticleListRelationFilter
+  }, "id">
 
   export type LineUserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9477,24 +12567,24 @@ export namespace Prisma {
     AND?: Enumerable<LineUserScalarWhereWithAggregatesInput>
     OR?: Enumerable<LineUserScalarWhereWithAggregatesInput>
     NOT?: Enumerable<LineUserScalarWhereWithAggregatesInput>
-    id?: StringWithAggregatesFilter | string
-    callback?: StringWithAggregatesFilter | string
-    url?: StringWithAggregatesFilter | string
-    type?: StringWithAggregatesFilter | string
-    createdAt?: DateTimeWithAggregatesFilter | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter | Date | string
+    id?: StringWithAggregatesFilter<"LineUser"> | string
+    callback?: StringWithAggregatesFilter<"LineUser"> | string
+    url?: StringWithAggregatesFilter<"LineUser"> | string
+    type?: StringWithAggregatesFilter<"LineUser"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
   }
 
   export type LineUserArticleWhereInput = {
     AND?: Enumerable<LineUserArticleWhereInput>
     OR?: Enumerable<LineUserArticleWhereInput>
     NOT?: Enumerable<LineUserArticleWhereInput>
-    id?: IntFilter | number
-    url?: StringFilter | string
-    type?: StringFilter | string
-    createdAt?: DateTimeFilter | Date | string
-    updatedAt?: DateTimeFilter | Date | string
-    authorId?: StringFilter | string
+    id?: IntFilter<"LineUserArticle"> | number
+    url?: StringFilter<"LineUserArticle"> | string
+    type?: StringFilter<"LineUserArticle"> | string
+    createdAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    authorId?: StringFilter<"LineUserArticle"> | string
     author?: XOR<LineUserRelationFilter, LineUserWhereInput>
   }
 
@@ -9508,9 +12598,18 @@ export namespace Prisma {
     author?: LineUserOrderByWithRelationInput
   }
 
-  export type LineUserArticleWhereUniqueInput = {
+  export type LineUserArticleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-  }
+    AND?: Enumerable<LineUserArticleWhereInput>
+    OR?: Enumerable<LineUserArticleWhereInput>
+    NOT?: Enumerable<LineUserArticleWhereInput>
+    url?: StringFilter<"LineUserArticle"> | string
+    type?: StringFilter<"LineUserArticle"> | string
+    createdAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    authorId?: StringFilter<"LineUserArticle"> | string
+    author?: XOR<LineUserRelationFilter, LineUserWhereInput>
+  }, "id">
 
   export type LineUserArticleOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9530,23 +12629,23 @@ export namespace Prisma {
     AND?: Enumerable<LineUserArticleScalarWhereWithAggregatesInput>
     OR?: Enumerable<LineUserArticleScalarWhereWithAggregatesInput>
     NOT?: Enumerable<LineUserArticleScalarWhereWithAggregatesInput>
-    id?: IntWithAggregatesFilter | number
-    url?: StringWithAggregatesFilter | string
-    type?: StringWithAggregatesFilter | string
-    createdAt?: DateTimeWithAggregatesFilter | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter | Date | string
-    authorId?: StringWithAggregatesFilter | string
+    id?: IntWithAggregatesFilter<"LineUserArticle"> | number
+    url?: StringWithAggregatesFilter<"LineUserArticle"> | string
+    type?: StringWithAggregatesFilter<"LineUserArticle"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"LineUserArticle"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"LineUserArticle"> | Date | string
+    authorId?: StringWithAggregatesFilter<"LineUserArticle"> | string
   }
 
   export type LineUserCategoryWhereInput = {
     AND?: Enumerable<LineUserCategoryWhereInput>
     OR?: Enumerable<LineUserCategoryWhereInput>
     NOT?: Enumerable<LineUserCategoryWhereInput>
-    id?: StringFilter | string
-    name?: StringFilter | string
-    createdAt?: DateTimeFilter | Date | string
-    updatedAt?: DateTimeFilter | Date | string
-    authorId?: StringFilter | string
+    id?: StringFilter<"LineUserCategory"> | string
+    name?: StringFilter<"LineUserCategory"> | string
+    createdAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    authorId?: StringFilter<"LineUserCategory"> | string
     author?: XOR<LineUserRelationFilter, LineUserWhereInput>
   }
 
@@ -9559,9 +12658,17 @@ export namespace Prisma {
     author?: LineUserOrderByWithRelationInput
   }
 
-  export type LineUserCategoryWhereUniqueInput = {
+  export type LineUserCategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-  }
+    AND?: Enumerable<LineUserCategoryWhereInput>
+    OR?: Enumerable<LineUserCategoryWhereInput>
+    NOT?: Enumerable<LineUserCategoryWhereInput>
+    name?: StringFilter<"LineUserCategory"> | string
+    createdAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    authorId?: StringFilter<"LineUserCategory"> | string
+    author?: XOR<LineUserRelationFilter, LineUserWhereInput>
+  }, "id">
 
   export type LineUserCategoryOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9578,11 +12685,218 @@ export namespace Prisma {
     AND?: Enumerable<LineUserCategoryScalarWhereWithAggregatesInput>
     OR?: Enumerable<LineUserCategoryScalarWhereWithAggregatesInput>
     NOT?: Enumerable<LineUserCategoryScalarWhereWithAggregatesInput>
-    id?: StringWithAggregatesFilter | string
-    name?: StringWithAggregatesFilter | string
-    createdAt?: DateTimeWithAggregatesFilter | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter | Date | string
-    authorId?: StringWithAggregatesFilter | string
+    id?: StringWithAggregatesFilter<"LineUserCategory"> | string
+    name?: StringWithAggregatesFilter<"LineUserCategory"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"LineUserCategory"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"LineUserCategory"> | Date | string
+    authorId?: StringWithAggregatesFilter<"LineUserCategory"> | string
+  }
+
+  export type NikeListWhereInput = {
+    AND?: Enumerable<NikeListWhereInput>
+    OR?: Enumerable<NikeListWhereInput>
+    NOT?: Enumerable<NikeListWhereInput>
+    id?: IntFilter<"NikeList"> | number
+    title?: StringFilter<"NikeList"> | string
+    descs?: StringNullableFilter<"NikeList"> | string | null
+    img?: StringFilter<"NikeList"> | string
+    link?: StringFilter<"NikeList"> | string
+    time?: StringFilter<"NikeList"> | string
+    createdAt?: DateTimeFilter<"NikeList"> | Date | string
+    updatedAt?: DateTimeFilter<"NikeList"> | Date | string
+  }
+
+  export type NikeListOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrderInput | SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NikeListWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: Enumerable<NikeListWhereInput>
+    OR?: Enumerable<NikeListWhereInput>
+    NOT?: Enumerable<NikeListWhereInput>
+    title?: StringFilter<"NikeList"> | string
+    descs?: StringNullableFilter<"NikeList"> | string | null
+    img?: StringFilter<"NikeList"> | string
+    link?: StringFilter<"NikeList"> | string
+    time?: StringFilter<"NikeList"> | string
+    createdAt?: DateTimeFilter<"NikeList"> | Date | string
+    updatedAt?: DateTimeFilter<"NikeList"> | Date | string
+  }, "id">
+
+  export type NikeListOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrderInput | SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NikeListCountOrderByAggregateInput
+    _avg?: NikeListAvgOrderByAggregateInput
+    _max?: NikeListMaxOrderByAggregateInput
+    _min?: NikeListMinOrderByAggregateInput
+    _sum?: NikeListSumOrderByAggregateInput
+  }
+
+  export type NikeListScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<NikeListScalarWhereWithAggregatesInput>
+    OR?: Enumerable<NikeListScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<NikeListScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter<"NikeList"> | number
+    title?: StringWithAggregatesFilter<"NikeList"> | string
+    descs?: StringNullableWithAggregatesFilter<"NikeList"> | string | null
+    img?: StringWithAggregatesFilter<"NikeList"> | string
+    link?: StringWithAggregatesFilter<"NikeList"> | string
+    time?: StringWithAggregatesFilter<"NikeList"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"NikeList"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"NikeList"> | Date | string
+  }
+
+  export type HypeBeastListWhereInput = {
+    AND?: Enumerable<HypeBeastListWhereInput>
+    OR?: Enumerable<HypeBeastListWhereInput>
+    NOT?: Enumerable<HypeBeastListWhereInput>
+    id?: IntFilter<"HypeBeastList"> | number
+    title?: StringFilter<"HypeBeastList"> | string
+    descs?: StringNullableFilter<"HypeBeastList"> | string | null
+    img?: StringFilter<"HypeBeastList"> | string
+    link?: StringFilter<"HypeBeastList"> | string
+    time?: StringFilter<"HypeBeastList"> | string
+    createdAt?: DateTimeFilter<"HypeBeastList"> | Date | string
+    updatedAt?: DateTimeFilter<"HypeBeastList"> | Date | string
+  }
+
+  export type HypeBeastListOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrderInput | SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HypeBeastListWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: Enumerable<HypeBeastListWhereInput>
+    OR?: Enumerable<HypeBeastListWhereInput>
+    NOT?: Enumerable<HypeBeastListWhereInput>
+    title?: StringFilter<"HypeBeastList"> | string
+    descs?: StringNullableFilter<"HypeBeastList"> | string | null
+    img?: StringFilter<"HypeBeastList"> | string
+    link?: StringFilter<"HypeBeastList"> | string
+    time?: StringFilter<"HypeBeastList"> | string
+    createdAt?: DateTimeFilter<"HypeBeastList"> | Date | string
+    updatedAt?: DateTimeFilter<"HypeBeastList"> | Date | string
+  }, "id">
+
+  export type HypeBeastListOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrderInput | SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HypeBeastListCountOrderByAggregateInput
+    _avg?: HypeBeastListAvgOrderByAggregateInput
+    _max?: HypeBeastListMaxOrderByAggregateInput
+    _min?: HypeBeastListMinOrderByAggregateInput
+    _sum?: HypeBeastListSumOrderByAggregateInput
+  }
+
+  export type HypeBeastListScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<HypeBeastListScalarWhereWithAggregatesInput>
+    OR?: Enumerable<HypeBeastListScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<HypeBeastListScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter<"HypeBeastList"> | number
+    title?: StringWithAggregatesFilter<"HypeBeastList"> | string
+    descs?: StringNullableWithAggregatesFilter<"HypeBeastList"> | string | null
+    img?: StringWithAggregatesFilter<"HypeBeastList"> | string
+    link?: StringWithAggregatesFilter<"HypeBeastList"> | string
+    time?: StringWithAggregatesFilter<"HypeBeastList"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"HypeBeastList"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"HypeBeastList"> | Date | string
+  }
+
+  export type IthomeListWhereInput = {
+    AND?: Enumerable<IthomeListWhereInput>
+    OR?: Enumerable<IthomeListWhereInput>
+    NOT?: Enumerable<IthomeListWhereInput>
+    id?: IntFilter<"IthomeList"> | number
+    title?: StringFilter<"IthomeList"> | string
+    descs?: StringNullableFilter<"IthomeList"> | string | null
+    img?: StringFilter<"IthomeList"> | string
+    link?: StringFilter<"IthomeList"> | string
+    time?: StringFilter<"IthomeList"> | string
+    createdAt?: DateTimeFilter<"IthomeList"> | Date | string
+    updatedAt?: DateTimeFilter<"IthomeList"> | Date | string
+  }
+
+  export type IthomeListOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrderInput | SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IthomeListWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: Enumerable<IthomeListWhereInput>
+    OR?: Enumerable<IthomeListWhereInput>
+    NOT?: Enumerable<IthomeListWhereInput>
+    title?: StringFilter<"IthomeList"> | string
+    descs?: StringNullableFilter<"IthomeList"> | string | null
+    img?: StringFilter<"IthomeList"> | string
+    link?: StringFilter<"IthomeList"> | string
+    time?: StringFilter<"IthomeList"> | string
+    createdAt?: DateTimeFilter<"IthomeList"> | Date | string
+    updatedAt?: DateTimeFilter<"IthomeList"> | Date | string
+  }, "id">
+
+  export type IthomeListOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrderInput | SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: IthomeListCountOrderByAggregateInput
+    _avg?: IthomeListAvgOrderByAggregateInput
+    _max?: IthomeListMaxOrderByAggregateInput
+    _min?: IthomeListMinOrderByAggregateInput
+    _sum?: IthomeListSumOrderByAggregateInput
+  }
+
+  export type IthomeListScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<IthomeListScalarWhereWithAggregatesInput>
+    OR?: Enumerable<IthomeListScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<IthomeListScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter<"IthomeList"> | number
+    title?: StringWithAggregatesFilter<"IthomeList"> | string
+    descs?: StringNullableWithAggregatesFilter<"IthomeList"> | string | null
+    img?: StringWithAggregatesFilter<"IthomeList"> | string
+    link?: StringWithAggregatesFilter<"IthomeList"> | string
+    time?: StringWithAggregatesFilter<"IthomeList"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"IthomeList"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"IthomeList"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -10089,45 +13403,267 @@ export namespace Prisma {
     authorId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type IntFilter = {
-    equals?: number
+  export type NikeListCreateInput = {
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NikeListUncheckedCreateInput = {
+    id?: number
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NikeListUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NikeListUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NikeListCreateManyInput = {
+    id?: number
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NikeListUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NikeListUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HypeBeastListCreateInput = {
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HypeBeastListUncheckedCreateInput = {
+    id?: number
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HypeBeastListUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HypeBeastListUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HypeBeastListCreateManyInput = {
+    id?: number
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HypeBeastListUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HypeBeastListUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IthomeListCreateInput = {
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IthomeListUncheckedCreateInput = {
+    id?: number
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IthomeListUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IthomeListUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IthomeListCreateManyInput = {
+    id?: number
+    title: string
+    descs?: string | null
+    img: string
+    link: string
+    time: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type IthomeListUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IthomeListUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    descs?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
     in?: Enumerable<number>
     notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntFilter | number
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringFilter = {
-    equals?: string
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
     in?: Enumerable<string>
     notIn?: Enumerable<string>
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringFilter | string
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type BoolFilter = {
-    equals?: boolean
-    not?: NestedBoolFilter | boolean
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type DateTimeFilter = {
-    equals?: Date | string
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Enumerable<Date> | Enumerable<string>
     notIn?: Enumerable<Date> | Enumerable<string>
-    lt?: Date | string
-    lte?: Date | string
-    gt?: Date | string
-    gte?: Date | string
-    not?: NestedDateTimeFilter | Date | string
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type UserRoleListRelationFilter = {
@@ -10187,79 +13723,84 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type IntWithAggregatesFilter = {
-    equals?: number
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
     in?: Enumerable<number>
     notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntWithAggregatesFilter | number
-    _count?: NestedIntFilter
-    _avg?: NestedFloatFilter
-    _sum?: NestedIntFilter
-    _min?: NestedIntFilter
-    _max?: NestedIntFilter
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type StringWithAggregatesFilter = {
-    equals?: string
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
     in?: Enumerable<string>
     notIn?: Enumerable<string>
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringWithAggregatesFilter | string
-    _count?: NestedIntFilter
-    _min?: NestedStringFilter
-    _max?: NestedStringFilter
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter = {
-    equals?: boolean
-    not?: NestedBoolWithAggregatesFilter | boolean
-    _count?: NestedIntFilter
-    _min?: NestedBoolFilter
-    _max?: NestedBoolFilter
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter = {
-    equals?: Date | string
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Enumerable<Date> | Enumerable<string>
     notIn?: Enumerable<Date> | Enumerable<string>
-    lt?: Date | string
-    lte?: Date | string
-    gt?: Date | string
-    gte?: Date | string
-    not?: NestedDateTimeWithAggregatesFilter | Date | string
-    _count?: NestedIntFilter
-    _min?: NestedDateTimeFilter
-    _max?: NestedDateTimeFilter
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter = {
-    equals?: string | null
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: Enumerable<string> | null
     notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableFilter | string | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type RolePermissionListRelationFilter = {
     every?: RolePermissionWhereInput
     some?: RolePermissionWhereInput
     none?: RolePermissionWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type RolePermissionOrderByRelationAggregateInput = {
@@ -10301,21 +13842,21 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter = {
-    equals?: string | null
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: Enumerable<string> | null
     notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableWithAggregatesFilter | string | null
-    _count?: NestedIntNullableFilter
-    _min?: NestedStringNullableFilter
-    _max?: NestedStringNullableFilter
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type PermissionCountOrderByAggregateInput = {
@@ -10548,6 +14089,129 @@ export namespace Prisma {
     authorId?: SortOrder
   }
 
+  export type NikeListCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NikeListAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type NikeListMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NikeListMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NikeListSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type HypeBeastListCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HypeBeastListAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type HypeBeastListMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HypeBeastListMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HypeBeastListSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IthomeListCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IthomeListAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IthomeListMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IthomeListMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    descs?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IthomeListSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type UserRoleCreateNestedManyWithoutUserInput = {
     create?: XOR<Enumerable<UserRoleCreateWithoutUserInput>, Enumerable<UserRoleUncheckedCreateWithoutUserInput>>
     connectOrCreate?: Enumerable<UserRoleCreateOrConnectWithoutUserInput>
@@ -10757,7 +14421,7 @@ export namespace Prisma {
     connectOrCreate?: UserCreateOrConnectWithoutUserRoleInput
     upsert?: UserUpsertWithoutUserRoleInput
     connect?: UserWhereUniqueInput
-    update?: XOR<UserUpdateWithoutUserRoleInput, UserUncheckedUpdateWithoutUserRoleInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserRoleInput, UserUpdateWithoutUserRoleInput>, UserUncheckedUpdateWithoutUserRoleInput>
   }
 
   export type RoleUpdateOneRequiredWithoutUserRoleNestedInput = {
@@ -10765,7 +14429,7 @@ export namespace Prisma {
     connectOrCreate?: RoleCreateOrConnectWithoutUserRoleInput
     upsert?: RoleUpsertWithoutUserRoleInput
     connect?: RoleWhereUniqueInput
-    update?: XOR<RoleUpdateWithoutUserRoleInput, RoleUncheckedUpdateWithoutUserRoleInput>
+    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUserRoleInput, RoleUpdateWithoutUserRoleInput>, RoleUncheckedUpdateWithoutUserRoleInput>
   }
 
   export type RoleCreateNestedOneWithoutRolePermissionInput = {
@@ -10785,7 +14449,7 @@ export namespace Prisma {
     connectOrCreate?: RoleCreateOrConnectWithoutRolePermissionInput
     upsert?: RoleUpsertWithoutRolePermissionInput
     connect?: RoleWhereUniqueInput
-    update?: XOR<RoleUpdateWithoutRolePermissionInput, RoleUncheckedUpdateWithoutRolePermissionInput>
+    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutRolePermissionInput, RoleUpdateWithoutRolePermissionInput>, RoleUncheckedUpdateWithoutRolePermissionInput>
   }
 
   export type PermissionUpdateOneRequiredWithoutRoleNestedInput = {
@@ -10793,7 +14457,7 @@ export namespace Prisma {
     connectOrCreate?: PermissionCreateOrConnectWithoutRoleInput
     upsert?: PermissionUpsertWithoutRoleInput
     connect?: PermissionWhereUniqueInput
-    update?: XOR<PermissionUpdateWithoutRoleInput, PermissionUncheckedUpdateWithoutRoleInput>
+    update?: XOR<XOR<PermissionUpdateToOneWithWhereWithoutRoleInput, PermissionUpdateWithoutRoleInput>, PermissionUncheckedUpdateWithoutRoleInput>
   }
 
   export type LineUserCategoryCreateNestedManyWithoutAuthorInput = {
@@ -10891,7 +14555,7 @@ export namespace Prisma {
     connectOrCreate?: LineUserCreateOrConnectWithoutArticleInput
     upsert?: LineUserUpsertWithoutArticleInput
     connect?: LineUserWhereUniqueInput
-    update?: XOR<LineUserUpdateWithoutArticleInput, LineUserUncheckedUpdateWithoutArticleInput>
+    update?: XOR<XOR<LineUserUpdateToOneWithWhereWithoutArticleInput, LineUserUpdateWithoutArticleInput>, LineUserUncheckedUpdateWithoutArticleInput>
   }
 
   export type LineUserCreateNestedOneWithoutCategoryInput = {
@@ -10905,156 +14569,156 @@ export namespace Prisma {
     connectOrCreate?: LineUserCreateOrConnectWithoutCategoryInput
     upsert?: LineUserUpsertWithoutCategoryInput
     connect?: LineUserWhereUniqueInput
-    update?: XOR<LineUserUpdateWithoutCategoryInput, LineUserUncheckedUpdateWithoutCategoryInput>
+    update?: XOR<XOR<LineUserUpdateToOneWithWhereWithoutCategoryInput, LineUserUpdateWithoutCategoryInput>, LineUserUncheckedUpdateWithoutCategoryInput>
   }
 
-  export type NestedIntFilter = {
-    equals?: number
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
     in?: Enumerable<number>
     notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntFilter | number
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringFilter = {
-    equals?: string
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
     in?: Enumerable<string>
     notIn?: Enumerable<string>
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringFilter | string
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedBoolFilter = {
-    equals?: boolean
-    not?: NestedBoolFilter | boolean
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type NestedDateTimeFilter = {
-    equals?: Date | string
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Enumerable<Date> | Enumerable<string>
     notIn?: Enumerable<Date> | Enumerable<string>
-    lt?: Date | string
-    lte?: Date | string
-    gt?: Date | string
-    gte?: Date | string
-    not?: NestedDateTimeFilter | Date | string
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedIntWithAggregatesFilter = {
-    equals?: number
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
     in?: Enumerable<number>
     notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntWithAggregatesFilter | number
-    _count?: NestedIntFilter
-    _avg?: NestedFloatFilter
-    _sum?: NestedIntFilter
-    _min?: NestedIntFilter
-    _max?: NestedIntFilter
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter = {
-    equals?: number
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: Enumerable<number>
     notIn?: Enumerable<number>
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedFloatFilter | number
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter = {
-    equals?: string
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
     in?: Enumerable<string>
     notIn?: Enumerable<string>
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringWithAggregatesFilter | string
-    _count?: NestedIntFilter
-    _min?: NestedStringFilter
-    _max?: NestedStringFilter
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedBoolWithAggregatesFilter = {
-    equals?: boolean
-    not?: NestedBoolWithAggregatesFilter | boolean
-    _count?: NestedIntFilter
-    _min?: NestedBoolFilter
-    _max?: NestedBoolFilter
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter = {
-    equals?: Date | string
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Enumerable<Date> | Enumerable<string>
     notIn?: Enumerable<Date> | Enumerable<string>
-    lt?: Date | string
-    lte?: Date | string
-    gt?: Date | string
-    gte?: Date | string
-    not?: NestedDateTimeWithAggregatesFilter | Date | string
-    _count?: NestedIntFilter
-    _min?: NestedDateTimeFilter
-    _max?: NestedDateTimeFilter
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter = {
-    equals?: string | null
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: Enumerable<string> | null
     notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableFilter | string | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedStringNullableWithAggregatesFilter = {
-    equals?: string | null
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: Enumerable<string> | null
     notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableWithAggregatesFilter | string | null
-    _count?: NestedIntNullableFilter
-    _min?: NestedStringNullableFilter
-    _max?: NestedStringNullableFilter
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter = {
-    equals?: number | null
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: Enumerable<number> | null
     notIn?: Enumerable<number> | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntNullableFilter | number | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type UserRoleCreateWithoutUserInput = {
@@ -11091,17 +14755,17 @@ export namespace Prisma {
 
   export type UserRoleUpdateManyWithWhereWithoutUserInput = {
     where: UserRoleScalarWhereInput
-    data: XOR<UserRoleUpdateManyMutationInput, UserRoleUncheckedUpdateManyWithoutUserRoleInput>
+    data: XOR<UserRoleUpdateManyMutationInput, UserRoleUncheckedUpdateManyWithoutUserInput>
   }
 
   export type UserRoleScalarWhereInput = {
     AND?: Enumerable<UserRoleScalarWhereInput>
     OR?: Enumerable<UserRoleScalarWhereInput>
     NOT?: Enumerable<UserRoleScalarWhereInput>
-    id?: IntFilter | number
-    userId?: IntFilter | number
-    roleId?: IntFilter | number
-    created_at?: DateTimeFilter | Date | string
+    id?: IntFilter<"UserRole"> | number
+    userId?: IntFilter<"UserRole"> | number
+    roleId?: IntFilter<"UserRole"> | number
+    created_at?: DateTimeFilter<"UserRole"> | Date | string
   }
 
   export type RolePermissionCreateWithoutRoleInput = {
@@ -11161,18 +14825,18 @@ export namespace Prisma {
 
   export type RolePermissionUpdateManyWithWhereWithoutRoleInput = {
     where: RolePermissionScalarWhereInput
-    data: XOR<RolePermissionUpdateManyMutationInput, RolePermissionUncheckedUpdateManyWithoutRolePermissionInput>
+    data: XOR<RolePermissionUpdateManyMutationInput, RolePermissionUncheckedUpdateManyWithoutRoleInput>
   }
 
   export type RolePermissionScalarWhereInput = {
     AND?: Enumerable<RolePermissionScalarWhereInput>
     OR?: Enumerable<RolePermissionScalarWhereInput>
     NOT?: Enumerable<RolePermissionScalarWhereInput>
-    id?: IntFilter | number
-    roleId?: IntFilter | number
-    permissionId?: IntFilter | number
-    created_at?: DateTimeFilter | Date | string
-    updated_at?: DateTimeFilter | Date | string
+    id?: IntFilter<"RolePermission"> | number
+    roleId?: IntFilter<"RolePermission"> | number
+    permissionId?: IntFilter<"RolePermission"> | number
+    created_at?: DateTimeFilter<"RolePermission"> | Date | string
+    updated_at?: DateTimeFilter<"RolePermission"> | Date | string
   }
 
   export type UserRoleUpsertWithWhereUniqueWithoutRoleInput = {
@@ -11188,7 +14852,7 @@ export namespace Prisma {
 
   export type UserRoleUpdateManyWithWhereWithoutRoleInput = {
     where: UserRoleScalarWhereInput
-    data: XOR<UserRoleUpdateManyMutationInput, UserRoleUncheckedUpdateManyWithoutUserRoleInput>
+    data: XOR<UserRoleUpdateManyMutationInput, UserRoleUncheckedUpdateManyWithoutRoleInput>
   }
 
   export type RolePermissionCreateWithoutPermissionInput = {
@@ -11227,7 +14891,7 @@ export namespace Prisma {
 
   export type RolePermissionUpdateManyWithWhereWithoutPermissionInput = {
     where: RolePermissionScalarWhereInput
-    data: XOR<RolePermissionUpdateManyMutationInput, RolePermissionUncheckedUpdateManyWithoutRoleInput>
+    data: XOR<RolePermissionUpdateManyMutationInput, RolePermissionUncheckedUpdateManyWithoutPermissionInput>
   }
 
   export type UserCreateWithoutUserRoleInput = {
@@ -11287,6 +14951,12 @@ export namespace Prisma {
   export type UserUpsertWithoutUserRoleInput = {
     update: XOR<UserUpdateWithoutUserRoleInput, UserUncheckedUpdateWithoutUserRoleInput>
     create: XOR<UserCreateWithoutUserRoleInput, UserUncheckedCreateWithoutUserRoleInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUserRoleInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUserRoleInput, UserUncheckedUpdateWithoutUserRoleInput>
   }
 
   export type UserUpdateWithoutUserRoleInput = {
@@ -11317,6 +14987,12 @@ export namespace Prisma {
   export type RoleUpsertWithoutUserRoleInput = {
     update: XOR<RoleUpdateWithoutUserRoleInput, RoleUncheckedUpdateWithoutUserRoleInput>
     create: XOR<RoleCreateWithoutUserRoleInput, RoleUncheckedCreateWithoutUserRoleInput>
+    where?: RoleWhereInput
+  }
+
+  export type RoleUpdateToOneWithWhereWithoutUserRoleInput = {
+    where?: RoleWhereInput
+    data: XOR<RoleUpdateWithoutUserRoleInput, RoleUncheckedUpdateWithoutUserRoleInput>
   }
 
   export type RoleUpdateWithoutUserRoleInput = {
@@ -11387,6 +15063,12 @@ export namespace Prisma {
   export type RoleUpsertWithoutRolePermissionInput = {
     update: XOR<RoleUpdateWithoutRolePermissionInput, RoleUncheckedUpdateWithoutRolePermissionInput>
     create: XOR<RoleCreateWithoutRolePermissionInput, RoleUncheckedCreateWithoutRolePermissionInput>
+    where?: RoleWhereInput
+  }
+
+  export type RoleUpdateToOneWithWhereWithoutRolePermissionInput = {
+    where?: RoleWhereInput
+    data: XOR<RoleUpdateWithoutRolePermissionInput, RoleUncheckedUpdateWithoutRolePermissionInput>
   }
 
   export type RoleUpdateWithoutRolePermissionInput = {
@@ -11411,6 +15093,12 @@ export namespace Prisma {
   export type PermissionUpsertWithoutRoleInput = {
     update: XOR<PermissionUpdateWithoutRoleInput, PermissionUncheckedUpdateWithoutRoleInput>
     create: XOR<PermissionCreateWithoutRoleInput, PermissionUncheckedCreateWithoutRoleInput>
+    where?: PermissionWhereInput
+  }
+
+  export type PermissionUpdateToOneWithWhereWithoutRoleInput = {
+    where?: PermissionWhereInput
+    data: XOR<PermissionUpdateWithoutRoleInput, PermissionUncheckedUpdateWithoutRoleInput>
   }
 
   export type PermissionUpdateWithoutRoleInput = {
@@ -11492,18 +15180,18 @@ export namespace Prisma {
 
   export type LineUserCategoryUpdateManyWithWhereWithoutAuthorInput = {
     where: LineUserCategoryScalarWhereInput
-    data: XOR<LineUserCategoryUpdateManyMutationInput, LineUserCategoryUncheckedUpdateManyWithoutCategoryInput>
+    data: XOR<LineUserCategoryUpdateManyMutationInput, LineUserCategoryUncheckedUpdateManyWithoutAuthorInput>
   }
 
   export type LineUserCategoryScalarWhereInput = {
     AND?: Enumerable<LineUserCategoryScalarWhereInput>
     OR?: Enumerable<LineUserCategoryScalarWhereInput>
     NOT?: Enumerable<LineUserCategoryScalarWhereInput>
-    id?: StringFilter | string
-    name?: StringFilter | string
-    createdAt?: DateTimeFilter | Date | string
-    updatedAt?: DateTimeFilter | Date | string
-    authorId?: StringFilter | string
+    id?: StringFilter<"LineUserCategory"> | string
+    name?: StringFilter<"LineUserCategory"> | string
+    createdAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    authorId?: StringFilter<"LineUserCategory"> | string
   }
 
   export type LineUserArticleUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -11519,19 +15207,19 @@ export namespace Prisma {
 
   export type LineUserArticleUpdateManyWithWhereWithoutAuthorInput = {
     where: LineUserArticleScalarWhereInput
-    data: XOR<LineUserArticleUpdateManyMutationInput, LineUserArticleUncheckedUpdateManyWithoutArticleInput>
+    data: XOR<LineUserArticleUpdateManyMutationInput, LineUserArticleUncheckedUpdateManyWithoutAuthorInput>
   }
 
   export type LineUserArticleScalarWhereInput = {
     AND?: Enumerable<LineUserArticleScalarWhereInput>
     OR?: Enumerable<LineUserArticleScalarWhereInput>
     NOT?: Enumerable<LineUserArticleScalarWhereInput>
-    id?: IntFilter | number
-    url?: StringFilter | string
-    type?: StringFilter | string
-    createdAt?: DateTimeFilter | Date | string
-    updatedAt?: DateTimeFilter | Date | string
-    authorId?: StringFilter | string
+    id?: IntFilter<"LineUserArticle"> | number
+    url?: StringFilter<"LineUserArticle"> | string
+    type?: StringFilter<"LineUserArticle"> | string
+    createdAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    updatedAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    authorId?: StringFilter<"LineUserArticle"> | string
   }
 
   export type LineUserCreateWithoutArticleInput = {
@@ -11562,6 +15250,12 @@ export namespace Prisma {
   export type LineUserUpsertWithoutArticleInput = {
     update: XOR<LineUserUpdateWithoutArticleInput, LineUserUncheckedUpdateWithoutArticleInput>
     create: XOR<LineUserCreateWithoutArticleInput, LineUserUncheckedCreateWithoutArticleInput>
+    where?: LineUserWhereInput
+  }
+
+  export type LineUserUpdateToOneWithWhereWithoutArticleInput = {
+    where?: LineUserWhereInput
+    data: XOR<LineUserUpdateWithoutArticleInput, LineUserUncheckedUpdateWithoutArticleInput>
   }
 
   export type LineUserUpdateWithoutArticleInput = {
@@ -11612,6 +15306,12 @@ export namespace Prisma {
   export type LineUserUpsertWithoutCategoryInput = {
     update: XOR<LineUserUpdateWithoutCategoryInput, LineUserUncheckedUpdateWithoutCategoryInput>
     create: XOR<LineUserCreateWithoutCategoryInput, LineUserUncheckedCreateWithoutCategoryInput>
+    where?: LineUserWhereInput
+  }
+
+  export type LineUserUpdateToOneWithWhereWithoutCategoryInput = {
+    where?: LineUserWhereInput
+    data: XOR<LineUserUpdateWithoutCategoryInput, LineUserUncheckedUpdateWithoutCategoryInput>
   }
 
   export type LineUserUpdateWithoutCategoryInput = {
@@ -11651,7 +15351,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserRoleUncheckedUpdateManyWithoutUserRoleInput = {
+  export type UserRoleUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11683,7 +15383,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type RolePermissionUncheckedUpdateManyWithoutRolePermissionInput = {
+  export type RolePermissionUncheckedUpdateManyWithoutRoleInput = {
     id?: IntFieldUpdateOperationsInput | number
     permissionId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11696,6 +15396,12 @@ export namespace Prisma {
   }
 
   export type UserRoleUncheckedUpdateWithoutRoleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserRoleUncheckedUpdateManyWithoutRoleInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11721,7 +15427,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type RolePermissionUncheckedUpdateManyWithoutRoleInput = {
+  export type RolePermissionUncheckedUpdateManyWithoutPermissionInput = {
     id?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11757,7 +15463,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type LineUserCategoryUncheckedUpdateManyWithoutCategoryInput = {
+  export type LineUserCategoryUncheckedUpdateManyWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11779,7 +15485,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type LineUserArticleUncheckedUpdateManyWithoutArticleInput = {
+  export type LineUserArticleUncheckedUpdateManyWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string

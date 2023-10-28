@@ -1,67 +1,29 @@
-import { PrismaService } from 'src/module/prisma/prisma.service';
-import { Builder, Browser, By, until } from 'selenium-webdriver';
-import { Logger } from '@nestjs/common';
+import { PrismaService } from 'src/module/prisma/prisma.service'
+import { Logger } from '@nestjs/common'
 
-const prisma = new PrismaService();
-const logger = new Logger('LineBot');
+const prisma = new PrismaService()
+const logger = new Logger('LineBot')
 
-export const findNike = async (userid: string) => {
-  const user = await prisma.lineUser.findFirst({
-    where: { id: userid },
-    include: { category: true },
-  });
-  const tem: any = {
+export const findNike = async (id: string) => {
+  const template: any = {
     type: 'flex',
     altText: 'Nike 發售預告',
     contents: {
       type: 'carousel',
       contents: [],
     },
-  };
-  let driver = await new Builder()
-    .forBrowser(Browser.CHROME)
-    .usingServer('http://1.34.174.42:4444/wd/hub')
-    .build();
-  const url = 'https://www.nike.com/tw';
+  }
   try {
-    await driver.get(`${url}/launch?s=upcoming`);
-    await driver.wait(until.titleIs('即將發售的產品。Nike SNKRS TW'), 1000);
-    await driver.executeScript(
-      'window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })',
-    );
-    await driver.sleep(1000);
-
-    const posts = await driver.findElements(
-      By.css('.upcoming-section .product-card'),
-    );
-    await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000);
-    let i = 0;
-    for (const post of posts) {
-      if (i > 10) break;
-      const link = await post.findElement(By.css('a')).getAttribute('href');
-      const img = await post
-        .findElement(By.css('.card-link .image-component'))
-        .getAttribute('src');
-      const title = await post
-        .findElement(By.css('.figcaption-content h2'))
-        .getText();
-
-      const time =
-        (await post
-          .findElement(By.css('.launch-caption p:nth-child(1)'))
-          .getText()) +
-        '/' +
-        (await post
-          .findElement(By.css('.launch-caption p:nth-child(2)'))
-          .getText());
-
-      i++;
-      tem.contents.contents.push({
+    const data = await prisma.nikeList.findMany({
+      take: 10,
+    })
+    for (const post of data) {
+      template.contents.contents.push({
         type: 'bubble',
         size: 'kilo',
         hero: {
           type: 'image',
-          url: img,
+          url: post.img,
           size: 'full',
           aspectMode: 'cover',
           aspectRatio: '9:10',
@@ -69,7 +31,7 @@ export const findNike = async (userid: string) => {
           action: {
             type: 'uri',
             label: 'action',
-            uri: link,
+            uri: post.link,
           },
         },
         body: {
@@ -82,14 +44,14 @@ export const findNike = async (userid: string) => {
               size: 'md',
               margin: 'none',
               color: '#0C356A',
-              text: title,
+              text: post.title,
               flex: 0,
               offsetBottom: 'none',
               wrap: true,
               action: {
                 type: 'uri',
                 label: 'action',
-                uri: link,
+                uri: post.link,
               },
             },
             {
@@ -103,7 +65,7 @@ export const findNike = async (userid: string) => {
                 },
                 {
                   type: 'text',
-                  text: time,
+                  text: post.time,
                   align: 'end',
                   color: '#B2C8BA',
                 },
@@ -114,15 +76,12 @@ export const findNike = async (userid: string) => {
           spacing: 'sm',
           paddingAll: '13px',
         },
-      });
+      })
     }
-    logger.log(`查詢 Nike 發售預告 成功：${user.id}`);
+    logger.log(`查詢 Nike 發售預告 成功：${id}`)
   } catch (e) {
-    logger.error(`查詢 Nike 發售預告 失敗: ${user.id}`);
-    logger.error(e);
-    await driver.quit();
-  } finally {
-    await driver.quit();
+    logger.error(`查詢 Nike 發售預告 失敗: ${id}`)
+    logger.error(e)
   }
-  return tem;
-};
+  return template
+}

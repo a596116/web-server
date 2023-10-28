@@ -104,3 +104,39 @@ model LineUserCategory {
   author    LineUser @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   authorId  String
 }
+
+// ----------------------------------------------------------
+// -------------------------爬蟲--------------------------
+// ----------------------------------------------------------
+model NikeList {
+  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
+  title     String
+  descs     String?
+  img       String   @db.VarChar(1000)
+  link      String
+  time      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HypeBeastList {
+  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
+  title     String
+  descs     String?
+  img       String   @db.VarChar(1000)
+  link      String
+  time      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model IthomeList {
+  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
+  title     String
+  descs     String?
+  img       String   @db.VarChar(1000)
+  link      String
+  time      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

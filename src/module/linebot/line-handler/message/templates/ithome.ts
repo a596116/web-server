@@ -1,43 +1,29 @@
-import { PrismaService } from 'src/module/prisma/prisma.service';
-import axios from 'axios';
-import * as cheerio from 'cheerio';
-import { Logger } from '@nestjs/common';
+import { PrismaService } from 'src/module/prisma/prisma.service'
+import { Logger } from '@nestjs/common'
 
-const prisma = new PrismaService();
-const logger = new Logger('LineBot');
+const prisma = new PrismaService()
+const logger = new Logger('LineBot')
 
-export const findIthome = async (userid: string) => {
-  const user = await prisma.lineUser.findFirst({
-    where: { id: userid },
-    include: { category: true },
-  });
-  const tem: any = {
+export const findIthome = async (id: string) => {
+  const template: any = {
     type: 'flex',
     altText: 'IThome 新聞',
     contents: {
       type: 'carousel',
       contents: [],
     },
-  };
+  }
   try {
-    const url = 'https://www.ithome.com.tw';
-    const body = await axios.get(`${url}/latest/feed/hitepo6y3vif.jsp`);
-    const $ = cheerio.load(body.data, { xmlMode: true });
-    const item = $('.channel-item .field-content');
-    let i = 0;
-    for (const el of item) {
-      if (i > 10) break;
-      const link = url + $(el).find('.title a').attr('href');
-      const img = $(el).find('.photo img').attr('src');
-      const title = $(el).find('.title a').text();
-      const descs = $(el).find('.summary').text();
-      const time = $(el).find('.post-at').text();
-      tem.contents.contents.push({
+    const data = await prisma.ithomeList.findMany({
+      take: 10,
+    })
+    for (const post of data) {
+      template.contents.contents.push({
         type: 'bubble',
         size: 'kilo',
         hero: {
           type: 'image',
-          url: img,
+          url: post.img,
           size: 'full',
           aspectMode: 'cover',
           aspectRatio: '10:7',
@@ -45,7 +31,7 @@ export const findIthome = async (userid: string) => {
           action: {
             type: 'uri',
             label: 'action',
-            uri: link,
+            uri: post.link,
           },
         },
         body: {
@@ -58,7 +44,7 @@ export const findIthome = async (userid: string) => {
               size: 'md',
               margin: 'none',
               color: '#706233',
-              text: title,
+              text: post.title,
               flex: 0,
               offsetBottom: 'none',
               wrap: true,
@@ -69,7 +55,7 @@ export const findIthome = async (userid: string) => {
               size: 'xs',
               margin: 'none',
               color: '#B0926A',
-              text: descs,
+              text: post.descs,
               flex: 0,
               offsetBottom: 'none',
               wrap: true,
@@ -78,7 +64,7 @@ export const findIthome = async (userid: string) => {
             },
             {
               type: 'text',
-              text: time,
+              text: post.time,
               decoration: 'underline',
               color: '#E5C3A6',
               size: 'xs',
@@ -91,16 +77,15 @@ export const findIthome = async (userid: string) => {
           action: {
             type: 'uri',
             label: 'action',
-            uri: link,
+            uri: post.link,
           },
         },
-      });
-      i++;
+      })
     }
-    logger.log(`查詢 Ithome 成功: ${user.id}`);
+    logger.log(`查詢 Ithome 成功: ${id}`)
   } catch (e) {
-    logger.error(`查詢 Ithome 失敗: ${user.id}`);
-    logger.error(e);
+    logger.error(`查詢 Ithome 失敗: ${id}`)
+    logger.error(e)
   }
-  return tem;
-};
+  return template
+}

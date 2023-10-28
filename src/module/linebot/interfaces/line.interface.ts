@@ -9,7 +9,7 @@ interface EventPayload {
 }
 
 interface ContentProvider {
-  type: string,
+  type: string
   originalContentUrl?: string
   previewImageUrl?: string
 }

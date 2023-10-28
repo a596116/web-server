@@ -1,63 +1,29 @@
-import { PrismaService } from 'src/module/prisma/prisma.service';
-import { Builder, Browser, By, Key, until } from 'selenium-webdriver';
-import { Logger } from '@nestjs/common';
+import { PrismaService } from 'src/module/prisma/prisma.service'
+import { Logger } from '@nestjs/common'
 
-const prisma = new PrismaService();
-const logger = new Logger('LineBot');
+const prisma = new PrismaService()
+const logger = new Logger('LineBot')
 
-export const findHypebeast = async (userid: string) => {
-  const user = await prisma.lineUser.findFirst({
-    where: { id: userid },
-    include: { category: true },
-  });
-  const tem: any = {
+export const findHypebeast = async (id: string) => {
+  const template: any = {
     type: 'flex',
     altText: 'Hypebeast 球鞋資訊',
     contents: {
       type: 'carousel',
       contents: [],
     },
-  };
-  let driver = await new Builder()
-    .forBrowser(Browser.CHROME)
-    .usingServer('http://1.34.174.42:4444/wd/hub')
-    .build();
+  }
   try {
-    await driver.get('https://hypebeast.com/tw/footwear');
-    await driver.wait(until.titleIs('Footwear 球鞋 | Hypebeast'), 1000);
-    await driver.executeScript(
-      'window.scrollTo(0, document.body.scrollHeight)',
-    );
-    const posts = await driver.findElements(By.css('.post-box'));
-    let i = 0;
-    for (const post of posts) {
-      if (i > 10) break;
-      const link = await post.getAttribute('data-permalink');
-      const img = await post.findElement(By.css('img')).getAttribute('src');
-      const title = await post
-        .findElement(
-          By.css('.post-box-content-container .post-box-content-title h2 span'),
-        )
-        .getText();
-      const descs = await post
-        .findElement(By.css('.post-box-content-excerpt'))
-        .getText();
-
-      const time = await post
-        .findElement(
-          By.css(
-            '.post-box-content-meta .post-box-meta-author-time .time time',
-          ),
-        )
-        .getText();
-
-      i++;
-      tem.contents.contents.push({
+    const data = await prisma.hypeBeastList.findMany({
+      take: 10,
+    })
+    for (const post of data) {
+      template.contents.contents.push({
         type: 'bubble',
         size: 'kilo',
         hero: {
           type: 'image',
-          url: img,
+          url: post.img,
           size: 'full',
           aspectMode: 'cover',
           aspectRatio: '10:7',
@@ -65,7 +31,7 @@ export const findHypebeast = async (userid: string) => {
           action: {
             type: 'uri',
             label: 'action',
-            uri: link,
+            uri: post.link,
           },
         },
         body: {
@@ -78,14 +44,14 @@ export const findHypebeast = async (userid: string) => {
               size: 'lg',
               margin: 'none',
               color: '#7C81AD',
-              text: title,
+              text: post.title,
               flex: 0,
               offsetBottom: 'none',
               wrap: true,
             },
             {
               type: 'text',
-              text: time,
+              text: post.time,
               style: 'italic',
               decoration: 'underline',
               color: '#E5C3A6',
@@ -97,7 +63,7 @@ export const findHypebeast = async (userid: string) => {
               contents: [
                 {
                   type: 'text',
-                  text: descs,
+                  text: post.descs,
                   wrap: true,
                   weight: 'bold',
                   size: 'xs',
@@ -117,18 +83,15 @@ export const findHypebeast = async (userid: string) => {
           action: {
             type: 'uri',
             label: 'action',
-            uri: link,
+            uri: post.link,
           },
         },
-      });
+      })
     }
-    logger.log(`查詢 HypeBeast 成功：${user.id}`);
+    logger.log(`查詢 HypeBeast 成功：${id}`)
   } catch (e) {
-    logger.error(`查詢 HypeBeast 失敗: ${user.id}`);
-    logger.error(e);
-    await driver.quit();
-  } finally {
-    await driver.quit();
+    logger.error(`查詢 HypeBeast 失敗: ${id}`)
+    logger.error(e)
   }
-  return tem;
-};
+  return template
+}

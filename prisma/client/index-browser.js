@@ -14,11 +14,11 @@ exports.Prisma = Prisma
 
 /**
  * Prisma Client JS version: 4.13.0
- * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+ * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
  */
 Prisma.prismaVersion = {
   client: "4.13.0",
-  engine: "1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a"
+  engine: "aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -86,6 +86,68 @@ Prisma.NullTypes = {
  * Enums
  */
 
+exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
+  Serializable: 'Serializable'
+});
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  password: 'password',
+  avatar: 'avatar',
+  status: 'status',
+  gender: 'gender',
+  birthday: 'birthday',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  creator: 'creator',
+  remark: 'remark',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.PermissionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  creator: 'creator',
+  remark: 'remark',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UserRoleScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  roleId: 'roleId',
+  created_at: 'created_at'
+};
+
+exports.Prisma.RolePermissionScalarFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.LineUserScalarFieldEnum = {
+  id: 'id',
+  callback: 'callback',
+  url: 'url',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.LineUserArticleScalarFieldEnum = {
   id: 'id',
   url: 'url',
@@ -103,39 +165,37 @@ exports.Prisma.LineUserCategoryScalarFieldEnum = {
   authorId: 'authorId'
 };
 
-exports.Prisma.LineUserScalarFieldEnum = {
+exports.Prisma.NikeListScalarFieldEnum = {
   id: 'id',
-  callback: 'callback',
-  url: 'url',
-  type: 'type',
+  title: 'title',
+  descs: 'descs',
+  img: 'img',
+  link: 'link',
+  time: 'time',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PermissionScalarFieldEnum = {
+exports.Prisma.HypeBeastListScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  creator: 'creator',
-  remark: 'remark',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  title: 'title',
+  descs: 'descs',
+  img: 'img',
+  link: 'link',
+  time: 'time',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.RolePermissionScalarFieldEnum = {
+exports.Prisma.IthomeListScalarFieldEnum = {
   id: 'id',
-  roleId: 'roleId',
-  permissionId: 'permissionId',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-};
-
-exports.Prisma.RoleScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  creator: 'creator',
-  remark: 'remark',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  title: 'title',
+  descs: 'descs',
+  img: 'img',
+  link: 'link',
+  time: 'time',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -143,31 +203,9 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
-  Serializable: 'Serializable'
-});
-
-exports.Prisma.UserRoleScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  roleId: 'roleId',
-  created_at: 'created_at'
-};
-
-exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  phone: 'phone',
-  password: 'password',
-  avatar: 'avatar',
-  status: 'status',
-  gender: 'gender',
-  birthday: 'birthday',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
@@ -179,7 +217,10 @@ exports.Prisma.ModelName = {
   RolePermission: 'RolePermission',
   LineUser: 'LineUser',
   LineUserArticle: 'LineUserArticle',
-  LineUserCategory: 'LineUserCategory'
+  LineUserCategory: 'LineUserCategory',
+  NikeList: 'NikeList',
+  HypeBeastList: 'HypeBeastList',
+  IthomeList: 'IthomeList'
 };
 
 /**

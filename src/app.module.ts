@@ -6,6 +6,8 @@ import { LinebotModule } from './module/linebot/linebot.module';
 import { Log4jsModule } from '@nestx-log4js/core';
 import { getEnvPath } from './common/helper';
 import { ConfigModule } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
+import { ScheduleModule as MyScheduleModule } from './module/schedule/schedule.module';
 import configs from './config/index';
 
 const envFilePath: string = getEnvPath(`../`);
@@ -18,10 +20,12 @@ const envFilePath: string = getEnvPath(`../`);
     }),
     ConfigModule.forRoot({ load: configs, isGlobal: true }),
     Log4jsModule.forRoot(),
+    ScheduleModule.forRoot(),
     AuthModule,
     UploadModule,
     RoleModule,
     LinebotModule,
+    MyScheduleModule,
   ],
 })
 export class AppModule {}
