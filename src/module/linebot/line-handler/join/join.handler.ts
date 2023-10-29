@@ -17,6 +17,8 @@ export class JoinHandler {
             callback: '',
             url: '',
             type: group.type,
+            createdAt: new Date(),
+            updatedAt: new Date(),
           },
         })
         this.logger.log(`Join Group: ${group.groupId}`)

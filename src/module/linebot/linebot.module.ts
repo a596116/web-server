@@ -17,6 +17,7 @@ import { SettingPostBack } from './line-handler/postback/templates/setting'
 import { ArticlePostBack } from './line-handler/postback/templates/article'
 import { FindArticlePostBack } from './line-handler/postback/templates/findarticle'
 import { JoinHandler } from './line-handler/join/join.handler'
+import { ScheduleHandler } from './line-handler/message/types/schedule.handler.service'
 
 @Module({
   providers: [
@@ -38,6 +39,7 @@ import { JoinHandler } from './line-handler/join/join.handler'
     FollowHandler,
     JoinHandler,
     Logger,
+    ScheduleHandler,
   ],
   controllers: [LinebotController],
 })

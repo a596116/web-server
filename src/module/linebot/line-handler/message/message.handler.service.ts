@@ -6,6 +6,7 @@ import { AudioHandler } from './types/audio.handler.service'
 import { LocationHandler } from './types/location.handler.service'
 import { StickerHandler } from './types/sticker.handler.service'
 import { MessageEvent } from '@line/bot-sdk'
+import { ScheduleHandler } from './types/schedule.handler.service'
 
 @Injectable()
 export class MessageHandler {
@@ -17,6 +18,7 @@ export class MessageHandler {
     private readonly audioHandler: AudioHandler,
     private readonly locationHandler: LocationHandler,
     private readonly stickerHandler: StickerHandler,
+    private readonly scheduleHandler: ScheduleHandler,
   ) {
     this.messageTypes = {
       text: this.textHandler,

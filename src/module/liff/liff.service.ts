@@ -14,33 +14,44 @@ export class LiffService {
    * @param {string} id
    */
   async fetchLineBotSetting(id: string) {
-    const data = await this.prisma.lineUser.findUnique({
-      where: {
-        id: id,
-      },
-    })
-    const { nike_broadcast, hypebeast_broadcast, ithome_broadcast } = data
-    const res = {
-      nike_broadcast,
-      hypebeast_broadcast,
-      ithome_broadcast,
+    try {
+      const data = await this.prisma.lineUser.findUnique({
+        where: {
+          id: id,
+        },
+      })
+      const { nike_broadcast, hypebeast_broadcast, ithome_broadcast } = data
+      const res = {
+        nike_broadcast,
+        hypebeast_broadcast,
+        ithome_broadcast,
+      }
+      return success({ data: res, message: '獲取成功' })
+    } catch (e) {
+      this.logger.error(e)
+      return error({ message: '獲取失敗' })
     }
-    return success({ data: res })
   }
 
   /**
    * @description: 編輯設定
    */
-  editLineBotSetting(id: string, body: LineBotSetting) {
-    const { nike_broadcast, hypebeast_broadcast, ithome_broadcast, displayName, pictureUrl } = body
-    const isExist = this.prisma.lineUser.findUnique({
+  async editLineBotSetting(id: string, body: LineBotSetting) {
+    const {
+      nike_broadcast = false,
+      hypebeast_broadcast = false,
+      ithome_broadcast = false,
+      displayName,
+      pictureUrl,
+    } = body
+    const isExist = await this.prisma.lineUser.findUnique({
       where: {
         id: id,
       },
     })
     try {
       if (!isExist) {
-        this.prisma.lineUser.create({
+        await this.prisma.lineUser.create({
           data: {
             id: id,
             displayName,
@@ -48,15 +59,16 @@ export class LiffService {
             nike_broadcast,
             hypebeast_broadcast,
             ithome_broadcast,
+            createdAt: new Date(),
+            updatedAt: new Date(),
           },
         })
       } else {
-        this.prisma.lineUser.update({
+        await this.prisma.lineUser.update({
           where: {
             id: id,
           },
           data: {
-            id: id,
             displayName,
             pictureUrl,
             nike_broadcast,

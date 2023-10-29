@@ -27,21 +27,17 @@ export const error = ({ message, data, code }: IResponse): IResponse => {
  */
 export const successPaginate = ({
   data,
-  page,
-  sort,
+  current_page,
   take,
   total,
-  end_date,
-  q,
-  start_date,
   code,
   message,
-}: IQuery & { data: any; total: number; code?: number; message?: string }): IResponseData => {
+}: IQuery): IResponseData => {
   return {
     code: code ?? 200,
     message,
     data,
-    current_page: page,
+    current_page,
     last_page: Math.ceil(total / take),
     per_page: take,
     total,

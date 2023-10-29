@@ -17,6 +17,8 @@ export class FollowHandler {
             callback: '',
             url: '',
             type: user.type,
+            createdAt: new Date(),
+            updatedAt: new Date(),
           },
         })
         this.logger.log(`Follow User: ${user.userId}`)

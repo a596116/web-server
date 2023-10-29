@@ -31,15 +31,16 @@ export class ScheduleService {
       let i = 0
       for (const post of posts) {
         if (i > 10) break
-        const link = await post.findElement(By.css('a')).getAttribute('href')
-        const img = await post
-          .findElement(By.css('.card-link .image-component'))
-          .getAttribute('src')
-        const title = await post.findElement(By.css('.figcaption-content h2')).getText()
+        const link = (await post.findElement(By.css('a')).getAttribute('href')) || url
+        const img =
+          (await post.findElement(By.css('.card-link .image-component')).getAttribute('src')) ||
+          'https://i.imgur.com/1zlVant.png'
+        const title =
+          (await post.findElement(By.css('.figcaption-content h2')).getText()) || '無標題'
         const time =
           (await post.findElement(By.css('.launch-caption p:nth-child(1)')).getText()) +
-          '/' +
-          (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText())
+            '/' +
+            (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText()) || '無時間'
         i++
         const isExist = await this.prisma.nikeList.findFirst({
           where: { title },
@@ -79,15 +80,20 @@ export class ScheduleService {
       let i = 0
       for (const post of posts) {
         if (i > 10) break
-        const link = await post.getAttribute('data-permalink')
-        const img = await post.findElement(By.css('img')).getAttribute('src')
-        const title = await post
-          .findElement(By.css('.post-box-content-container .post-box-content-title h2 span'))
-          .getText()
-        const descs = await post.findElement(By.css('.post-box-content-excerpt')).getText()
-        const time = await post
-          .findElement(By.css('.post-box-content-meta .post-box-meta-author-time .time time'))
-          .getText()
+        const link = (await post.getAttribute('data-permalink')) || 'https://www.twhaodai.com/'
+        const img =
+          (await post.findElement(By.css('img')).getAttribute('src')) ||
+          'https://i.imgur.com/1zlVant.png'
+        const title =
+          (await post
+            .findElement(By.css('.post-box-content-container .post-box-content-title h2 span'))
+            .getText()) || '無標題'
+        const descs =
+          (await post.findElement(By.css('.post-box-content-excerpt')).getText()) || '無描述'
+        const time =
+          (await post
+            .findElement(By.css('.post-box-content-meta .post-box-meta-author-time .time time'))
+            .getText()) || '無時間'
         i++
         const isExist = await this.prisma.hypeBeastList.findFirst({
           where: { title },
@@ -124,11 +130,11 @@ export class ScheduleService {
       let i = 0
       for (const el of item) {
         if (i > 10) break
-        const link = url + $(el).find('.title a').attr('href')
-        const img = $(el).find('.photo img').attr('src')
-        const title = $(el).find('.title a').text()
-        const descs = $(el).find('.summary').text()
-        const time = $(el).find('.post-at').text()
+        const link = url + $(el).find('.title a').attr('href') || 'https://www.twhaodai.com/'
+        const img = $(el).find('.photo img').attr('src') || 'https://i.imgur.com/1zlVant.png'
+        const title = $(el).find('.title a').text() || '無標題'
+        const descs = $(el).find('.summary').text() || '無描述'
+        const time = $(el).find('.post-at').text() || '無時間'
         i++
         const isExist = await this.prisma.ithomeList.findFirst({
           where: { title },

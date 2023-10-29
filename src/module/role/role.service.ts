@@ -9,7 +9,7 @@ import { formatInclude } from 'src/utils/formatInclude'
 
 @Injectable()
 export class RoleService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async findAllRole(query: IQuery) {
     const sort = {}
@@ -17,25 +17,24 @@ export class RoleService {
       sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
     }
     const data = await this.prisma.role.findMany({
-      skip: query.take * (query.page - 1),
+      skip: query.take * (query.current_page - 1),
       take: +query.take,
       orderBy: sort,
       where: {
         name: {
-          contains: query.q
+          contains: query.q,
         },
       },
       include: {
         RolePermission: {
           include: {
-            permission: true
-          }
-        }
-      }
-    },
-    )
+            permission: true,
+          },
+        },
+      },
+    })
     data.forEach((item: any) => {
-      item.permissions = item.RolePermission.map(item => {
+      item.permissions = item.RolePermission.map((item) => {
         return item.permission.name
       })
     })
@@ -50,11 +49,11 @@ export class RoleService {
     })
     const role = await this.prisma.role.findUnique({
       where: { id },
-      include: { RolePermission: true }
+      include: { RolePermission: true },
     })
     const params = {
       ...data,
-      role: formatInclude(role.RolePermission, 'permissionId')
+      role: formatInclude(role.RolePermission, 'permissionId'),
     }
     return success({ data: params })
   }
@@ -71,12 +70,12 @@ export class RoleService {
           remark: role.remark || null,
           RolePermission: {
             createMany: {
-              data: role.role.map((item) => ({ permissionId: item }))
-            }
-          }
+              data: role.role.map((item) => ({ permissionId: item })),
+            },
+          },
         },
       })
-      return success({ message: "新增角色成功" })
+      return success({ message: '新增角色成功' })
     } catch (error) {
       console.log(error)
       return error('新增角色失敗，錯誤詳情：' + error)
@@ -94,12 +93,12 @@ export class RoleService {
           RolePermission: {
             deleteMany: { roleId: id },
             createMany: {
-              data: role.role.map((item) => ({ permissionId: item }))
+              data: role.role.map((item) => ({ permissionId: item })),
             },
           },
         },
       })
-      return success({ message: "編輯角色成功" })
+      return success({ message: '編輯角色成功' })
     } catch (error) {
       console.log(error)
       return error('編輯角色失敗，錯誤詳情：' + error)
@@ -113,20 +112,18 @@ export class RoleService {
     try {
       await this.prisma.role.delete({
         where: { id },
-        include: { RolePermission: true }
+        include: { RolePermission: true },
       })
-      return success({ message: "刪除角色成功" })
+      return success({ message: '刪除角色成功' })
     } catch (error) {
       console.log(error)
       return error('刪除角色失敗，錯誤詳情：' + error)
     }
   }
 
-
   //--------------------------------------------------------------------
   //--------------------------------------------------------------------
   //--------------------------------------------------------------------
-
 
   async findAllPermission(query: IQuery) {
     const sort = {}
@@ -134,16 +131,15 @@ export class RoleService {
       sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
     }
     const data = await this.prisma.permission.findMany({
-      skip: query.take * (query.page - 1),
+      skip: query.take * (query.current_page - 1),
       take: +query.take,
       orderBy: sort,
       where: {
         name: {
-          contains: query.q
+          contains: query.q,
         },
       },
-    },
-    )
+    })
     const total = await this.prisma.permission.count()
     return successPaginate({ ...query, total, data })
   }
@@ -156,16 +152,15 @@ export class RoleService {
     return success({ data })
   }
 
-
   /**
    * @description: 新增權限
    */
   async createPermissions(role: createPermissionDto) {
     try {
       await this.prisma.permission.createMany({
-        data: role.permissions.map((item) => (item)),
+        data: role.permissions.map((item) => item),
       })
-      return success({ message: "新增權限成功" })
+      return success({ message: '新增權限成功' })
     } catch (error) {
       console.log(error)
       return error('新增權限失敗，錯誤詳情：' + error)
@@ -173,8 +168,8 @@ export class RoleService {
   }
 
   /**
-     * @description: 編輯權限
-     */
+   * @description: 編輯權限
+   */
   async editPermissions(id: number, role: any) {
     try {
       await this.prisma.permission.update({
@@ -183,7 +178,7 @@ export class RoleService {
           remark: role.remark || null,
         },
       })
-      return success({ message: "編輯權限成功" })
+      return success({ message: '編輯權限成功' })
     } catch (error) {
       console.log(error)
       return error('編輯權限失敗，錯誤詳情：' + error)
@@ -197,15 +192,12 @@ export class RoleService {
     try {
       await this.prisma.permission.delete({
         where: { id },
-        include: { Role: true }
+        include: { Role: true },
       })
-      return success({ message: "刪除權限成功" })
+      return success({ message: '刪除權限成功' })
     } catch (error) {
       console.log(error)
       return error('刪除權限失敗，錯誤詳情：' + error)
     }
   }
-
-
 }
-

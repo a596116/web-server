@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common'
 import { LiffService } from './liff.service'
 import { LineBotSetting } from './interface/liff_setting.interface'
 

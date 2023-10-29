@@ -72,7 +72,7 @@ export class AuthService {
     const sort = {}
     sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
     const data = await this.prisma.user.findMany({
-      skip: query.take * (query.page - 1),
+      skip: query.take * (query.current_page - 1),
       take: +query.take,
       orderBy: sort,
       where: {

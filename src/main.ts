@@ -8,6 +8,7 @@ import { Log4jsLogger } from '@nestx-log4js/core'
 import ValidatePipe from './common/validate/validate.pipe'
 import { json, urlencoded } from 'body-parser'
 import { ConfigService } from '@nestjs/config'
+import { TimeMiddleware } from './common/middleware/time.middleware'
 
 const logger = new Logger('main.ts')
 

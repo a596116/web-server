@@ -1,17 +1,17 @@
-import { Module } from '@nestjs/common';
-import { AuthModule } from './module/auth/auth.module';
-import { UploadModule } from './module/upload/upload.module';
-import { RoleModule } from './module/role/role.module';
-import { LinebotModule } from './module/linebot/linebot.module';
-import { Log4jsModule } from '@nestx-log4js/core';
-import { getEnvPath } from './common/helper';
-import { ConfigModule } from '@nestjs/config';
-import { ScheduleModule } from '@nestjs/schedule';
-import { ScheduleModule as MyScheduleModule } from './module/schedule/schedule.module';
-import { LiffModule } from './module/liff/liff.module';
-import configs from './config/index';
+import { Module } from '@nestjs/common'
+import { AuthModule } from './module/auth/auth.module'
+import { UploadModule } from './module/upload/upload.module'
+import { RoleModule } from './module/role/role.module'
+import { LinebotModule } from './module/linebot/linebot.module'
+import { Log4jsModule } from '@nestx-log4js/core'
+import { getEnvPath } from './common/helper'
+import { ConfigModule } from '@nestjs/config'
+import { ScheduleModule } from '@nestjs/schedule'
+import { ScheduleModule as MyScheduleModule } from './module/schedule/schedule.module'
+import { LiffModule } from './module/liff/liff.module'
+import configs from './config/index'
 
-const envFilePath: string = getEnvPath(`../`);
+const envFilePath: string = getEnvPath(`../`)
 
 @Module({
   imports: [
