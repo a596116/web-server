@@ -17,6 +17,7 @@ COPY . .
 RUN npm install -g pnpm
 RUN npm cache clean --force
 RUN pnpm install 
+RUN npx prisma generate
 
 # 建立生產版本
 RUN pnpm run build
