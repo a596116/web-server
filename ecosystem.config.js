@@ -11,11 +11,6 @@ module.exports = {
         PORT: 3005, //指定伺服器上的 port
         NODE_ENV: 'prod',
       },
-      env_sit: {
-        name: 'server_sit',
-        PORT: 3005, //指定伺服器上的 port
-        NODE_ENV: 'sit',
-      },
     },
   ],
 };

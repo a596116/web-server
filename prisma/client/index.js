@@ -29,11 +29,11 @@ exports.Prisma = Prisma
 
 /**
  * Prisma Client JS version: 4.13.0
- * Query Engine version: 8fbc245156db7124f997f4cecdd8d1219e360944
+ * Query Engine version: 1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
  */
 Prisma.prismaVersion = {
   client: "4.13.0",
-  engine: "8fbc245156db7124f997f4cecdd8d1219e360944"
+  engine: "1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -207,13 +207,7 @@ const config = {
     "config": {
       "engineType": "library"
     },
-    "binaryTargets": [
-      {
-        "fromEnvVar": null,
-        "value": "darwin-arm64",
-        "native": true
-      }
-    ],
+    "binaryTargets": [],
     "previewFeatures": [],
     "isCustomOutput": true
   },
@@ -223,7 +217,7 @@ const config = {
   },
   "relativePath": "..",
   "clientVersion": "4.13.0",
-  "engineVersion": "8fbc245156db7124f997f4cecdd8d1219e360944",
+  "engineVersion": "1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a",
   "datasourceNames": [
     "db"
   ],
@@ -248,7 +242,7 @@ const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
-path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
-path.join(process.cwd(), "prisma/client/libquery_engine-darwin-arm64.dylib.node")
+path.join(__dirname, "libquery_engine-darwin.dylib.node");
+path.join(process.cwd(), "prisma/client/libquery_engine-darwin.dylib.node")
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/client/schema.prisma")
