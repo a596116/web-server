@@ -1,5 +1,5 @@
 import { PrismaService } from 'src/module/prisma/prisma.service'
-import { Builder, Browser, By, Key, until } from 'selenium-webdriver'
+import { Builder, Browser, By, until } from 'selenium-webdriver'
 
 const prisma = new PrismaService()
 
@@ -16,7 +16,7 @@ export const findNike = async (userid: string) => {
             "contents": []
         }
     }
-    let driver = await new Builder().forBrowser(Browser.CHROME).build()
+    let driver = await new Builder().forBrowser(Browser.INTERNET_EXPLORER).build()
     const url = 'https://www.nike.com/tw'
     try {
         await driver.get(`${url}/launch?s=upcoming`)
