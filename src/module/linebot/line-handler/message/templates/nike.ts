@@ -107,6 +107,8 @@ export const findNike = async (userid: string) => {
                 }
             })
         }
+    } catch (e) {
+        console.log(e)
     } finally {
         await driver.quit()
     }

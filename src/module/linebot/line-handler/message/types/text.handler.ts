@@ -58,7 +58,7 @@ export class TextHandler {
         case 'hypebeast': {
           return await this.configService.createLinebotClient().replyMessage(replyToken, await findHypebeast(userId))
         }
-        case 'a': {
+        case 'ithome': {
           return await this.configService.createLinebotClient().replyMessage(replyToken, await findIthome(userId))
         }
 
