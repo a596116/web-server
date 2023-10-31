@@ -49,7 +49,7 @@ export const articleTemplate = async (userid: string, url: string) => {
     }
     if (user.category.length) {
         user.category.forEach(v => {
-            tem.contents.body.contents[2].contents.push({
+            tem.contents.body.contents[2]?.contents?.push({
                 "type": "button",
                 "action": {
                     "type": "postback",
@@ -61,7 +61,7 @@ export const articleTemplate = async (userid: string, url: string) => {
             })
         })
     } else {
-        tem.contents.body.contents[0].contents.push({
+        tem.contents.body.contents[0]?.contents?.push({
             "type": "text",
             "text": "undefined",
             "align": "center",
@@ -119,7 +119,7 @@ export const findArticle = async (userid: string) => {
     }
     if (user.category.length) {
         user.category.forEach(v => {
-            tem.contents.body.contents[2].contents.push({
+            tem.contents.body.contents[2]?.contents?.push({
                 "type": "button",
                 "action": {
                     "type": "postback",
@@ -131,7 +131,7 @@ export const findArticle = async (userid: string) => {
             })
         })
     } else {
-        tem.contents.body.contents[0].contents.push({
+        tem.contents.body.contents[0]?.contents?.push({
             "type": "text",
             "text": "undefined",
             "align": "center",

@@ -9,6 +9,9 @@ import { otherTemplate } from '../templates/other'
 import { githubTemplate } from '../templates/github'
 import { PrismaService } from 'src/module/prisma/prisma.service'
 import { articleTemplate, findArticle } from '../templates/article'
+import { findNike } from '../templates/nike'
+import { findHypebeast } from '../templates/hypebeast'
+import { findIthome } from '../templates/ithome'
 
 @Injectable()
 export class TextHandler {
@@ -48,6 +51,15 @@ export class TextHandler {
         }
         case 'Articles': {
           return await this.configService.createLinebotClient().replyMessage(replyToken, await findArticle(userId))
+        }
+        case 'nike': {
+          return await this.configService.createLinebotClient().replyMessage(replyToken, await findNike(userId))
+        }
+        case 'hypebeast': {
+          return await this.configService.createLinebotClient().replyMessage(replyToken, await findHypebeast(userId))
+        }
+        case 'a': {
+          return await this.configService.createLinebotClient().replyMessage(replyToken, await findIthome(userId))
         }
 
         case '?':
