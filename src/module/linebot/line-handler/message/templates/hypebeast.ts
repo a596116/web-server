@@ -122,9 +122,10 @@ export const findHypebeast = async (userid: string) => {
         },
       });
     }
-    logger.log(`查詢 HypeBeast`, user.id);
+    logger.log(`查詢 HypeBeast 成功：${user.id}`);
   } catch (e) {
-    logger.error(`查詢 HypeBeast 失敗: ${user.id}`, e);
+    logger.error(`查詢 HypeBeast 失敗: ${user.id}`);
+    logger.error(e);
     await driver.quit();
   } finally {
     await driver.quit();

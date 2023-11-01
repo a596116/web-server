@@ -116,9 +116,10 @@ export const findNike = async (userid: string) => {
         },
       });
     }
-    logger.log(`查詢 Nike 發售預告`, user.id);
+    logger.log(`查詢 Nike 發售預告 成功：${user.id}`);
   } catch (e) {
-    logger.error(`查詢 Nike 發售預告 失敗: ${user.id}`, e);
+    logger.error(`查詢 Nike 發售預告 失敗: ${user.id}`);
+    logger.error(e);
     await driver.quit();
   } finally {
     await driver.quit();

@@ -97,9 +97,10 @@ export const findIthome = async (userid: string) => {
       });
       i++;
     }
-    logger.log(`查詢 Ithome: ${user.id}`);
+    logger.log(`查詢 Ithome 成功: ${user.id}`);
   } catch (e) {
-    logger.error(`查詢 Ithome 失敗: ${user.id}`, e);
+    logger.error(`查詢 Ithome 失敗: ${user.id}`);
+    logger.error(e);
   }
   return tem;
 };
