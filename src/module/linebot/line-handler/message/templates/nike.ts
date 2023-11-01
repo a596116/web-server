@@ -29,8 +29,9 @@ export const findNike = async (userid: string) => {
             By.css('.upcoming-section .product-card')
         )
         await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
-
+        let i = 0
         for (const post of posts) {
+            if (i > 11) break
             const link = await post.findElement(By.css('a')).getAttribute('href')
             const img = await post
                 .findElement(By.css('.card-link .image-component'))
@@ -47,6 +48,8 @@ export const findNike = async (userid: string) => {
                 (await post
                     .findElement(By.css('.launch-caption p:nth-child(2)'))
                     .getText())
+
+            i++
             tem.contents.contents.push({
                 "type": "bubble",
                 "size": "kilo",

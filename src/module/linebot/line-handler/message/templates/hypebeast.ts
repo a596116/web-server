@@ -24,7 +24,9 @@ export const findHypebeast = async (userid: string) => {
         await driver.wait(until.titleIs('Footwear 球鞋 | Hypebeast'), 1000)
         await driver.executeScript('window.scrollTo(0, document.body.scrollHeight)')
         const posts = await driver.findElements(By.css('.post-box'))
+        let i = 0
         for (const post of posts) {
+            if (i > 11) break
             const link = await post.getAttribute('data-permalink')
             const img = await post.findElement(By.css('img')).getAttribute('src')
             const title = await post
@@ -42,6 +44,7 @@ export const findHypebeast = async (userid: string) => {
                 )
                 .getText()
 
+            i++
             tem.contents.contents.push({
                 "type": "bubble",
                 "size": "kilo",
