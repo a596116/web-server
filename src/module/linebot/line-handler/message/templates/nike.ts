@@ -31,7 +31,7 @@ export const findNike = async (userid: string) => {
         await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
         let i = 0
         for (const post of posts) {
-            if (i > 11) break
+            if (i > 10) break
             const link = await post.findElement(By.css('a')).getAttribute('href')
             const img = await post
                 .findElement(By.css('.card-link .image-component'))

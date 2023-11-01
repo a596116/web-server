@@ -26,7 +26,7 @@ export const findHypebeast = async (userid: string) => {
         const posts = await driver.findElements(By.css('.post-box'))
         let i = 0
         for (const post of posts) {
-            if (i > 11) break
+            if (i > 10) break
             const link = await post.getAttribute('data-permalink')
             const img = await post.findElement(By.css('img')).getAttribute('src')
             const title = await post

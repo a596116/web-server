@@ -24,7 +24,7 @@ export const findIthome = async (userid: string) => {
     const item = $('.channel-item .field-content')
     let i = 0
     for (const el of item) {
-        if (i > 11) break
+        if (i > 10) break
         const link = url + $(el).find('.title a').attr('href')
         const img = $(el).find('.photo img').attr('src')
         const title = $(el).find('.title a').text()
