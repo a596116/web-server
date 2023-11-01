@@ -17,7 +17,7 @@ export const findHypebeast = async (userid: string) => {
         }
     }
     let driver = await new Builder()
-        .forBrowser(Browser.CHROME)
+        .forBrowser(Browser.CHROME).usingServer('http://1.34.174.42:4444/wd/hub')
         .build()
     try {
         await driver.get('https://hypebeast.com/tw/footwear')

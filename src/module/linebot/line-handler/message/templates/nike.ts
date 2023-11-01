@@ -16,7 +16,7 @@ export const findNike = async (userid: string) => {
             "contents": []
         }
     }
-    let driver = await new Builder().forBrowser(Browser.INTERNET_EXPLORER).build()
+    let driver = await new Builder().forBrowser(Browser.CHROME).usingServer('http://1.34.174.42:4444/wd/hub').build()
     const url = 'https://www.nike.com/tw'
     try {
         await driver.get(`${url}/launch?s=upcoming`)
