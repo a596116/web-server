@@ -9,6 +9,7 @@ import { json, urlencoded } from 'body-parser'
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
   app.useStaticAssets(join(__dirname, 'upload'), { prefix: '/upload' })
+  // app.useStaticAssets(join(__dirname, '..', 'public'))
 
   app.useGlobalPipes(new ValidatePipe({ whitelist: true, transform: true }))
 
