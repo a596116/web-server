@@ -139,7 +139,6 @@ export class AuthService {
           birthday: UpdateInfoDto.birthday,
           gender: UpdateInfoDto.gender,
           avatar: UpdateInfoDto.avatar ? `${this.config.get<string>('BASE_URL')}/upload/avatar/${UpdateInfoDto.name}.png` : '0'
-          // avatar: UpdateInfoDto.avatar ? `/upload/avatar/${UpdateInfoDto.name}.png` : '0'
         },
       })
       return success({ message: "更新資料成功" })

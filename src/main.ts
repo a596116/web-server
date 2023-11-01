@@ -5,14 +5,12 @@ import { join } from 'path'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import ValidatePipe from './common/validate/validate.pipe'
 import { json, urlencoded } from 'body-parser'
-
+const ENV = process.env.NODE_ENV
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
   app.useStaticAssets(join(__dirname, 'upload'), { prefix: '/upload' })
-  // app.useStaticAssets(join(__dirname, '..', 'public'))
 
   app.useGlobalPipes(new ValidatePipe({ whitelist: true, transform: true }))
-
 
   app.use(json({ limit: '500mb' }))
   app.use(urlencoded({ limit: '500mb', extended: true }))
@@ -43,7 +41,8 @@ async function bootstrap() {
 
 
   await app.listen(3005, () => {
-    console.log(`http://localhost:3005/api`)
+    console.log(process.env.NODE_ENV)
+    // console.log(`http://localhost:3005/api`)
     // logger.log(`${config.get<string>('BASE_URL')}/api`)
   })
 }

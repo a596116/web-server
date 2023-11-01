@@ -23,5 +23,6 @@ RUN pnpm run build
 EXPOSE 3005
 
 # 啟動應用程式
-CMD ["node", "./dist/main.js"]
+# CMD ["node", "./dist/main.js"]
+CMD ["pnpm", "run", "start:prod"]
 
