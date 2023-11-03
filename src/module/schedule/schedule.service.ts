@@ -6,11 +6,12 @@ import { Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import axios from 'axios'
 import * as cheerio from 'cheerio'
+import _ from 'lodash'
 
 @Injectable()
 export class ScheduleService {
   private readonly logger: Logger = new Logger('LineBot')
-  constructor(private prisma: PrismaService, private readonly config: ConfigService) {}
+  constructor(private prisma: PrismaService, private readonly config: ConfigService) { }
 
   @Cron('0 * * * *')
   async handleFetchNike() {
@@ -26,9 +27,10 @@ export class ScheduleService {
         'window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })',
       )
       await driver.sleep(1000)
-      const posts = await driver.findElements(By.css('.upcoming-section .product-card'))
+      const posts = _.reverse(await driver.findElements(By.css('.upcoming-section .product-card')))
       await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
       let i = 0
+
       for (const post of posts) {
         if (i > 10) break
         const link = (await post.findElement(By.css('a')).getAttribute('href')) || url
@@ -39,8 +41,8 @@ export class ScheduleService {
           (await post.findElement(By.css('.figcaption-content h2')).getText()) || '無標題'
         const time =
           (await post.findElement(By.css('.launch-caption p:nth-child(1)')).getText()) +
-            '/' +
-            (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText()) || '無時間'
+          '/' +
+          (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText()) || '無時間'
         i++
         const isExist = await this.prisma.nikeList.findFirst({
           where: { title },
@@ -76,7 +78,7 @@ export class ScheduleService {
       await driver.get('https://hypebeast.com/tw/footwear')
       await driver.wait(until.titleIs('Footwear 球鞋 | Hypebeast'), 1000)
       await driver.executeScript('window.scrollTo(0, document.body.scrollHeight)')
-      const posts = await driver.findElements(By.css('.post-box'))
+      const posts = _.reverse(await driver.findElements(By.css('.post-box')))
       let i = 0
       for (const post of posts) {
         if (i > 10) break
@@ -126,7 +128,7 @@ export class ScheduleService {
       const url = 'https://www.ithome.com.tw'
       const body = await axios.get(`${url}/latest/feed/hitepo6y3vif.jsp`)
       const $ = cheerio.load(body.data, { xmlMode: true })
-      const item = $('.channel-item .field-content')
+      const item = _.reverse($('.channel-item .field-content'))
       let i = 0
       for (const el of item) {
         if (i > 10) break
