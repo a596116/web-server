@@ -141,9 +141,14 @@ exports.Prisma.RolePermissionScalarFieldEnum = {
 
 exports.Prisma.LineUserScalarFieldEnum = {
   id: 'id',
+  displayName: 'displayName',
+  pictureUrl: 'pictureUrl',
   callback: 'callback',
   url: 'url',
   type: 'type',
+  nike_broadcast: 'nike_broadcast',
+  hypebeast_broadcast: 'hypebeast_broadcast',
+  ithome_broadcast: 'ithome_broadcast',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

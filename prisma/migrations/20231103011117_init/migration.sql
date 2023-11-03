@@ -68,6 +68,9 @@ CREATE TABLE `LineUser` (
     `callback` VARCHAR(191) NOT NULL,
     `url` VARCHAR(191) NOT NULL,
     `type` VARCHAR(191) NOT NULL,
+    `nike_broadcast` BOOLEAN NULL,
+    `hypebeast_broadcast` BOOLEAN NULL,
+    `ithome_broadcast` BOOLEAN NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
@@ -93,6 +96,48 @@ CREATE TABLE `LineUserCategory` (
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
     `authorId` VARCHAR(191) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `NikeList` (
+    `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `descs` VARCHAR(191) NULL,
+    `img` VARCHAR(1000) NOT NULL,
+    `link` VARCHAR(191) NOT NULL,
+    `time` VARCHAR(191) NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `HypeBeastList` (
+    `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `descs` VARCHAR(191) NULL,
+    `img` VARCHAR(1000) NOT NULL,
+    `link` VARCHAR(191) NOT NULL,
+    `time` VARCHAR(191) NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `IthomeList` (
+    `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `descs` VARCHAR(191) NULL,
+    `img` VARCHAR(1000) NOT NULL,
+    `link` VARCHAR(191) NOT NULL,
+    `time` VARCHAR(191) NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

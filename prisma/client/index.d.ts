@@ -84,9 +84,14 @@ export type RolePermission = {
  */
 export type LineUser = {
   id: string
-  callback: string
-  url: string
-  type: string
+  displayName: string | null
+  pictureUrl: string | null
+  callback: string | null
+  url: string | null
+  type: string | null
+  nike_broadcast: boolean | null
+  hypebeast_broadcast: boolean | null
+  ithome_broadcast: boolean | null
   createdAt: Date
   updatedAt: Date
 }
@@ -6272,27 +6277,42 @@ export namespace Prisma {
 
   export type LineUserMinAggregateOutputType = {
     id: string | null
+    displayName: string | null
+    pictureUrl: string | null
     callback: string | null
     url: string | null
     type: string | null
+    nike_broadcast: boolean | null
+    hypebeast_broadcast: boolean | null
+    ithome_broadcast: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type LineUserMaxAggregateOutputType = {
     id: string | null
+    displayName: string | null
+    pictureUrl: string | null
     callback: string | null
     url: string | null
     type: string | null
+    nike_broadcast: boolean | null
+    hypebeast_broadcast: boolean | null
+    ithome_broadcast: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type LineUserCountAggregateOutputType = {
     id: number
+    displayName: number
+    pictureUrl: number
     callback: number
     url: number
     type: number
+    nike_broadcast: number
+    hypebeast_broadcast: number
+    ithome_broadcast: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -6301,27 +6321,42 @@ export namespace Prisma {
 
   export type LineUserMinAggregateInputType = {
     id?: true
+    displayName?: true
+    pictureUrl?: true
     callback?: true
     url?: true
     type?: true
+    nike_broadcast?: true
+    hypebeast_broadcast?: true
+    ithome_broadcast?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type LineUserMaxAggregateInputType = {
     id?: true
+    displayName?: true
+    pictureUrl?: true
     callback?: true
     url?: true
     type?: true
+    nike_broadcast?: true
+    hypebeast_broadcast?: true
+    ithome_broadcast?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type LineUserCountAggregateInputType = {
     id?: true
+    displayName?: true
+    pictureUrl?: true
     callback?: true
     url?: true
     type?: true
+    nike_broadcast?: true
+    hypebeast_broadcast?: true
+    ithome_broadcast?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -6402,9 +6437,14 @@ export namespace Prisma {
 
   export type LineUserGroupByOutputType = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName: string | null
+    pictureUrl: string | null
+    callback: string | null
+    url: string | null
+    type: string | null
+    nike_broadcast: boolean | null
+    hypebeast_broadcast: boolean | null
+    ithome_broadcast: boolean | null
     createdAt: Date
     updatedAt: Date
     _count: LineUserCountAggregateOutputType | null
@@ -6428,9 +6468,14 @@ export namespace Prisma {
 
   export type LineUserSelect = {
     id?: boolean
+    displayName?: boolean
+    pictureUrl?: boolean
     callback?: boolean
     url?: boolean
     type?: boolean
+    nike_broadcast?: boolean
+    hypebeast_broadcast?: boolean
+    ithome_broadcast?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | LineUser$categoryArgs
@@ -12054,9 +12099,14 @@ export namespace Prisma {
 
   export const LineUserScalarFieldEnum: {
     id: 'id',
+    displayName: 'displayName',
+    pictureUrl: 'pictureUrl',
     callback: 'callback',
     url: 'url',
     type: 'type',
+    nike_broadcast: 'nike_broadcast',
+    hypebeast_broadcast: 'hypebeast_broadcast',
+    ithome_broadcast: 'ithome_broadcast',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -12517,9 +12567,14 @@ export namespace Prisma {
     OR?: Enumerable<LineUserWhereInput>
     NOT?: Enumerable<LineUserWhereInput>
     id?: StringFilter<"LineUser"> | string
-    callback?: StringFilter<"LineUser"> | string
-    url?: StringFilter<"LineUser"> | string
-    type?: StringFilter<"LineUser"> | string
+    displayName?: StringNullableFilter<"LineUser"> | string | null
+    pictureUrl?: StringNullableFilter<"LineUser"> | string | null
+    callback?: StringNullableFilter<"LineUser"> | string | null
+    url?: StringNullableFilter<"LineUser"> | string | null
+    type?: StringNullableFilter<"LineUser"> | string | null
+    nike_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
+    hypebeast_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
+    ithome_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
     createdAt?: DateTimeFilter<"LineUser"> | Date | string
     updatedAt?: DateTimeFilter<"LineUser"> | Date | string
     category?: LineUserCategoryListRelationFilter
@@ -12528,9 +12583,14 @@ export namespace Prisma {
 
   export type LineUserOrderByWithRelationInput = {
     id?: SortOrder
-    callback?: SortOrder
-    url?: SortOrder
-    type?: SortOrder
+    displayName?: SortOrderInput | SortOrder
+    pictureUrl?: SortOrderInput | SortOrder
+    callback?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    nike_broadcast?: SortOrderInput | SortOrder
+    hypebeast_broadcast?: SortOrderInput | SortOrder
+    ithome_broadcast?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     category?: LineUserCategoryOrderByRelationAggregateInput
@@ -12542,9 +12602,14 @@ export namespace Prisma {
     AND?: Enumerable<LineUserWhereInput>
     OR?: Enumerable<LineUserWhereInput>
     NOT?: Enumerable<LineUserWhereInput>
-    callback?: StringFilter<"LineUser"> | string
-    url?: StringFilter<"LineUser"> | string
-    type?: StringFilter<"LineUser"> | string
+    displayName?: StringNullableFilter<"LineUser"> | string | null
+    pictureUrl?: StringNullableFilter<"LineUser"> | string | null
+    callback?: StringNullableFilter<"LineUser"> | string | null
+    url?: StringNullableFilter<"LineUser"> | string | null
+    type?: StringNullableFilter<"LineUser"> | string | null
+    nike_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
+    hypebeast_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
+    ithome_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
     createdAt?: DateTimeFilter<"LineUser"> | Date | string
     updatedAt?: DateTimeFilter<"LineUser"> | Date | string
     category?: LineUserCategoryListRelationFilter
@@ -12553,9 +12618,14 @@ export namespace Prisma {
 
   export type LineUserOrderByWithAggregationInput = {
     id?: SortOrder
-    callback?: SortOrder
-    url?: SortOrder
-    type?: SortOrder
+    displayName?: SortOrderInput | SortOrder
+    pictureUrl?: SortOrderInput | SortOrder
+    callback?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    nike_broadcast?: SortOrderInput | SortOrder
+    hypebeast_broadcast?: SortOrderInput | SortOrder
+    ithome_broadcast?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: LineUserCountOrderByAggregateInput
@@ -12568,9 +12638,14 @@ export namespace Prisma {
     OR?: Enumerable<LineUserScalarWhereWithAggregatesInput>
     NOT?: Enumerable<LineUserScalarWhereWithAggregatesInput>
     id?: StringWithAggregatesFilter<"LineUser"> | string
-    callback?: StringWithAggregatesFilter<"LineUser"> | string
-    url?: StringWithAggregatesFilter<"LineUser"> | string
-    type?: StringWithAggregatesFilter<"LineUser"> | string
+    displayName?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
+    pictureUrl?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
+    callback?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
+    url?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
+    type?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
+    nike_broadcast?: BoolNullableWithAggregatesFilter<"LineUser"> | boolean | null
+    hypebeast_broadcast?: BoolNullableWithAggregatesFilter<"LineUser"> | boolean | null
+    ithome_broadcast?: BoolNullableWithAggregatesFilter<"LineUser"> | boolean | null
     createdAt?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
   }
@@ -13220,9 +13295,14 @@ export namespace Prisma {
 
   export type LineUserCreateInput = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName?: string | null
+    pictureUrl?: string | null
+    callback?: string | null
+    url?: string | null
+    type?: string | null
+    nike_broadcast?: boolean | null
+    hypebeast_broadcast?: boolean | null
+    ithome_broadcast?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category?: LineUserCategoryCreateNestedManyWithoutAuthorInput
@@ -13231,9 +13311,14 @@ export namespace Prisma {
 
   export type LineUserUncheckedCreateInput = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName?: string | null
+    pictureUrl?: string | null
+    callback?: string | null
+    url?: string | null
+    type?: string | null
+    nike_broadcast?: boolean | null
+    hypebeast_broadcast?: boolean | null
+    ithome_broadcast?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category?: LineUserCategoryUncheckedCreateNestedManyWithoutAuthorInput
@@ -13242,9 +13327,14 @@ export namespace Prisma {
 
   export type LineUserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUpdateManyWithoutAuthorNestedInput
@@ -13253,9 +13343,14 @@ export namespace Prisma {
 
   export type LineUserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUncheckedUpdateManyWithoutAuthorNestedInput
@@ -13264,27 +13359,42 @@ export namespace Prisma {
 
   export type LineUserCreateManyInput = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName?: string | null
+    pictureUrl?: string | null
+    callback?: string | null
+    url?: string | null
+    type?: string | null
+    nike_broadcast?: boolean | null
+    hypebeast_broadcast?: boolean | null
+    ithome_broadcast?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type LineUserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13978,6 +14088,11 @@ export namespace Prisma {
     permissionId?: SortOrder
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type LineUserCategoryListRelationFilter = {
     every?: LineUserCategoryWhereInput
     some?: LineUserCategoryWhereInput
@@ -14000,29 +14115,52 @@ export namespace Prisma {
 
   export type LineUserCountOrderByAggregateInput = {
     id?: SortOrder
+    displayName?: SortOrder
+    pictureUrl?: SortOrder
     callback?: SortOrder
     url?: SortOrder
     type?: SortOrder
+    nike_broadcast?: SortOrder
+    hypebeast_broadcast?: SortOrder
+    ithome_broadcast?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type LineUserMaxOrderByAggregateInput = {
     id?: SortOrder
+    displayName?: SortOrder
+    pictureUrl?: SortOrder
     callback?: SortOrder
     url?: SortOrder
     type?: SortOrder
+    nike_broadcast?: SortOrder
+    hypebeast_broadcast?: SortOrder
+    ithome_broadcast?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type LineUserMinOrderByAggregateInput = {
     id?: SortOrder
+    displayName?: SortOrder
+    pictureUrl?: SortOrder
     callback?: SortOrder
     url?: SortOrder
     type?: SortOrder
+    nike_broadcast?: SortOrder
+    hypebeast_broadcast?: SortOrder
+    ithome_broadcast?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type LineUserRelationFilter = {
@@ -14488,6 +14626,10 @@ export namespace Prisma {
     connect?: Enumerable<LineUserArticleWhereUniqueInput>
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type LineUserCategoryUpdateManyWithoutAuthorNestedInput = {
     create?: XOR<Enumerable<LineUserCategoryCreateWithoutAuthorInput>, Enumerable<LineUserCategoryUncheckedCreateWithoutAuthorInput>>
     connectOrCreate?: Enumerable<LineUserCategoryCreateOrConnectWithoutAuthorInput>
@@ -14719,6 +14861,19 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type UserRoleCreateWithoutUserInput = {
@@ -15224,9 +15379,14 @@ export namespace Prisma {
 
   export type LineUserCreateWithoutArticleInput = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName?: string | null
+    pictureUrl?: string | null
+    callback?: string | null
+    url?: string | null
+    type?: string | null
+    nike_broadcast?: boolean | null
+    hypebeast_broadcast?: boolean | null
+    ithome_broadcast?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category?: LineUserCategoryCreateNestedManyWithoutAuthorInput
@@ -15234,9 +15394,14 @@ export namespace Prisma {
 
   export type LineUserUncheckedCreateWithoutArticleInput = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName?: string | null
+    pictureUrl?: string | null
+    callback?: string | null
+    url?: string | null
+    type?: string | null
+    nike_broadcast?: boolean | null
+    hypebeast_broadcast?: boolean | null
+    ithome_broadcast?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category?: LineUserCategoryUncheckedCreateNestedManyWithoutAuthorInput
@@ -15260,9 +15425,14 @@ export namespace Prisma {
 
   export type LineUserUpdateWithoutArticleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUpdateManyWithoutAuthorNestedInput
@@ -15270,9 +15440,14 @@ export namespace Prisma {
 
   export type LineUserUncheckedUpdateWithoutArticleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUncheckedUpdateManyWithoutAuthorNestedInput
@@ -15280,9 +15455,14 @@ export namespace Prisma {
 
   export type LineUserCreateWithoutCategoryInput = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName?: string | null
+    pictureUrl?: string | null
+    callback?: string | null
+    url?: string | null
+    type?: string | null
+    nike_broadcast?: boolean | null
+    hypebeast_broadcast?: boolean | null
+    ithome_broadcast?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Article?: LineUserArticleCreateNestedManyWithoutAuthorInput
@@ -15290,9 +15470,14 @@ export namespace Prisma {
 
   export type LineUserUncheckedCreateWithoutCategoryInput = {
     id: string
-    callback: string
-    url: string
-    type: string
+    displayName?: string | null
+    pictureUrl?: string | null
+    callback?: string | null
+    url?: string | null
+    type?: string | null
+    nike_broadcast?: boolean | null
+    hypebeast_broadcast?: boolean | null
+    ithome_broadcast?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Article?: LineUserArticleUncheckedCreateNestedManyWithoutAuthorInput
@@ -15316,9 +15501,14 @@ export namespace Prisma {
 
   export type LineUserUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Article?: LineUserArticleUpdateManyWithoutAuthorNestedInput
@@ -15326,9 +15516,14 @@ export namespace Prisma {
 
   export type LineUserUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
-    callback?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    callback?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Article?: LineUserArticleUncheckedUpdateManyWithoutAuthorNestedInput

@@ -8,6 +8,7 @@ import { getEnvPath } from './common/helper';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ScheduleModule as MyScheduleModule } from './module/schedule/schedule.module';
+import { LiffModule } from './module/liff/liff.module';
 import configs from './config/index';
 
 const envFilePath: string = getEnvPath(`../`);
@@ -26,6 +27,7 @@ const envFilePath: string = getEnvPath(`../`);
     RoleModule,
     LinebotModule,
     MyScheduleModule,
+    LiffModule,
   ],
 })
 export class AppModule {}

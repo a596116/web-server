@@ -76,14 +76,19 @@ model RolePermission {
 // ----------------------------------------------------------
 
 model LineUser {
-  id        String             @id
-  callback  String
-  url       String
-  type      String
-  createdAt DateTime           @default(now())
-  updatedAt DateTime           @updatedAt
-  category  LineUserCategory[]
-  Article   LineUserArticle[]
+  id                  String             @id
+  displayName         String?
+  pictureUrl          String?
+  callback            String?
+  url                 String?
+  type                String?
+  nike_broadcast      Boolean?
+  hypebeast_broadcast Boolean?
+  ithome_broadcast    Boolean?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  category            LineUserCategory[]
+  Article             LineUserArticle[]
 }
 
 model LineUserArticle {
@@ -105,6 +110,8 @@ model LineUserCategory {
   authorId  String
 }
 
+// ----------------------------------------------------------
+// -------------------------爬蟲--------------------------
 // ----------------------------------------------------------
 model NikeList {
   id        Int      @id @default(autoincrement()) @db.UnsignedInt()
