@@ -24,7 +24,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwt: JwtService,
     private readonly config: ConfigService,
-  ) { }
+  ) {}
 
   /**
    * @description: 用戶登入
@@ -40,10 +40,10 @@ export class AuthService {
           data: {
             ...token,
             userId: res.data.userId,
-          }
+          },
         })
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
         return err
       })
@@ -62,7 +62,7 @@ export class AuthService {
         role: { connect: { id: user.id == 1 ? 1 : 2 } },
       },
     })
-    return success({ message: "註冊成功" })
+    return success({ message: '註冊成功' })
   }
 
   /**
@@ -77,21 +77,21 @@ export class AuthService {
       orderBy: sort,
       where: {
         name: {
-          contains: query.q
+          contains: query.q,
         },
         created_at: {
           gte: formatStartDate(query.start_date),
           lte: formatEndDate(query.end_date),
-        }
+        },
       },
       include: {
         UserRole: {
           include: {
             role: {
-              include: { RolePermission: { include: { permission: true } } }
-            }
-          }
-        }
+              include: { RolePermission: { include: { permission: true } } },
+            },
+          },
+        },
       },
     })
     const total = await this.prisma.user.count()
@@ -111,18 +111,17 @@ export class AuthService {
               include: {
                 RolePermission: {
                   include: {
-                    permission: true
-                  }
-                }
-              }
-            }
-          }
-        }
+                    permission: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     })
     return success({ data: user })
   }
-
 
   /**
    * @description: 更新用戶Info
@@ -138,10 +137,12 @@ export class AuthService {
           name: UpdateInfoDto.name,
           birthday: UpdateInfoDto.birthday,
           gender: UpdateInfoDto.gender,
-          avatar: UpdateInfoDto.avatar ? `${this.config.get<string>('BASE_URL')}/upload/avatar/${UpdateInfoDto.name}.png` : '0'
+          avatar: UpdateInfoDto.avatar
+            ? `${this.config.get<string>('BASE_URL')}/upload/avatar/${UpdateInfoDto.name}.png`
+            : '0',
         },
       })
-      return success({ message: "更新資料成功" })
+      return success({ message: '更新資料成功' })
     } catch (error) {
       console.log(error)
       return error('更新資料失敗，錯誤詳情：' + error)
@@ -165,7 +166,7 @@ export class AuthService {
           },
         },
       })
-      return success({ message: "編輯用戶成功" })
+      return success({ message: '編輯用戶成功' })
     } catch (error) {
       console.log(error)
       return error('編輯用戶失敗，錯誤詳情：' + error)
@@ -177,15 +178,15 @@ export class AuthService {
   }
 
   /**
-  * 用戶登入驗證
-  */
+   * 用戶登入驗證
+   */
   private async validateUser(user: LoginAuthDto) {
     const phone: string = user.phone
     const password: string = user.password
     return await this.findOneByPhone(phone)
-      .then(res => {
+      .then((res) => {
         if (res == null) {
-          throw error('用戶尚未註冊')
+          throw error({ message: '用戶尚未註冊' })
         }
         return res
       })
@@ -194,17 +195,17 @@ export class AuthService {
         if (pass === dbUser.password) {
           return success({ data: { userid: dbUser.id, userId: dbUser.id } })
         } else {
-          throw error('用戶密碼錯誤')
+          throw error({ message: '用戶密碼錯誤' })
         }
       })
-      .catch(err => {
+      .catch((err) => {
         return err
       })
   }
 
   /**
-     * 根據手機獲取用戶
-     */
+   * 根據手機獲取用戶
+   */
   async findOneByPhone(phone: string) {
     return await this.prisma.user.findUnique({ where: { phone: phone } })
   }
@@ -217,10 +218,9 @@ export class AuthService {
     }
   }
 
-
   /**
-     * 產生驗證碼
-     */
+   * 產生驗證碼
+   */
   public async createCaptcha(id?: string): Promise<IResponse> {
     if (id !== '-1') delete this.captchas[id]
     const c = svgCaptcha.create()
@@ -228,8 +228,8 @@ export class AuthService {
     return success({
       data: {
         id: this.pointer++,
-        img: c.data
-      }
+        img: c.data,
+      },
     })
   }
 
@@ -237,6 +237,8 @@ export class AuthService {
    * 驗證碼確認
    */
   public async verification(captcha: string, id: string): Promise<IResponse> {
-    return this.captchas[id] === captcha.toLowerCase() ? success({}) : error('驗證碼錯誤')
+    return this.captchas[id] === captcha.toLowerCase()
+      ? success({})
+      : error({ message: '驗證碼錯誤' })
   }
 }
