@@ -6,7 +6,6 @@ import { Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import _ from 'lodash'
 
 @Injectable()
 export class ScheduleService {
@@ -27,7 +26,7 @@ export class ScheduleService {
         'window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })',
       )
       await driver.sleep(1000)
-      const posts = _.reverse(await driver.findElements(By.css('.upcoming-section .product-card')))
+      const posts = (await driver.findElements(By.css('.upcoming-section .product-card'))).reverse()
       await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
       let i = 0
 
@@ -78,7 +77,7 @@ export class ScheduleService {
       await driver.get('https://hypebeast.com/tw/footwear')
       await driver.wait(until.titleIs('Footwear 球鞋 | Hypebeast'), 1000)
       await driver.executeScript('window.scrollTo(0, document.body.scrollHeight)')
-      const posts = _.reverse(await driver.findElements(By.css('.post-box')))
+      const posts = (await driver.findElements(By.css('.post-box'))).reverse()
       let i = 0
       for (const post of posts) {
         if (i > 10) break
@@ -128,7 +127,7 @@ export class ScheduleService {
       const url = 'https://www.ithome.com.tw'
       const body = await axios.get(`${url}/latest/feed/hitepo6y3vif.jsp`)
       const $ = cheerio.load(body.data, { xmlMode: true })
-      const item = _.reverse($('.channel-item .field-content'))
+      const item = ($('.channel-item .field-content')).toArray().reverse()
       let i = 0
       for (const el of item) {
         if (i > 10) break
