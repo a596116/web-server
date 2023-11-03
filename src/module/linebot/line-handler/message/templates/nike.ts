@@ -16,6 +16,9 @@ export const findNike = async (id: string) => {
   try {
     const data = await prisma.nikeList.findMany({
       take: 10,
+      orderBy: {
+        createdAt: 'desc'
+      }
     })
     for (const post of data) {
       template.contents.contents.push({

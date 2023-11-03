@@ -16,6 +16,9 @@ export const findIthome = async (id: string) => {
   try {
     const data = await prisma.ithomeList.findMany({
       take: 10,
+      orderBy: {
+        createdAt: 'desc'
+      }
     })
     for (const post of data) {
       template.contents.contents.push({
@@ -104,6 +107,9 @@ export const broadcastIthome = async () => {
   try {
     const data = await prisma.ithomeList.findMany({
       take: 10,
+      orderBy: {
+        createdAt: 'desc'
+      },
       where: {
         createdAt: {
           gt: new Date(new Date().getTime() - 5 * 60 * 1000),
