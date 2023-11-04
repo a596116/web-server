@@ -26,7 +26,7 @@ export class ScheduleService {
         'window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })',
       )
       await driver.sleep(1000)
-      const posts = (await driver.findElements(By.css('.upcoming-section .product-card'))).reverse()
+      const posts = (await driver.findElements(By.css('.upcoming-section .product-card'))).splice(0, 10).reverse()
       await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
       let i = 0
 
@@ -77,7 +77,7 @@ export class ScheduleService {
       await driver.get('https://hypebeast.com/tw/footwear')
       await driver.wait(until.titleIs('Footwear 球鞋 | Hypebeast'), 1000)
       await driver.executeScript('window.scrollTo(0, document.body.scrollHeight)')
-      const posts = (await driver.findElements(By.css('.post-box'))).reverse()
+      const posts = (await driver.findElements(By.css('.post-box'))).splice(0, 10).reverse()
       let i = 0
       for (const post of posts) {
         if (i > 10) break
@@ -127,7 +127,7 @@ export class ScheduleService {
       const url = 'https://www.ithome.com.tw'
       const body = await axios.get(`${url}/latest/feed/hitepo6y3vif.jsp`)
       const $ = cheerio.load(body.data, { xmlMode: true })
-      const item = ($('.channel-item .field-content')).toArray().reverse()
+      const item = ($('.channel-item .field-content')).toArray().splice(0, 10).reverse()
       let i = 0
       for (const el of item) {
         if (i > 10) break
