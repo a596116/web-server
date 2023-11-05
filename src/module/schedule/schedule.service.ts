@@ -26,8 +26,8 @@ export class ScheduleService {
         'window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })',
       )
       await driver.sleep(1000)
-      const posts = (await driver.findElements(By.css('.upcoming-section .product-card'))).splice(0, 10).reverse()
       await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
+      const posts = (await driver.findElements(By.css('.upcoming-section .product-card'))).splice(0, 10).reverse()
       let i = 0
 
       for (const post of posts) {
