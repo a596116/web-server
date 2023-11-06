@@ -71,11 +71,11 @@ export class TextHandler {
         case decodeURI('%EF%BC%9F'):
           return this.configService.createLinebotClient().replyMessage(replyToken, otherTemplate)
 
-        case text.replace(/^\s*|\s*$/g, '').match(/^http/)?.input: {
-          return await this.configService
-            .createLinebotClient()
-            .replyMessage(replyToken, await articleTemplate(userId, text))
-        }
+        // case text.replace(/^\s*|\s*$/g, '').match(/^http/)?.input: {
+        //   return await this.configService
+        //     .createLinebotClient()
+        //     .replyMessage(replyToken, await articleTemplate(userId, text))
+        // }
         default: {
           // const user = await this.prisma.lineUser.findFirst({ where: { id: userId } })
           // if (user.callback && user.callback.match(/^(setting)/ig)[0] === 'setting') {
@@ -88,10 +88,10 @@ export class TextHandler {
           //     }
           //   }
           // } else {
-          //   return await this.configService.createLinebotClient().replyMessage(replyToken, {
-          //     type: 'text',
-          //     text: '請嘗試其他功能！'
-          //   })
+          return await this.configService.createLinebotClient().replyMessage(replyToken, {
+            type: 'text',
+            text: '請嘗試其他功能！',
+          })
           // }
         }
       }

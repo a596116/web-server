@@ -86,7 +86,13 @@ export const findNike = async (id: string) => {
     logger.error(`查詢 Nike 發售預告 失敗: ${id}`)
     logger.error(e)
   }
-  return template
+  return [
+    {
+      type: 'text',
+      text: 'Nike發售預告',
+    },
+    template,
+  ]
 }
 
 export const broadcastNike = async () => {
@@ -182,5 +188,14 @@ export const broadcastNike = async () => {
   } catch (e) {
     logger.error(e)
   }
-  return { broadcastUsers, template }
+  return {
+    broadcastUsers,
+    template: [
+      {
+        type: 'text',
+        text: 'Nike發售預告',
+      },
+      template,
+    ],
+  }
 }

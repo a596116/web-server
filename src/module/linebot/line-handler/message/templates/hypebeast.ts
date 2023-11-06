@@ -7,7 +7,7 @@ const logger = new Logger('LineBot')
 export const findHypebeast = async (id: string) => {
   const template: any = {
     type: 'flex',
-    altText: 'Hypebeast 球鞋資訊',
+    altText: 'HypeBeast 球鞋資訊',
     contents: {
       type: 'carousel',
       contents: [],
@@ -96,7 +96,13 @@ export const findHypebeast = async (id: string) => {
     logger.error(`查詢 HypeBeast 失敗: ${id}`)
     logger.error(e)
   }
-  return template
+  return [
+    {
+      type: 'text',
+      text: 'HypeBeast球鞋資訊',
+    },
+    template,
+  ]
 }
 
 export const broadcastHypebeast = async () => {
@@ -204,5 +210,14 @@ export const broadcastHypebeast = async () => {
   } catch (e) {
     logger.error(e)
   }
-  return { broadcastUsers, template }
+  return {
+    broadcastUsers,
+    template: [
+      {
+        type: 'text',
+        text: 'HypeBeast球鞋資訊',
+      },
+      template,
+    ],
+  }
 }

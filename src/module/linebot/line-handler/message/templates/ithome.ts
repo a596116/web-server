@@ -90,7 +90,13 @@ export const findIthome = async (id: string) => {
     logger.error(`查詢 Ithome 失敗: ${id}`)
     logger.error(e)
   }
-  return template
+  return [
+    {
+      type: 'text',
+      text: 'IThome 新聞',
+    },
+    template,
+  ]
 }
 
 export const broadcastIthome = async () => {
@@ -195,5 +201,14 @@ export const broadcastIthome = async () => {
   } catch (e) {
     logger.error(e)
   }
-  return { broadcastUsers, template }
+  return {
+    broadcastUsers,
+    template: [
+      {
+        type: 'text',
+        text: 'IThome 新聞',
+      },
+      template,
+    ],
+  }
 }
