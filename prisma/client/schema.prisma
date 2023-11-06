@@ -86,63 +86,63 @@ model LineUser {
   nike_broadcast      Boolean?
   hypebeast_broadcast Boolean?
   ithome_broadcast    Boolean?
-  createdAt           DateTime           @default(now())
-  updatedAt           DateTime           @updatedAt
+  created_at          DateTime           @default(now())
+  updated_at          DateTime           @updatedAt
   category            LineUserCategory[]
   Article             LineUserArticle[]
 }
 
 model LineUserArticle {
-  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
-  url       String
-  type      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  author    LineUser @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  authorId  String
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt()
+  url        String
+  type       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  author     LineUser @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  authorId   String
 }
 
 model LineUserCategory {
-  id        String   @id
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  author    LineUser @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  authorId  String
+  id         String   @id
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  author     LineUser @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  authorId   String
 }
 
 // ----------------------------------------------------------
 // -------------------------爬蟲--------------------------
 // ----------------------------------------------------------
 model NikeList {
-  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
-  title     String
-  descs     String?
-  img       String   @db.VarChar(1000)
-  link      String
-  time      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt()
+  title      String
+  descs      String?
+  img        String   @db.VarChar(1000)
+  link       String
+  time       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model HypeBeastList {
-  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
-  title     String
-  descs     String?
-  img       String   @db.VarChar(1000)
-  link      String
-  time      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt()
+  title      String
+  descs      String?
+  img        String   @db.VarChar(1000)
+  link       String
+  time       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model IthomeList {
-  id        Int      @id @default(autoincrement()) @db.UnsignedInt()
-  title     String
-  descs     String?
-  img       String   @db.VarChar(1000)
-  link      String
-  time      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt()
+  title      String
+  descs      String?
+  img        String   @db.VarChar(1000)
+  link       String
+  time       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }

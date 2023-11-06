@@ -17,7 +17,7 @@ export const findHypebeast = async (id: string) => {
     const data = await prisma.hypeBeastList.findMany({
       take: 10,
       orderBy: {
-        createdAt: 'desc',
+        created_at: 'desc',
       },
     })
     for (const post of data) {
@@ -119,10 +119,10 @@ export const broadcastHypebeast = async () => {
     const data = await prisma.hypeBeastList.findMany({
       take: 10,
       orderBy: {
-        createdAt: 'desc',
+        created_at: 'desc',
       },
       where: {
-        createdAt: {
+        created_at: {
           gt: new Date(new Date().getTime() - 60 * 60 * 1000),
         },
       },

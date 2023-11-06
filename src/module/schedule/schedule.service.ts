@@ -6,7 +6,7 @@ import { Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import { formatTime } from 'src/utils/formatTime'
+import { formatTime } from 'src/common/helper/formatDate.helper'
 
 @Injectable()
 export class ScheduleService {

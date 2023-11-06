@@ -59,8 +59,8 @@ export class LiffService {
             nike_broadcast,
             hypebeast_broadcast,
             ithome_broadcast,
-            createdAt: new Date(),
-            updatedAt: new Date(),
+            created_at: new Date(),
+            updated_at: new Date(),
           },
         })
       } else {

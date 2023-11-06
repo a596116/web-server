@@ -150,24 +150,24 @@ exports.Prisma.LineUserScalarFieldEnum = {
   nike_broadcast: 'nike_broadcast',
   hypebeast_broadcast: 'hypebeast_broadcast',
   ithome_broadcast: 'ithome_broadcast',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.LineUserArticleScalarFieldEnum = {
   id: 'id',
   url: 'url',
   type: 'type',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
   authorId: 'authorId'
 };
 
 exports.Prisma.LineUserCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
   authorId: 'authorId'
 };
 
@@ -178,8 +178,8 @@ exports.Prisma.NikeListScalarFieldEnum = {
   img: 'img',
   link: 'link',
   time: 'time',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.HypeBeastListScalarFieldEnum = {
@@ -189,8 +189,8 @@ exports.Prisma.HypeBeastListScalarFieldEnum = {
   img: 'img',
   link: 'link',
   time: 'time',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.IthomeListScalarFieldEnum = {
@@ -200,8 +200,8 @@ exports.Prisma.IthomeListScalarFieldEnum = {
   img: 'img',
   link: 'link',
   time: 'time',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.SortOrder = {

@@ -25,7 +25,7 @@ export class RoleController {
   /**
    * @description: 新增角色
    */
-  @Post('role/create')
+  @Post('role')
   @ApiOperation({ summary: '新增角色', description: '新增用戶角色' })
   createRoles(@Body() role: createRoleDto) {
     return this.roleService.createRoles(role)
@@ -69,7 +69,7 @@ export class RoleController {
   /**
    * @description: 新增權限
    */
-  @Post('permission/create')
+  @Post('permission')
   @ApiOperation({ summary: '新增權限', description: '新增角色權限' })
   createPermissions(@Body() role: createPermissionDto) {
     return this.roleService.createPermissions(role)

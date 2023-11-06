@@ -93,8 +93,8 @@ export type LineUser = {
   nike_broadcast: boolean | null
   hypebeast_broadcast: boolean | null
   ithome_broadcast: boolean | null
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
 }
 
 /**
@@ -105,8 +105,8 @@ export type LineUserArticle = {
   id: number
   url: string
   type: string
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
   authorId: string
 }
 
@@ -117,8 +117,8 @@ export type LineUserArticle = {
 export type LineUserCategory = {
   id: string
   name: string
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
   authorId: string
 }
 
@@ -133,8 +133,8 @@ export type NikeList = {
   img: string
   link: string
   time: string
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
 }
 
 /**
@@ -148,8 +148,8 @@ export type HypeBeastList = {
   img: string
   link: string
   time: string
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
 }
 
 /**
@@ -163,8 +163,8 @@ export type IthomeList = {
   img: string
   link: string
   time: string
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
 }
 
 
@@ -6287,8 +6287,8 @@ export namespace Prisma {
     nike_broadcast: boolean | null
     hypebeast_broadcast: boolean | null
     ithome_broadcast: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type LineUserMaxAggregateOutputType = {
@@ -6302,8 +6302,8 @@ export namespace Prisma {
     nike_broadcast: boolean | null
     hypebeast_broadcast: boolean | null
     ithome_broadcast: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type LineUserCountAggregateOutputType = {
@@ -6317,8 +6317,8 @@ export namespace Prisma {
     nike_broadcast: number
     hypebeast_broadcast: number
     ithome_broadcast: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -6334,8 +6334,8 @@ export namespace Prisma {
     nike_broadcast?: true
     hypebeast_broadcast?: true
     ithome_broadcast?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type LineUserMaxAggregateInputType = {
@@ -6349,8 +6349,8 @@ export namespace Prisma {
     nike_broadcast?: true
     hypebeast_broadcast?: true
     ithome_broadcast?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type LineUserCountAggregateInputType = {
@@ -6364,8 +6364,8 @@ export namespace Prisma {
     nike_broadcast?: true
     hypebeast_broadcast?: true
     ithome_broadcast?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -6453,8 +6453,8 @@ export namespace Prisma {
     nike_broadcast: boolean | null
     hypebeast_broadcast: boolean | null
     ithome_broadcast: boolean | null
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: LineUserCountAggregateOutputType | null
     _min: LineUserMinAggregateOutputType | null
     _max: LineUserMaxAggregateOutputType | null
@@ -6485,8 +6485,8 @@ export namespace Prisma {
     nike_broadcast?: boolean
     hypebeast_broadcast?: boolean
     ithome_broadcast?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     category?: boolean | LineUser$categoryArgs
     Article?: boolean | LineUser$ArticleArgs
     _count?: boolean | LineUserCountOutputTypeArgs
@@ -7329,8 +7329,8 @@ export namespace Prisma {
     id: number | null
     url: string | null
     type: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
     authorId: string | null
   }
 
@@ -7338,8 +7338,8 @@ export namespace Prisma {
     id: number | null
     url: string | null
     type: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
     authorId: string | null
   }
 
@@ -7347,8 +7347,8 @@ export namespace Prisma {
     id: number
     url: number
     type: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     authorId: number
     _all: number
   }
@@ -7366,8 +7366,8 @@ export namespace Prisma {
     id?: true
     url?: true
     type?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     authorId?: true
   }
 
@@ -7375,8 +7375,8 @@ export namespace Prisma {
     id?: true
     url?: true
     type?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     authorId?: true
   }
 
@@ -7384,8 +7384,8 @@ export namespace Prisma {
     id?: true
     url?: true
     type?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     authorId?: true
     _all?: true
   }
@@ -7481,8 +7481,8 @@ export namespace Prisma {
     id: number
     url: string
     type: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     authorId: string
     _count: LineUserArticleCountAggregateOutputType | null
     _avg: LineUserArticleAvgAggregateOutputType | null
@@ -7509,8 +7509,8 @@ export namespace Prisma {
     id?: boolean
     url?: boolean
     type?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     authorId?: boolean
     author?: boolean | LineUserArgs
   }
@@ -8291,24 +8291,24 @@ export namespace Prisma {
   export type LineUserCategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
     authorId: string | null
   }
 
   export type LineUserCategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
     authorId: string | null
   }
 
   export type LineUserCategoryCountAggregateOutputType = {
     id: number
     name: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     authorId: number
     _all: number
   }
@@ -8317,24 +8317,24 @@ export namespace Prisma {
   export type LineUserCategoryMinAggregateInputType = {
     id?: true
     name?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     authorId?: true
   }
 
   export type LineUserCategoryMaxAggregateInputType = {
     id?: true
     name?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     authorId?: true
   }
 
   export type LineUserCategoryCountAggregateInputType = {
     id?: true
     name?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     authorId?: true
     _all?: true
   }
@@ -8415,8 +8415,8 @@ export namespace Prisma {
   export type LineUserCategoryGroupByOutputType = {
     id: string
     name: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     authorId: string
     _count: LineUserCategoryCountAggregateOutputType | null
     _min: LineUserCategoryMinAggregateOutputType | null
@@ -8440,8 +8440,8 @@ export namespace Prisma {
   export type LineUserCategorySelect = {
     id?: boolean
     name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     authorId?: boolean
     author?: boolean | LineUserArgs
   }
@@ -9236,8 +9236,8 @@ export namespace Prisma {
     img: string | null
     link: string | null
     time: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type NikeListMaxAggregateOutputType = {
@@ -9247,8 +9247,8 @@ export namespace Prisma {
     img: string | null
     link: string | null
     time: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type NikeListCountAggregateOutputType = {
@@ -9258,8 +9258,8 @@ export namespace Prisma {
     img: number
     link: number
     time: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -9279,8 +9279,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type NikeListMaxAggregateInputType = {
@@ -9290,8 +9290,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type NikeListCountAggregateInputType = {
@@ -9301,8 +9301,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -9400,8 +9400,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: NikeListCountAggregateOutputType | null
     _avg: NikeListAvgAggregateOutputType | null
     _sum: NikeListSumAggregateOutputType | null
@@ -9430,8 +9430,8 @@ export namespace Prisma {
     img?: boolean
     link?: boolean
     time?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
 
@@ -10176,8 +10176,8 @@ export namespace Prisma {
     img: string | null
     link: string | null
     time: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type HypeBeastListMaxAggregateOutputType = {
@@ -10187,8 +10187,8 @@ export namespace Prisma {
     img: string | null
     link: string | null
     time: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type HypeBeastListCountAggregateOutputType = {
@@ -10198,8 +10198,8 @@ export namespace Prisma {
     img: number
     link: number
     time: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -10219,8 +10219,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type HypeBeastListMaxAggregateInputType = {
@@ -10230,8 +10230,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type HypeBeastListCountAggregateInputType = {
@@ -10241,8 +10241,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -10340,8 +10340,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: HypeBeastListCountAggregateOutputType | null
     _avg: HypeBeastListAvgAggregateOutputType | null
     _sum: HypeBeastListSumAggregateOutputType | null
@@ -10370,8 +10370,8 @@ export namespace Prisma {
     img?: boolean
     link?: boolean
     time?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
 
@@ -11116,8 +11116,8 @@ export namespace Prisma {
     img: string | null
     link: string | null
     time: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type IthomeListMaxAggregateOutputType = {
@@ -11127,8 +11127,8 @@ export namespace Prisma {
     img: string | null
     link: string | null
     time: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type IthomeListCountAggregateOutputType = {
@@ -11138,8 +11138,8 @@ export namespace Prisma {
     img: number
     link: number
     time: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -11159,8 +11159,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type IthomeListMaxAggregateInputType = {
@@ -11170,8 +11170,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type IthomeListCountAggregateInputType = {
@@ -11181,8 +11181,8 @@ export namespace Prisma {
     img?: true
     link?: true
     time?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -11280,8 +11280,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: IthomeListCountAggregateOutputType | null
     _avg: IthomeListAvgAggregateOutputType | null
     _sum: IthomeListSumAggregateOutputType | null
@@ -11310,8 +11310,8 @@ export namespace Prisma {
     img?: boolean
     link?: boolean
     time?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
 
@@ -12117,8 +12117,8 @@ export namespace Prisma {
     nike_broadcast: 'nike_broadcast',
     hypebeast_broadcast: 'hypebeast_broadcast',
     ithome_broadcast: 'ithome_broadcast',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type LineUserScalarFieldEnum = (typeof LineUserScalarFieldEnum)[keyof typeof LineUserScalarFieldEnum]
@@ -12128,8 +12128,8 @@ export namespace Prisma {
     id: 'id',
     url: 'url',
     type: 'type',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
     authorId: 'authorId'
   };
 
@@ -12139,8 +12139,8 @@ export namespace Prisma {
   export const LineUserCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
     authorId: 'authorId'
   };
 
@@ -12154,8 +12154,8 @@ export namespace Prisma {
     img: 'img',
     link: 'link',
     time: 'time',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type NikeListScalarFieldEnum = (typeof NikeListScalarFieldEnum)[keyof typeof NikeListScalarFieldEnum]
@@ -12168,8 +12168,8 @@ export namespace Prisma {
     img: 'img',
     link: 'link',
     time: 'time',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type HypeBeastListScalarFieldEnum = (typeof HypeBeastListScalarFieldEnum)[keyof typeof HypeBeastListScalarFieldEnum]
@@ -12182,8 +12182,8 @@ export namespace Prisma {
     img: 'img',
     link: 'link',
     time: 'time',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type IthomeListScalarFieldEnum = (typeof IthomeListScalarFieldEnum)[keyof typeof IthomeListScalarFieldEnum]
@@ -12586,8 +12586,8 @@ export namespace Prisma {
     nike_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
     hypebeast_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
     ithome_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
-    createdAt?: DateTimeFilter<"LineUser"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUser"> | Date | string
+    created_at?: DateTimeFilter<"LineUser"> | Date | string
+    updated_at?: DateTimeFilter<"LineUser"> | Date | string
     category?: LineUserCategoryListRelationFilter
     Article?: LineUserArticleListRelationFilter
   }
@@ -12603,8 +12603,8 @@ export namespace Prisma {
     nike_broadcast?: SortOrderInput | SortOrder
     hypebeast_broadcast?: SortOrderInput | SortOrder
     ithome_broadcast?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     category?: LineUserCategoryOrderByRelationAggregateInput
     Article?: LineUserArticleOrderByRelationAggregateInput
   }
@@ -12623,8 +12623,8 @@ export namespace Prisma {
     nike_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
     hypebeast_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
     ithome_broadcast?: BoolNullableFilter<"LineUser"> | boolean | null
-    createdAt?: DateTimeFilter<"LineUser"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUser"> | Date | string
+    created_at?: DateTimeFilter<"LineUser"> | Date | string
+    updated_at?: DateTimeFilter<"LineUser"> | Date | string
     category?: LineUserCategoryListRelationFilter
     Article?: LineUserArticleListRelationFilter
   }, "id">
@@ -12640,8 +12640,8 @@ export namespace Prisma {
     nike_broadcast?: SortOrderInput | SortOrder
     hypebeast_broadcast?: SortOrderInput | SortOrder
     ithome_broadcast?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: LineUserCountOrderByAggregateInput
     _max?: LineUserMaxOrderByAggregateInput
     _min?: LineUserMinOrderByAggregateInput
@@ -12661,8 +12661,8 @@ export namespace Prisma {
     nike_broadcast?: BoolNullableWithAggregatesFilter<"LineUser"> | boolean | null
     hypebeast_broadcast?: BoolNullableWithAggregatesFilter<"LineUser"> | boolean | null
     ithome_broadcast?: BoolNullableWithAggregatesFilter<"LineUser"> | boolean | null
-    createdAt?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"LineUser"> | Date | string
   }
 
   export type LineUserArticleWhereInput = {
@@ -12672,8 +12672,8 @@ export namespace Prisma {
     id?: IntFilter<"LineUserArticle"> | number
     url?: StringFilter<"LineUserArticle"> | string
     type?: StringFilter<"LineUserArticle"> | string
-    createdAt?: DateTimeFilter<"LineUserArticle"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    created_at?: DateTimeFilter<"LineUserArticle"> | Date | string
+    updated_at?: DateTimeFilter<"LineUserArticle"> | Date | string
     authorId?: StringFilter<"LineUserArticle"> | string
     author?: XOR<LineUserRelationFilter, LineUserWhereInput>
   }
@@ -12682,8 +12682,8 @@ export namespace Prisma {
     id?: SortOrder
     url?: SortOrder
     type?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
     author?: LineUserOrderByWithRelationInput
   }
@@ -12695,8 +12695,8 @@ export namespace Prisma {
     NOT?: Enumerable<LineUserArticleWhereInput>
     url?: StringFilter<"LineUserArticle"> | string
     type?: StringFilter<"LineUserArticle"> | string
-    createdAt?: DateTimeFilter<"LineUserArticle"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    created_at?: DateTimeFilter<"LineUserArticle"> | Date | string
+    updated_at?: DateTimeFilter<"LineUserArticle"> | Date | string
     authorId?: StringFilter<"LineUserArticle"> | string
     author?: XOR<LineUserRelationFilter, LineUserWhereInput>
   }, "id">
@@ -12705,8 +12705,8 @@ export namespace Prisma {
     id?: SortOrder
     url?: SortOrder
     type?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
     _count?: LineUserArticleCountOrderByAggregateInput
     _avg?: LineUserArticleAvgOrderByAggregateInput
@@ -12722,8 +12722,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"LineUserArticle"> | number
     url?: StringWithAggregatesFilter<"LineUserArticle"> | string
     type?: StringWithAggregatesFilter<"LineUserArticle"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"LineUserArticle"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"LineUserArticle"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"LineUserArticle"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"LineUserArticle"> | Date | string
     authorId?: StringWithAggregatesFilter<"LineUserArticle"> | string
   }
 
@@ -12733,8 +12733,8 @@ export namespace Prisma {
     NOT?: Enumerable<LineUserCategoryWhereInput>
     id?: StringFilter<"LineUserCategory"> | string
     name?: StringFilter<"LineUserCategory"> | string
-    createdAt?: DateTimeFilter<"LineUserCategory"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    created_at?: DateTimeFilter<"LineUserCategory"> | Date | string
+    updated_at?: DateTimeFilter<"LineUserCategory"> | Date | string
     authorId?: StringFilter<"LineUserCategory"> | string
     author?: XOR<LineUserRelationFilter, LineUserWhereInput>
   }
@@ -12742,8 +12742,8 @@ export namespace Prisma {
   export type LineUserCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
     author?: LineUserOrderByWithRelationInput
   }
@@ -12754,8 +12754,8 @@ export namespace Prisma {
     OR?: Enumerable<LineUserCategoryWhereInput>
     NOT?: Enumerable<LineUserCategoryWhereInput>
     name?: StringFilter<"LineUserCategory"> | string
-    createdAt?: DateTimeFilter<"LineUserCategory"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    created_at?: DateTimeFilter<"LineUserCategory"> | Date | string
+    updated_at?: DateTimeFilter<"LineUserCategory"> | Date | string
     authorId?: StringFilter<"LineUserCategory"> | string
     author?: XOR<LineUserRelationFilter, LineUserWhereInput>
   }, "id">
@@ -12763,8 +12763,8 @@ export namespace Prisma {
   export type LineUserCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
     _count?: LineUserCategoryCountOrderByAggregateInput
     _max?: LineUserCategoryMaxOrderByAggregateInput
@@ -12777,8 +12777,8 @@ export namespace Prisma {
     NOT?: Enumerable<LineUserCategoryScalarWhereWithAggregatesInput>
     id?: StringWithAggregatesFilter<"LineUserCategory"> | string
     name?: StringWithAggregatesFilter<"LineUserCategory"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"LineUserCategory"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"LineUserCategory"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"LineUserCategory"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"LineUserCategory"> | Date | string
     authorId?: StringWithAggregatesFilter<"LineUserCategory"> | string
   }
 
@@ -12792,8 +12792,8 @@ export namespace Prisma {
     img?: StringFilter<"NikeList"> | string
     link?: StringFilter<"NikeList"> | string
     time?: StringFilter<"NikeList"> | string
-    createdAt?: DateTimeFilter<"NikeList"> | Date | string
-    updatedAt?: DateTimeFilter<"NikeList"> | Date | string
+    created_at?: DateTimeFilter<"NikeList"> | Date | string
+    updated_at?: DateTimeFilter<"NikeList"> | Date | string
   }
 
   export type NikeListOrderByWithRelationInput = {
@@ -12803,8 +12803,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type NikeListWhereUniqueInput = Prisma.AtLeast<{
@@ -12817,8 +12817,8 @@ export namespace Prisma {
     img?: StringFilter<"NikeList"> | string
     link?: StringFilter<"NikeList"> | string
     time?: StringFilter<"NikeList"> | string
-    createdAt?: DateTimeFilter<"NikeList"> | Date | string
-    updatedAt?: DateTimeFilter<"NikeList"> | Date | string
+    created_at?: DateTimeFilter<"NikeList"> | Date | string
+    updated_at?: DateTimeFilter<"NikeList"> | Date | string
   }, "id">
 
   export type NikeListOrderByWithAggregationInput = {
@@ -12828,8 +12828,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: NikeListCountOrderByAggregateInput
     _avg?: NikeListAvgOrderByAggregateInput
     _max?: NikeListMaxOrderByAggregateInput
@@ -12847,8 +12847,8 @@ export namespace Prisma {
     img?: StringWithAggregatesFilter<"NikeList"> | string
     link?: StringWithAggregatesFilter<"NikeList"> | string
     time?: StringWithAggregatesFilter<"NikeList"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"NikeList"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"NikeList"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"NikeList"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"NikeList"> | Date | string
   }
 
   export type HypeBeastListWhereInput = {
@@ -12861,8 +12861,8 @@ export namespace Prisma {
     img?: StringFilter<"HypeBeastList"> | string
     link?: StringFilter<"HypeBeastList"> | string
     time?: StringFilter<"HypeBeastList"> | string
-    createdAt?: DateTimeFilter<"HypeBeastList"> | Date | string
-    updatedAt?: DateTimeFilter<"HypeBeastList"> | Date | string
+    created_at?: DateTimeFilter<"HypeBeastList"> | Date | string
+    updated_at?: DateTimeFilter<"HypeBeastList"> | Date | string
   }
 
   export type HypeBeastListOrderByWithRelationInput = {
@@ -12872,8 +12872,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type HypeBeastListWhereUniqueInput = Prisma.AtLeast<{
@@ -12886,8 +12886,8 @@ export namespace Prisma {
     img?: StringFilter<"HypeBeastList"> | string
     link?: StringFilter<"HypeBeastList"> | string
     time?: StringFilter<"HypeBeastList"> | string
-    createdAt?: DateTimeFilter<"HypeBeastList"> | Date | string
-    updatedAt?: DateTimeFilter<"HypeBeastList"> | Date | string
+    created_at?: DateTimeFilter<"HypeBeastList"> | Date | string
+    updated_at?: DateTimeFilter<"HypeBeastList"> | Date | string
   }, "id">
 
   export type HypeBeastListOrderByWithAggregationInput = {
@@ -12897,8 +12897,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: HypeBeastListCountOrderByAggregateInput
     _avg?: HypeBeastListAvgOrderByAggregateInput
     _max?: HypeBeastListMaxOrderByAggregateInput
@@ -12916,8 +12916,8 @@ export namespace Prisma {
     img?: StringWithAggregatesFilter<"HypeBeastList"> | string
     link?: StringWithAggregatesFilter<"HypeBeastList"> | string
     time?: StringWithAggregatesFilter<"HypeBeastList"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"HypeBeastList"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"HypeBeastList"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"HypeBeastList"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"HypeBeastList"> | Date | string
   }
 
   export type IthomeListWhereInput = {
@@ -12930,8 +12930,8 @@ export namespace Prisma {
     img?: StringFilter<"IthomeList"> | string
     link?: StringFilter<"IthomeList"> | string
     time?: StringFilter<"IthomeList"> | string
-    createdAt?: DateTimeFilter<"IthomeList"> | Date | string
-    updatedAt?: DateTimeFilter<"IthomeList"> | Date | string
+    created_at?: DateTimeFilter<"IthomeList"> | Date | string
+    updated_at?: DateTimeFilter<"IthomeList"> | Date | string
   }
 
   export type IthomeListOrderByWithRelationInput = {
@@ -12941,8 +12941,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type IthomeListWhereUniqueInput = Prisma.AtLeast<{
@@ -12955,8 +12955,8 @@ export namespace Prisma {
     img?: StringFilter<"IthomeList"> | string
     link?: StringFilter<"IthomeList"> | string
     time?: StringFilter<"IthomeList"> | string
-    createdAt?: DateTimeFilter<"IthomeList"> | Date | string
-    updatedAt?: DateTimeFilter<"IthomeList"> | Date | string
+    created_at?: DateTimeFilter<"IthomeList"> | Date | string
+    updated_at?: DateTimeFilter<"IthomeList"> | Date | string
   }, "id">
 
   export type IthomeListOrderByWithAggregationInput = {
@@ -12966,8 +12966,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: IthomeListCountOrderByAggregateInput
     _avg?: IthomeListAvgOrderByAggregateInput
     _max?: IthomeListMaxOrderByAggregateInput
@@ -12985,8 +12985,8 @@ export namespace Prisma {
     img?: StringWithAggregatesFilter<"IthomeList"> | string
     link?: StringWithAggregatesFilter<"IthomeList"> | string
     time?: StringWithAggregatesFilter<"IthomeList"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"IthomeList"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"IthomeList"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"IthomeList"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"IthomeList"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -13319,8 +13319,8 @@ export namespace Prisma {
     nike_broadcast?: boolean | null
     hypebeast_broadcast?: boolean | null
     ithome_broadcast?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     category?: LineUserCategoryCreateNestedManyWithoutAuthorInput
     Article?: LineUserArticleCreateNestedManyWithoutAuthorInput
   }
@@ -13336,8 +13336,8 @@ export namespace Prisma {
     nike_broadcast?: boolean | null
     hypebeast_broadcast?: boolean | null
     ithome_broadcast?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     category?: LineUserCategoryUncheckedCreateNestedManyWithoutAuthorInput
     Article?: LineUserArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
@@ -13353,8 +13353,8 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUpdateManyWithoutAuthorNestedInput
     Article?: LineUserArticleUpdateManyWithoutAuthorNestedInput
   }
@@ -13370,8 +13370,8 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUncheckedUpdateManyWithoutAuthorNestedInput
     Article?: LineUserArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
@@ -13387,8 +13387,8 @@ export namespace Prisma {
     nike_broadcast?: boolean | null
     hypebeast_broadcast?: boolean | null
     ithome_broadcast?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type LineUserUpdateManyMutationInput = {
@@ -13402,8 +13402,8 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserUncheckedUpdateManyInput = {
@@ -13417,15 +13417,15 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserArticleCreateInput = {
     url: string
     type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     author: LineUserCreateNestedOneWithoutArticleInput
   }
 
@@ -13433,16 +13433,16 @@ export namespace Prisma {
     id?: number
     url: string
     type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     authorId: string
   }
 
   export type LineUserArticleUpdateInput = {
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: LineUserUpdateOneRequiredWithoutArticleNestedInput
   }
 
@@ -13450,8 +13450,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     authorId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -13459,79 +13459,79 @@ export namespace Prisma {
     id?: number
     url: string
     type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     authorId: string
   }
 
   export type LineUserArticleUpdateManyMutationInput = {
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserArticleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     authorId?: StringFieldUpdateOperationsInput | string
   }
 
   export type LineUserCategoryCreateInput = {
     id: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     author: LineUserCreateNestedOneWithoutCategoryInput
   }
 
   export type LineUserCategoryUncheckedCreateInput = {
     id: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     authorId: string
   }
 
   export type LineUserCategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: LineUserUpdateOneRequiredWithoutCategoryNestedInput
   }
 
   export type LineUserCategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     authorId?: StringFieldUpdateOperationsInput | string
   }
 
   export type LineUserCategoryCreateManyInput = {
     id: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     authorId: string
   }
 
   export type LineUserCategoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserCategoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     authorId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -13541,8 +13541,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type NikeListUncheckedCreateInput = {
@@ -13552,8 +13552,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type NikeListUpdateInput = {
@@ -13562,8 +13562,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NikeListUncheckedUpdateInput = {
@@ -13573,8 +13573,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NikeListCreateManyInput = {
@@ -13584,8 +13584,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type NikeListUpdateManyMutationInput = {
@@ -13594,8 +13594,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NikeListUncheckedUpdateManyInput = {
@@ -13605,8 +13605,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HypeBeastListCreateInput = {
@@ -13615,8 +13615,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type HypeBeastListUncheckedCreateInput = {
@@ -13626,8 +13626,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type HypeBeastListUpdateInput = {
@@ -13636,8 +13636,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HypeBeastListUncheckedUpdateInput = {
@@ -13647,8 +13647,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HypeBeastListCreateManyInput = {
@@ -13658,8 +13658,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type HypeBeastListUpdateManyMutationInput = {
@@ -13668,8 +13668,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HypeBeastListUncheckedUpdateManyInput = {
@@ -13679,8 +13679,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IthomeListCreateInput = {
@@ -13689,8 +13689,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type IthomeListUncheckedCreateInput = {
@@ -13700,8 +13700,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type IthomeListUpdateInput = {
@@ -13710,8 +13710,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IthomeListUncheckedUpdateInput = {
@@ -13721,8 +13721,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IthomeListCreateManyInput = {
@@ -13732,8 +13732,8 @@ export namespace Prisma {
     img: string
     link: string
     time: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type IthomeListUpdateManyMutationInput = {
@@ -13742,8 +13742,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IthomeListUncheckedUpdateManyInput = {
@@ -13753,8 +13753,8 @@ export namespace Prisma {
     img?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     time?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -14146,8 +14146,8 @@ export namespace Prisma {
     nike_broadcast?: SortOrder
     hypebeast_broadcast?: SortOrder
     ithome_broadcast?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type LineUserMaxOrderByAggregateInput = {
@@ -14161,8 +14161,8 @@ export namespace Prisma {
     nike_broadcast?: SortOrder
     hypebeast_broadcast?: SortOrder
     ithome_broadcast?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type LineUserMinOrderByAggregateInput = {
@@ -14176,8 +14176,8 @@ export namespace Prisma {
     nike_broadcast?: SortOrder
     hypebeast_broadcast?: SortOrder
     ithome_broadcast?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14197,8 +14197,8 @@ export namespace Prisma {
     id?: SortOrder
     url?: SortOrder
     type?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
   }
 
@@ -14210,8 +14210,8 @@ export namespace Prisma {
     id?: SortOrder
     url?: SortOrder
     type?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
   }
 
@@ -14219,8 +14219,8 @@ export namespace Prisma {
     id?: SortOrder
     url?: SortOrder
     type?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
   }
 
@@ -14231,24 +14231,24 @@ export namespace Prisma {
   export type LineUserCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
   }
 
   export type LineUserCategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
   }
 
   export type LineUserCategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     authorId?: SortOrder
   }
 
@@ -14259,8 +14259,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type NikeListAvgOrderByAggregateInput = {
@@ -14274,8 +14274,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type NikeListMinOrderByAggregateInput = {
@@ -14285,8 +14285,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type NikeListSumOrderByAggregateInput = {
@@ -14300,8 +14300,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type HypeBeastListAvgOrderByAggregateInput = {
@@ -14315,8 +14315,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type HypeBeastListMinOrderByAggregateInput = {
@@ -14326,8 +14326,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type HypeBeastListSumOrderByAggregateInput = {
@@ -14341,8 +14341,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type IthomeListAvgOrderByAggregateInput = {
@@ -14356,8 +14356,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type IthomeListMinOrderByAggregateInput = {
@@ -14367,8 +14367,8 @@ export namespace Prisma {
     img?: SortOrder
     link?: SortOrder
     time?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type IthomeListSumOrderByAggregateInput = {
@@ -15301,15 +15301,15 @@ export namespace Prisma {
   export type LineUserCategoryCreateWithoutAuthorInput = {
     id: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type LineUserCategoryUncheckedCreateWithoutAuthorInput = {
     id: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type LineUserCategoryCreateOrConnectWithoutAuthorInput = {
@@ -15325,16 +15325,16 @@ export namespace Prisma {
   export type LineUserArticleCreateWithoutAuthorInput = {
     url: string
     type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type LineUserArticleUncheckedCreateWithoutAuthorInput = {
     id?: number
     url: string
     type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type LineUserArticleCreateOrConnectWithoutAuthorInput = {
@@ -15369,8 +15369,8 @@ export namespace Prisma {
     NOT?: Enumerable<LineUserCategoryScalarWhereInput>
     id?: StringFilter<"LineUserCategory"> | string
     name?: StringFilter<"LineUserCategory"> | string
-    createdAt?: DateTimeFilter<"LineUserCategory"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUserCategory"> | Date | string
+    created_at?: DateTimeFilter<"LineUserCategory"> | Date | string
+    updated_at?: DateTimeFilter<"LineUserCategory"> | Date | string
     authorId?: StringFilter<"LineUserCategory"> | string
   }
 
@@ -15397,8 +15397,8 @@ export namespace Prisma {
     id?: IntFilter<"LineUserArticle"> | number
     url?: StringFilter<"LineUserArticle"> | string
     type?: StringFilter<"LineUserArticle"> | string
-    createdAt?: DateTimeFilter<"LineUserArticle"> | Date | string
-    updatedAt?: DateTimeFilter<"LineUserArticle"> | Date | string
+    created_at?: DateTimeFilter<"LineUserArticle"> | Date | string
+    updated_at?: DateTimeFilter<"LineUserArticle"> | Date | string
     authorId?: StringFilter<"LineUserArticle"> | string
   }
 
@@ -15413,8 +15413,8 @@ export namespace Prisma {
     nike_broadcast?: boolean | null
     hypebeast_broadcast?: boolean | null
     ithome_broadcast?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     category?: LineUserCategoryCreateNestedManyWithoutAuthorInput
   }
 
@@ -15429,8 +15429,8 @@ export namespace Prisma {
     nike_broadcast?: boolean | null
     hypebeast_broadcast?: boolean | null
     ithome_broadcast?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     category?: LineUserCategoryUncheckedCreateNestedManyWithoutAuthorInput
   }
 
@@ -15461,8 +15461,8 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUpdateManyWithoutAuthorNestedInput
   }
 
@@ -15477,8 +15477,8 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: LineUserCategoryUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
@@ -15493,8 +15493,8 @@ export namespace Prisma {
     nike_broadcast?: boolean | null
     hypebeast_broadcast?: boolean | null
     ithome_broadcast?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     Article?: LineUserArticleCreateNestedManyWithoutAuthorInput
   }
 
@@ -15509,8 +15509,8 @@ export namespace Prisma {
     nike_broadcast?: boolean | null
     hypebeast_broadcast?: boolean | null
     ithome_broadcast?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     Article?: LineUserArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
@@ -15541,8 +15541,8 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     Article?: LineUserArticleUpdateManyWithoutAuthorNestedInput
   }
 
@@ -15557,8 +15557,8 @@ export namespace Prisma {
     nike_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     hypebeast_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ithome_broadcast?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     Article?: LineUserArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
@@ -15665,60 +15665,60 @@ export namespace Prisma {
   export type LineUserCategoryCreateManyAuthorInput = {
     id: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type LineUserArticleCreateManyAuthorInput = {
     id?: number
     url: string
     type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type LineUserCategoryUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserCategoryUncheckedUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserCategoryUncheckedUpdateManyWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserArticleUpdateWithoutAuthorInput = {
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserArticleUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LineUserArticleUncheckedUpdateManyWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
