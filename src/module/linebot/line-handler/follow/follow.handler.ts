@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common'
-import { Group, MessageEvent, User } from '@line/bot-sdk'
+import { MessageEvent, User } from '@line/bot-sdk'
 import { PrismaService } from 'src/module/prisma/prisma.service'
 
 @Injectable()

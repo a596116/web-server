@@ -87,12 +87,14 @@ export class TextHandler {
           //       // return await this.configService.createLinebotClient().replyMessage(replyToken, await settingDel(userId, text))
           //     }
           //   }
-          // } else {
-          return await this.configService.createLinebotClient().replyMessage(replyToken, {
-            type: 'text',
-            text: '請嘗試其他功能！',
-          })
-          // }
+          if ('設定成功'.includes(text)) {
+            return
+          } else {
+            return await this.configService.createLinebotClient().replyMessage(replyToken, {
+              type: 'text',
+              text: '請嘗試其他功能！',
+            })
+          }
         }
       }
     }
