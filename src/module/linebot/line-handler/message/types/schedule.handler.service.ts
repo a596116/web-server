@@ -10,7 +10,7 @@ export class ScheduleHandler {
   private readonly logger: Logger = new Logger('LineBot')
   constructor(private configService: ConfigService) {}
 
-  @Cron('4 * * * *')
+  @Cron('5 * * * *')
   async broadcastNike() {
     const { broadcastUsers, template } = await broadcastNike()
     if (template) {
@@ -20,7 +20,7 @@ export class ScheduleHandler {
     }
   }
 
-  @Cron('4 * * * *')
+  @Cron('5 * * * *')
   async broadcastHypebeast() {
     const { broadcastUsers, template } = await broadcastHypebeast()
     if (template) {
@@ -30,7 +30,7 @@ export class ScheduleHandler {
     }
   }
 
-  @Cron('4 * * * *')
+  @Cron('5 * * * *')
   async broadcastIthome() {
     const { broadcastUsers, template } = await broadcastIthome()
     if (template) {

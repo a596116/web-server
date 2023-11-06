@@ -17,8 +17,8 @@ export const findNike = async (id: string) => {
     const data = await prisma.nikeList.findMany({
       take: 10,
       orderBy: {
-        createdAt: 'desc'
-      }
+        createdAt: 'desc',
+      },
     })
     for (const post of data) {
       template.contents.contents.push({
@@ -104,13 +104,14 @@ export const broadcastNike = async () => {
       take: 10,
       where: {
         createdAt: {
-          gt: new Date(new Date().getTime() - 5 * 60 * 1000),
+          gt: new Date(new Date().getTime() - 60 * 60 * 1000),
         },
       },
     })
     broadcastUsers = await prisma.lineUser.findMany({
       where: {
         nike_broadcast: true,
+        status: true,
       },
       select: {
         id: true,

@@ -6,11 +6,12 @@ import { Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import axios from 'axios'
 import * as cheerio from 'cheerio'
+import { formatTime } from 'src/utils/formatTime'
 
 @Injectable()
 export class ScheduleService {
   private readonly logger: Logger = new Logger('LineBot')
-  constructor(private prisma: PrismaService, private readonly config: ConfigService) { }
+  constructor(private prisma: PrismaService, private readonly config: ConfigService) {}
 
   @Cron('0 * * * *')
   async handleFetchNike() {
@@ -27,7 +28,9 @@ export class ScheduleService {
       )
       await driver.sleep(1000)
       await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
-      const posts = (await driver.findElements(By.css('.upcoming-section .product-card'))).splice(0, 10).reverse()
+      const posts = (await driver.findElements(By.css('.upcoming-section .product-card')))
+        .splice(0, 10)
+        .reverse()
       let i = 0
 
       for (const post of posts) {
@@ -40,11 +43,11 @@ export class ScheduleService {
           (await post.findElement(By.css('.figcaption-content h2')).getText()) || '無標題'
         const time =
           (await post.findElement(By.css('.launch-caption p:nth-child(1)')).getText()) +
-          '/' +
-          (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText()) || '無時間'
+            '/' +
+            (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText()) || '無時間'
         i++
         const isExist = await this.prisma.nikeList.findFirst({
-          where: { title },
+          where: { img },
         })
         if (!isExist) {
           await this.prisma.nikeList.create({
@@ -92,9 +95,11 @@ export class ScheduleService {
         const descs =
           (await post.findElement(By.css('.post-box-content-excerpt')).getText()) || '無描述'
         const time =
-          (await post
-            .findElement(By.css('.post-box-content-meta .post-box-meta-author-time .time time'))
-            .getText()) || '無時間'
+          formatTime(
+            await post
+              .findElement(By.css('.post-box-content-meta .post-box-meta-author-time .time time'))
+              .getText(),
+          ) || '無時間'
         i++
         const isExist = await this.prisma.hypeBeastList.findFirst({
           where: { title },
@@ -127,7 +132,7 @@ export class ScheduleService {
       const url = 'https://www.ithome.com.tw'
       const body = await axios.get(`${url}/latest/feed/hitepo6y3vif.jsp`)
       const $ = cheerio.load(body.data, { xmlMode: true })
-      const item = ($('.channel-item .field-content')).toArray().splice(0, 10).reverse()
+      const item = $('.channel-item .field-content').toArray().splice(0, 10).reverse()
       let i = 0
       for (const el of item) {
         if (i > 10) break

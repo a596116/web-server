@@ -86,6 +86,7 @@ export type LineUser = {
   id: string
   displayName: string | null
   pictureUrl: string | null
+  status: boolean | null
   callback: string | null
   url: string | null
   type: string | null
@@ -6279,6 +6280,7 @@ export namespace Prisma {
     id: string | null
     displayName: string | null
     pictureUrl: string | null
+    status: boolean | null
     callback: string | null
     url: string | null
     type: string | null
@@ -6293,6 +6295,7 @@ export namespace Prisma {
     id: string | null
     displayName: string | null
     pictureUrl: string | null
+    status: boolean | null
     callback: string | null
     url: string | null
     type: string | null
@@ -6307,6 +6310,7 @@ export namespace Prisma {
     id: number
     displayName: number
     pictureUrl: number
+    status: number
     callback: number
     url: number
     type: number
@@ -6323,6 +6327,7 @@ export namespace Prisma {
     id?: true
     displayName?: true
     pictureUrl?: true
+    status?: true
     callback?: true
     url?: true
     type?: true
@@ -6337,6 +6342,7 @@ export namespace Prisma {
     id?: true
     displayName?: true
     pictureUrl?: true
+    status?: true
     callback?: true
     url?: true
     type?: true
@@ -6351,6 +6357,7 @@ export namespace Prisma {
     id?: true
     displayName?: true
     pictureUrl?: true
+    status?: true
     callback?: true
     url?: true
     type?: true
@@ -6439,6 +6446,7 @@ export namespace Prisma {
     id: string
     displayName: string | null
     pictureUrl: string | null
+    status: boolean | null
     callback: string | null
     url: string | null
     type: string | null
@@ -6470,6 +6478,7 @@ export namespace Prisma {
     id?: boolean
     displayName?: boolean
     pictureUrl?: boolean
+    status?: boolean
     callback?: boolean
     url?: boolean
     type?: boolean
@@ -12101,6 +12110,7 @@ export namespace Prisma {
     id: 'id',
     displayName: 'displayName',
     pictureUrl: 'pictureUrl',
+    status: 'status',
     callback: 'callback',
     url: 'url',
     type: 'type',
@@ -12569,6 +12579,7 @@ export namespace Prisma {
     id?: StringFilter<"LineUser"> | string
     displayName?: StringNullableFilter<"LineUser"> | string | null
     pictureUrl?: StringNullableFilter<"LineUser"> | string | null
+    status?: BoolNullableFilter<"LineUser"> | boolean | null
     callback?: StringNullableFilter<"LineUser"> | string | null
     url?: StringNullableFilter<"LineUser"> | string | null
     type?: StringNullableFilter<"LineUser"> | string | null
@@ -12585,6 +12596,7 @@ export namespace Prisma {
     id?: SortOrder
     displayName?: SortOrderInput | SortOrder
     pictureUrl?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     callback?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
@@ -12604,6 +12616,7 @@ export namespace Prisma {
     NOT?: Enumerable<LineUserWhereInput>
     displayName?: StringNullableFilter<"LineUser"> | string | null
     pictureUrl?: StringNullableFilter<"LineUser"> | string | null
+    status?: BoolNullableFilter<"LineUser"> | boolean | null
     callback?: StringNullableFilter<"LineUser"> | string | null
     url?: StringNullableFilter<"LineUser"> | string | null
     type?: StringNullableFilter<"LineUser"> | string | null
@@ -12620,6 +12633,7 @@ export namespace Prisma {
     id?: SortOrder
     displayName?: SortOrderInput | SortOrder
     pictureUrl?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     callback?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
@@ -12640,6 +12654,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"LineUser"> | string
     displayName?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
     pictureUrl?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
+    status?: BoolNullableWithAggregatesFilter<"LineUser"> | boolean | null
     callback?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
     url?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
     type?: StringNullableWithAggregatesFilter<"LineUser"> | string | null
@@ -13297,6 +13312,7 @@ export namespace Prisma {
     id: string
     displayName?: string | null
     pictureUrl?: string | null
+    status?: boolean | null
     callback?: string | null
     url?: string | null
     type?: string | null
@@ -13313,6 +13329,7 @@ export namespace Prisma {
     id: string
     displayName?: string | null
     pictureUrl?: string | null
+    status?: boolean | null
     callback?: string | null
     url?: string | null
     type?: string | null
@@ -13329,6 +13346,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13345,6 +13363,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13361,6 +13380,7 @@ export namespace Prisma {
     id: string
     displayName?: string | null
     pictureUrl?: string | null
+    status?: boolean | null
     callback?: string | null
     url?: string | null
     type?: string | null
@@ -13375,6 +13395,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13389,6 +13410,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14117,6 +14139,7 @@ export namespace Prisma {
     id?: SortOrder
     displayName?: SortOrder
     pictureUrl?: SortOrder
+    status?: SortOrder
     callback?: SortOrder
     url?: SortOrder
     type?: SortOrder
@@ -14131,6 +14154,7 @@ export namespace Prisma {
     id?: SortOrder
     displayName?: SortOrder
     pictureUrl?: SortOrder
+    status?: SortOrder
     callback?: SortOrder
     url?: SortOrder
     type?: SortOrder
@@ -14145,6 +14169,7 @@ export namespace Prisma {
     id?: SortOrder
     displayName?: SortOrder
     pictureUrl?: SortOrder
+    status?: SortOrder
     callback?: SortOrder
     url?: SortOrder
     type?: SortOrder
@@ -15381,6 +15406,7 @@ export namespace Prisma {
     id: string
     displayName?: string | null
     pictureUrl?: string | null
+    status?: boolean | null
     callback?: string | null
     url?: string | null
     type?: string | null
@@ -15396,6 +15422,7 @@ export namespace Prisma {
     id: string
     displayName?: string | null
     pictureUrl?: string | null
+    status?: boolean | null
     callback?: string | null
     url?: string | null
     type?: string | null
@@ -15427,6 +15454,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15442,6 +15470,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15457,6 +15486,7 @@ export namespace Prisma {
     id: string
     displayName?: string | null
     pictureUrl?: string | null
+    status?: boolean | null
     callback?: string | null
     url?: string | null
     type?: string | null
@@ -15472,6 +15502,7 @@ export namespace Prisma {
     id: string
     displayName?: string | null
     pictureUrl?: string | null
+    status?: boolean | null
     callback?: string | null
     url?: string | null
     type?: string | null
@@ -15503,6 +15534,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15518,6 +15550,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     callback?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null

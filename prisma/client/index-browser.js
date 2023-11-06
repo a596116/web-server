@@ -143,6 +143,7 @@ exports.Prisma.LineUserScalarFieldEnum = {
   id: 'id',
   displayName: 'displayName',
   pictureUrl: 'pictureUrl',
+  status: 'status',
   callback: 'callback',
   url: 'url',
   type: 'type',

@@ -79,6 +79,7 @@ model LineUser {
   id                  String             @id
   displayName         String?
   pictureUrl          String?
+  status              Boolean?
   callback            String?
   url                 String?
   type                String?

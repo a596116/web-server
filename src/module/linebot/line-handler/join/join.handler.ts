@@ -11,23 +11,53 @@ export class JoinHandler {
     if (event.type.toString() === 'join') {
       const exist = await this.prisma.lineUser.findUnique({ where: { id: group.groupId } })
       if (!exist) {
-        await this.prisma.lineUser.create({
-          data: {
-            id: group.groupId,
-            callback: '',
-            url: '',
-            type: group.type,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-          },
-        })
-        this.logger.log(`Join Group: ${group.groupId}`)
+        await this.prisma.lineUser
+          .create({
+            data: {
+              id: group.groupId,
+              callback: '',
+              status: true,
+              url: '',
+              type: group.type,
+            },
+          })
+          .then((res) => {
+            this.logger.log(`Join Group: ${group.groupId}`)
+          })
+          .catch((err) => {
+            this.logger.log(`Join Group Error: ${group.groupId}`)
+          })
+      } else {
+        await this.prisma.lineUser
+          .update({
+            where: { id: group.groupId },
+            data: {
+              status: true,
+            },
+          })
+          .then((res) => {
+            this.logger.log(`Update Join Group: ${group.groupId}`)
+          })
+          .catch((err) => {
+            this.logger.log(`Update Join Group Error: ${group.groupId}`)
+          })
       }
     } else {
       const exist = await this.prisma.lineUser.findUnique({ where: { id: group.groupId } })
       if (exist) {
-        await this.prisma.lineUser.delete({ where: { id: group.groupId } }).catch((e) => true)
-        this.logger.log(`Leave Group: ${group.groupId}`)
+        await this.prisma.lineUser
+          .update({
+            where: { id: group.groupId },
+            data: {
+              status: false,
+            },
+          })
+          .then((res) => {
+            this.logger.log(`Leave Group: ${group.groupId}`)
+          })
+          .catch((err) => {
+            this.logger.log(`Leave Group Error: ${group.groupId}`)
+          })
       }
     }
   }
