@@ -1,8 +1,10 @@
 import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common'
 import { LiffService } from './liff.service'
 import { LineBotSetting } from './interface/liff_setting.interface'
+import { ApiTags } from '@nestjs/swagger'
 
 @Controller('liff')
+@ApiTags('liff')
 export class LiffController {
   constructor(private readonly liffService: LiffService) {}
 

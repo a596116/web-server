@@ -7,12 +7,7 @@ import { IQuery } from 'src/common/interface/query.interface'
 @Controller('user')
 @ApiTags('權限')
 export class RoleController {
-  constructor(private readonly roleService: RoleService) { }
-  @Get('test')
-  async test() {
-    return { a: 1 }
-  }
-
+  constructor(private readonly roleService: RoleService) {}
   /**
    * @description: 獲取角色
    */
@@ -28,8 +23,8 @@ export class RoleController {
   }
 
   /**
-    * @description: 新增角色
-    */
+   * @description: 新增角色
+   */
   @Post('role/create')
   @ApiOperation({ summary: '新增角色', description: '新增用戶角色' })
   createRoles(@Body() role: createRoleDto) {
@@ -52,8 +47,6 @@ export class RoleController {
   removeUserRole(@Param('id') id: string) {
     return this.roleService.deleteRole(+id)
   }
-
-
 
   //--------------------------------------------------------------------
   //--------------------------------------------------------------------
@@ -98,12 +91,4 @@ export class RoleController {
   removePermissions(@Param('id') id: string) {
     return this.roleService.deletePermissions(+id)
   }
-
-
-
-
-
-
-
-
 }

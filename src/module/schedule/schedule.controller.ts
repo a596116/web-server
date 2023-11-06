@@ -1,7 +1,9 @@
 import { Controller, Get } from '@nestjs/common'
 import { ScheduleService } from './schedule.service'
+import { ApiTags } from '@nestjs/swagger'
 
 @Controller('schedule')
+@ApiTags('定時任務')
 export class ScheduleController {
   constructor(private readonly ScheduleService: ScheduleService) {}
 
