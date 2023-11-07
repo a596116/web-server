@@ -10,7 +10,7 @@ export class ScheduleHandler {
   private readonly logger: Logger = new Logger('LineBot')
   constructor(private configService: ConfigService) {}
 
-  @Cron('5 * * * *')
+  // @Cron('5 * * * *')
   async broadcastNike() {
     const { broadcastUsers, template } = await broadcastNike()
     if (template) {
