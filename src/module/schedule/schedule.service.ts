@@ -29,8 +29,10 @@ export class ScheduleService {
       await driver.sleep(1000)
       await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
       const posts = (await driver.findElements(By.css('.upcoming-section .product-card')))
+        .reverse()
         .splice(0, 10)
         .reverse()
+
       let i = 0
 
       for (const post of posts) {

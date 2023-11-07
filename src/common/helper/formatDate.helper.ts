@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon'
 
-export const formatStartDate = (startDate: string) => {
+export const formatStartDate = (startDate: string = '2000-01-01') => {
   return DateTime.fromJSDate(new Date(startDate)).toJSDate()
 }
 
-export const formatEndDate = (endDate: string) => {
+export const formatEndDate = (endDate: string = '2099-01-01') => {
   return DateTime.fromJSDate(new Date(endDate))
     .plus({ minutes: 24 * 60 })
     .toJSDate()
