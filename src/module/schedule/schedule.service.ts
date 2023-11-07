@@ -6,14 +6,14 @@ import { Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import { formatTime } from 'src/common/helper/formatDate.helper'
+import { formatStringTime, formatTime } from 'src/common/helper/formatDate.helper'
 
 @Injectable()
 export class ScheduleService {
   private readonly logger: Logger = new Logger('LineBot')
   constructor(private prisma: PrismaService, private readonly config: ConfigService) {}
 
-  @Cron('0 * * * *')
+  @Cron('5 12 * * *')
   async handleFetchNike() {
     let driver = await new Builder()
       .forBrowser(Browser.CHROME)
@@ -28,15 +28,8 @@ export class ScheduleService {
       )
       await driver.sleep(1000)
       await driver.wait(until.elementsLocated(By.css('.l-footer')), 1000)
-      const posts = (await driver.findElements(By.css('.upcoming-section .product-card')))
-        .reverse()
-        .splice(0, 10)
-        .reverse()
-
-      let i = 0
-
+      const posts = await driver.findElements(By.css('.upcoming-section .product-card'))
       for (const post of posts) {
-        if (i > 10) break
         const link = (await post.findElement(By.css('a')).getAttribute('href')) || url
         const img =
           (await post.findElement(By.css('.card-link .image-component')).getAttribute('src')) ||
@@ -44,10 +37,10 @@ export class ScheduleService {
         const title =
           (await post.findElement(By.css('.figcaption-content h2')).getText()) || '無標題'
         const time =
-          (await post.findElement(By.css('.launch-caption p:nth-child(1)')).getText()) +
-            '/' +
-            (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText()) || '無時間'
-        i++
+          formatStringTime(
+            (await post.findElement(By.css('.launch-caption p:nth-child(1)')).getText()) +
+              (await post.findElement(By.css('.launch-caption p:nth-child(2)')).getText()),
+          ) || '無時間'
         const isExist = await this.prisma.nikeList.findFirst({
           where: { img },
         })

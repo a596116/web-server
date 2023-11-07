@@ -7,10 +7,9 @@ import { broadcastIthome } from '../templates/ithome'
 
 @Injectable()
 export class ScheduleHandler {
-  private readonly logger: Logger = new Logger('LineBot')
   constructor(private configService: ConfigService) {}
 
-  // @Cron('5 * * * *')
+  @Cron('0 12 * * *')
   async broadcastNike() {
     const { broadcastUsers, template } = await broadcastNike()
     if (template) {

@@ -1,5 +1,6 @@
 import { PrismaService } from 'src/module/prisma/prisma.service'
 import { Logger } from '@nestjs/common'
+import { getTomorrowDate } from 'src/common/helper/formatDate.helper'
 
 const prisma = new PrismaService()
 const logger = new Logger('LineBot')
@@ -95,6 +96,9 @@ export const findNike = async (id: string) => {
   ]
 }
 
+/**
+ * @description: 推播nike
+ */
 export const broadcastNike = async () => {
   const template: any = {
     type: 'flex',
@@ -106,12 +110,11 @@ export const broadcastNike = async () => {
   }
   let broadcastUsers = []
   try {
+    // 查詢nike time為明天的資料
     const data = await prisma.nikeList.findMany({
       take: 10,
       where: {
-        created_at: {
-          gt: new Date(new Date().getTime() - 60 * 60 * 1000),
-        },
+        time: getTomorrowDate(),
       },
     })
     broadcastUsers = await prisma.lineUser.findMany({
@@ -193,7 +196,7 @@ export const broadcastNike = async () => {
     template: [
       {
         type: 'text',
-        text: 'Nike發售預告',
+        text: `明日Nike發售預告 ${getTomorrowDate()}`,
       },
       template,
     ],

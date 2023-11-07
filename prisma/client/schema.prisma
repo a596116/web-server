@@ -72,7 +72,7 @@ model RolePermission {
 }
 
 // ----------------------------------------------------------
-// -------------------------LineBot--------------------------
+// -------------------------Line-----------------------------
 // ----------------------------------------------------------
 
 model LineUser {
@@ -119,7 +119,7 @@ model NikeList {
   title      String
   descs      String?
   img        String   @db.VarChar(1000)
-  link       String
+  link       String   @db.VarChar(500)
   time       String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
