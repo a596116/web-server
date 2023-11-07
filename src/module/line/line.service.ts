@@ -109,4 +109,106 @@ export class LineService {
       return error('編輯nike失敗，錯誤詳情：' + error)
     }
   }
+  // -------------------------------------------------------------------
+
+  /**
+   * @description: 獲取HypeBeast列表
+   */
+  async fetchHypeBeastAll(query: IQuery) {
+    const sort = {}
+    sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
+    const data = await this.prisma.hypeBeastList.findMany({
+      skip: query.take * (query.current_page - 1),
+      take: +query.take,
+      orderBy: sort,
+      where: {
+        title: {
+          contains: query.q,
+        },
+        created_at: {
+          gte: formatStartDate(query.start_date),
+          lte: formatEndDate(query.end_date),
+        },
+      },
+    })
+    const total = await this.prisma.hypeBeastList.count()
+    return successPaginate({ ...query, total, data })
+  }
+
+  /**
+   * @description: 獲取HypeBeast
+   */
+  async fetchHypeBeast(id: number) {
+    const data = await this.prisma.hypeBeastList.findUnique({
+      where: { id },
+    })
+    return success({ data })
+  }
+
+  /**
+   * @description: 編輯HypeBeast
+   */
+  async editHypeBeast(id: number, data: any) {
+    try {
+      await this.prisma.hypeBeastList.update({
+        where: { id },
+        data,
+      })
+      return success({ message: '編輯nike成功' })
+    } catch (error) {
+      console.log(error)
+      return error('編輯nike失敗，錯誤詳情：' + error)
+    }
+  }
+  // -------------------------------------------------------------------
+
+  /**
+   * @description: 獲取IThome列表
+   */
+  async fetchIThomeAll(query: IQuery) {
+    const sort = {}
+    sort[query.sort.split('-')[0]] = query.sort.split('-')[1]
+    const data = await this.prisma.ithomeList.findMany({
+      skip: query.take * (query.current_page - 1),
+      take: +query.take,
+      orderBy: sort,
+      where: {
+        title: {
+          contains: query.q,
+        },
+        created_at: {
+          gte: formatStartDate(query.start_date),
+          lte: formatEndDate(query.end_date),
+        },
+      },
+    })
+    const total = await this.prisma.ithomeList.count()
+    return successPaginate({ ...query, total, data })
+  }
+
+  /**
+   * @description: 獲取IThome
+   */
+  async fetchIThome(id: number) {
+    const data = await this.prisma.ithomeList.findUnique({
+      where: { id },
+    })
+    return success({ data })
+  }
+
+  /**
+   * @description: 編輯IThome
+   */
+  async editIThome(id: number, data: any) {
+    try {
+      await this.prisma.ithomeList.update({
+        where: { id },
+        data,
+      })
+      return success({ message: '編輯nike成功' })
+    } catch (error) {
+      console.log(error)
+      return error('編輯nike失敗，錯誤詳情：' + error)
+    }
+  }
 }

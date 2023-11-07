@@ -33,28 +33,4 @@ export class LineController {
   editLineUser(@Body() data: ILineUser, @Param('id') id: string) {
     return this.lineService.editLineUser(id, data)
   }
-
-  /**
-   * @description: nike
-   */
-  @Get('nike')
-  @UseGuards(AuthGuard('jwt'))
-  @ApiOperation({ summary: '獲取nike列表', description: '獲取nike列表' })
-  fetchNikeAll(@Query() query: IQuery) {
-    return this.lineService.fetchNikeAll(query)
-  }
-
-  @Get(':id')
-  @UseGuards(AuthGuard('jwt'))
-  @ApiOperation({ summary: '獲取nike', description: '獲取nike' })
-  fetchNike(@Param('id') id: number) {
-    return this.lineService.fetchNike(id)
-  }
-
-  @Put(':id')
-  @UseGuards(AuthGuard('jwt'))
-  @ApiOperation({ summary: '更新nike', description: '更新nike' })
-  editNike(@Body() data: any, @Param('id') id: number) {
-    return this.lineService.editNike(id, data)
-  }
 }
