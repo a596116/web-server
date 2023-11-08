@@ -19,6 +19,8 @@ RUN npx prisma generate
 # 建立生產版本
 RUN pnpm run build
 
+ENV TZ="Asia/Taipei"
+
 # 暴露的連接埠
 EXPOSE 3005
 
