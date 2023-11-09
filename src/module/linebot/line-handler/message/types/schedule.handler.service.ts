@@ -9,7 +9,7 @@ import { broadcastIthome } from '../templates/ithome'
 export class ScheduleHandler {
   constructor(private configService: ConfigService) {}
 
-  @Cron('0 12 * * *')
+  @Cron('5 12 * * *')
   async broadcastNike() {
     const { broadcastUsers, template } = await broadcastNike()
     if (template) {

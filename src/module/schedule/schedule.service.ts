@@ -13,7 +13,7 @@ export class ScheduleService {
   private readonly logger: Logger = new Logger('LineBot')
   constructor(private prisma: PrismaService, private readonly config: ConfigService) {}
 
-  @Cron('5 12 * * *')
+  @Cron('0 * * * *')
   async handleFetchNike() {
     let driver = await new Builder()
       .forBrowser(Browser.CHROME)
@@ -65,7 +65,7 @@ export class ScheduleService {
     }
   }
 
-  @Cron('0 * * * *')
+  @Cron('*/30 * * * *')
   async handleFetchHypebeast() {
     let driver = await new Builder()
       .forBrowser(Browser.CHROME)
@@ -121,7 +121,7 @@ export class ScheduleService {
     }
   }
 
-  @Cron('0 * * * *')
+  @Cron('*/30 * * * *')
   async handleFetchIthome() {
     try {
       const url = 'https://www.ithome.com.tw'
