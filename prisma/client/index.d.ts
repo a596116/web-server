@@ -19,7 +19,7 @@ export type PrismaPromise<T> = runtime.Types.Public.PrismaPromise<T>
 export type User = {
   id: number
   name: string
-  phone: string
+  account: string
   password: string
   avatar: string
   status: boolean
@@ -1286,7 +1286,7 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: number | null
     name: string | null
-    phone: string | null
+    account: string | null
     password: string | null
     avatar: string | null
     status: boolean | null
@@ -1299,7 +1299,7 @@ export namespace Prisma {
   export type UserMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    phone: string | null
+    account: string | null
     password: string | null
     avatar: string | null
     status: boolean | null
@@ -1312,7 +1312,7 @@ export namespace Prisma {
   export type UserCountAggregateOutputType = {
     id: number
     name: number
-    phone: number
+    account: number
     password: number
     avatar: number
     status: number
@@ -1335,7 +1335,7 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     name?: true
-    phone?: true
+    account?: true
     password?: true
     avatar?: true
     status?: true
@@ -1348,7 +1348,7 @@ export namespace Prisma {
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
-    phone?: true
+    account?: true
     password?: true
     avatar?: true
     status?: true
@@ -1361,7 +1361,7 @@ export namespace Prisma {
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
-    phone?: true
+    account?: true
     password?: true
     avatar?: true
     status?: true
@@ -1462,7 +1462,7 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: number
     name: string
-    phone: string
+    account: string
     password: string
     avatar: string
     status: boolean
@@ -1494,7 +1494,7 @@ export namespace Prisma {
   export type UserSelect = {
     id?: boolean
     name?: boolean
-    phone?: boolean
+    account?: boolean
     password?: boolean
     avatar?: boolean
     status?: boolean
@@ -12048,7 +12048,7 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    phone: 'phone',
+    account: 'account',
     password: 'password',
     avatar: 'avatar',
     status: 'status',
@@ -12254,7 +12254,7 @@ export namespace Prisma {
     NOT?: Enumerable<UserWhereInput>
     id?: IntFilter<"User"> | number
     name?: StringFilter<"User"> | string
-    phone?: StringFilter<"User"> | string
+    account?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     avatar?: StringFilter<"User"> | string
     status?: BoolFilter<"User"> | boolean
@@ -12268,7 +12268,7 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    phone?: SortOrder
+    account?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
@@ -12281,7 +12281,7 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    phone?: string
+    account?: string
     AND?: Enumerable<UserWhereInput>
     OR?: Enumerable<UserWhereInput>
     NOT?: Enumerable<UserWhereInput>
@@ -12294,12 +12294,12 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
     UserRole?: UserRoleListRelationFilter
-  }, "id" | "phone">
+  }, "id" | "account">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    phone?: SortOrder
+    account?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
@@ -12320,7 +12320,7 @@ export namespace Prisma {
     NOT?: Enumerable<UserScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter<"User"> | number
     name?: StringWithAggregatesFilter<"User"> | string
-    phone?: StringWithAggregatesFilter<"User"> | string
+    account?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     avatar?: StringWithAggregatesFilter<"User"> | string
     status?: BoolWithAggregatesFilter<"User"> | boolean
@@ -12991,7 +12991,7 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     name: string
-    phone: string
+    account: string
     password: string
     avatar: string
     status: boolean
@@ -13005,7 +13005,7 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: number
     name: string
-    phone: string
+    account: string
     password: string
     avatar: string
     status: boolean
@@ -13018,7 +13018,7 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    account?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
@@ -13032,7 +13032,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    account?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
@@ -13046,7 +13046,7 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: number
     name: string
-    phone: string
+    account: string
     password: string
     avatar: string
     status: boolean
@@ -13058,7 +13058,7 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    account?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
@@ -13071,7 +13071,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    account?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
@@ -13811,7 +13811,7 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    phone?: SortOrder
+    account?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
@@ -13828,7 +13828,7 @@ export namespace Prisma {
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    phone?: SortOrder
+    account?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
@@ -13841,7 +13841,7 @@ export namespace Prisma {
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    phone?: SortOrder
+    account?: SortOrder
     password?: SortOrder
     avatar?: SortOrder
     status?: SortOrder
@@ -15076,7 +15076,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutUserRoleInput = {
     name: string
-    phone: string
+    account: string
     password: string
     avatar: string
     status: boolean
@@ -15089,7 +15089,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutUserRoleInput = {
     id?: number
     name: string
-    phone: string
+    account: string
     password: string
     avatar: string
     status: boolean
@@ -15141,7 +15141,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutUserRoleInput = {
     name?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    account?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
@@ -15154,7 +15154,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutUserRoleInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    account?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean

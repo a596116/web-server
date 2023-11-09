@@ -181,9 +181,9 @@ export class AuthService {
    * 用戶登入驗證
    */
   private async validateUser(user: LoginAuthDto) {
-    const phone: string = user.phone
+    const account: string = user.account
     const password: string = user.password
-    return await this.findOneByPhone(phone)
+    return await this.findOneByAccount(account)
       .then((res) => {
         if (res == null) {
           throw error({ message: '用戶尚未註冊' })
@@ -206,14 +206,14 @@ export class AuthService {
   /**
    * 根據手機獲取用戶
    */
-  async findOneByPhone(phone: string) {
-    return await this.prisma.user.findUnique({ where: { phone: phone } })
+  async findOneByAccount(account: string) {
+    return await this.prisma.user.findUnique({ where: { account: account } })
   }
 
-  async token({ phone }) {
+  async token({ account }) {
     return {
       token: await this.jwt.signAsync({
-        phone,
+        account,
       }),
     }
   }

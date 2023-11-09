@@ -2,7 +2,7 @@
 CREATE TABLE `User` (
     `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
-    `phone` CHAR(20) NOT NULL,
+    `account` VARCHAR(191) NOT NULL,
     `password` VARCHAR(191) NOT NULL,
     `avatar` VARCHAR(191) NOT NULL,
     `status` BOOLEAN NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `User` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `User_phone_key`(`phone`),
+    UNIQUE INDEX `User_account_key`(`account`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -109,7 +109,7 @@ CREATE TABLE `NikeList` (
     `title` VARCHAR(191) NOT NULL,
     `descs` VARCHAR(191) NULL,
     `img` VARCHAR(1000) NOT NULL,
-    `link` VARCHAR(191) NOT NULL,
+    `link` VARCHAR(500) NOT NULL,
     `time` VARCHAR(191) NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
