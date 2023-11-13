@@ -123,7 +123,7 @@ export const broadcastHypebeast = async () => {
       },
       where: {
         created_at: {
-          gt: new Date(new Date().getTime() - 60 * 60 * 1000),
+          gt: new Date(new Date().getTime() - 180 * 60 * 1000),
         },
       },
     })

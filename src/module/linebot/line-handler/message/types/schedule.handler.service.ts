@@ -12,27 +12,27 @@ export class ScheduleHandler {
   @Cron('5 12 * * *')
   async broadcastNike() {
     const { broadcastUsers, template } = await broadcastNike()
-    if (template) {
+    if (template[1].contents.contents.length) {
       for (const user of broadcastUsers) {
         await this.configService.createLinebotClient().pushMessage(user.id, template)
       }
     }
   }
 
-  @Cron('5 * * * *')
+  @Cron('5 */3 * * *')
   async broadcastHypebeast() {
     const { broadcastUsers, template } = await broadcastHypebeast()
-    if (template) {
+    if (template[1].contents.contents.length) {
       for (const user of broadcastUsers) {
         await this.configService.createLinebotClient().pushMessage(user.id, template)
       }
     }
   }
 
-  @Cron('5 * * * *')
+  @Cron('5 */3 * * *')
   async broadcastIthome() {
     const { broadcastUsers, template } = await broadcastIthome()
-    if (template) {
+    if (template[1].contents.contents.length) {
       for (const user of broadcastUsers) {
         await this.configService.createLinebotClient().pushMessage(user.id, template)
       }
